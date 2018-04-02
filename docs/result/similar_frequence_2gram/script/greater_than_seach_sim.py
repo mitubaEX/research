@@ -14,13 +14,13 @@ with open(filename, 'r') as f:
     reader = csv.reader(f)
     for row in reader:
         if float(row[0]) > float(row[1]):
-            if float(row[1]) >= 0.75 and float(row[0]) >= 0.75:
+            if float(row[1]) >= 0.75 and float(row[0]) >= 0.25:
                 greater_than_count_075 += 1
-            if float(row[1]) >= 0.5 and float(row[0]) >= 0.75:
+            if float(row[1]) >= 0.5 and float(row[0]) >= 0.25:
                 greater_than_count_05 += 1
-            if float(row[1]) >= 0.25 and float(row[0]) >= 0.75:
+            if float(row[1]) >= 0.25 and float(row[0]) >= 0.25:
                 greater_than_count_025 += 1
-            if float(row[1]) < 0.25 and float(row[0]) >= 0.75:
+            if float(row[1]) < 0.25 and float(row[0]) >= 0.25:
                 greater_than_count_025_under += 1
 
             if float(row[0]) >= 0.75:
