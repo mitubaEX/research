@@ -105,7 +105,21 @@ janrain4j-1.1.0.jar-2gram.csvを使ってみる
 
 6gramでもやろうかなぁ
 
+# 6gram
 
+janrain4j-1.1.0.jar-6gram.csvを使う
 
+```
+{0: 29, 1: 3, 3: 1, 4: 1, 5: 1}
+{'1': 35}
+```
 
+なんか一件が出てないので調べてみる
 
+```com.googlecode.janrain4j.json.JSONObject```
+
+検索エンジンには入っているが検索結果に出てこない！？
+
+なんだこれ
+
+とりあえず無視
