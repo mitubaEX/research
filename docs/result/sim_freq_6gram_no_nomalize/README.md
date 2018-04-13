@@ -28,3 +28,16 @@ protobuf_unittest.MessageWithNoOuter$NestedEnum
 protobuf_unittest.UnittestMset$RawMessageSet$ItemBase
 
 なんで出てこないのかようわからんのでもういい
+
+
+## 正解集合が検索結果の難易ぐらいに出てくるかの調査
+
+意味不明な三件を除いて，全て上位に位置している
+
+親和性はたかそう
+
+image: ./pochi_sim_transition_6gram.png, ./pochi_sim_transition_6gram_zoom.png
+
+これもいい感じに線形的に落ちている
+
+親和性高そう

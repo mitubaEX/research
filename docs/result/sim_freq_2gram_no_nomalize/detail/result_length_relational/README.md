@@ -15,4 +15,34 @@ protobuf_unittest.UnittestProto\$TestDupFieldNumber2gram
 
 長さは一緒らしい、なるほど
 
+## 結果のやつらが結果の上位何件に位置しているのかを調査
 
+見たら全部上位勢だった
+
+すなわち正解となっているのは，上位を全どりしている
+
+36件正解が見つかったら，上から36件が正解集合だ
+
+これを見るとどんな感じでpochiの類似度が下がっていっているのかきになる
+
+image: ./pochi_sim_transition.png
+
+### 考察
+
+見る感じ順調に下がっているが，線形ではなく若干ブレている．
+うーん
+
+ズームして見た
+
+
+use: protobuf_unittest.UnittestProto$TestRequired
+image: ./pochi_sim_transition_zoom.png
+
+
+75件ぐらいからほぼ横ばいでゆっくり下がって行く感じ
+
+大体のpochiは0.2付近だと言える
+
+こいつの正解は37件である
+
+これはこれでいい結果
