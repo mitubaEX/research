@@ -18,3 +18,24 @@
 
 precisionとかそこら周り
 
+
+# 検証過程
+
+## 無理やり正規化の類似度調査
+
+- [similar_frequence_2gram](./docs/result/similar_frequence_2gram)
+- [similar_frequence_6gram](./docs/result/similar_frequence_6gram)
+
+## 500個のjarファイルを適当に選んで調査した
+
+- [500_random_jar](./docs/result/500_random_jar)
+
+
+## 検索エンジンのスコアに関していろいろ考えた
+
+- [sim_freq_2gram_no_nomalize](./docs/result/sim_freq_2gram_no_nomalize)
+- [sim_freq_6gram_no_nomalize](./docs/result/sim_freq_6gram_no_nomalize)
+
+## スコア * 2 / 3くらいのところを閾値にすればいいのでは？という検証
+
+- [score_2-3_threshold](./docs/result/score_2-3_threshold)
