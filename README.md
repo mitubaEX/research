@@ -39,3 +39,9 @@ precisionとかそこら周り
 ## スコア * 2 / 3くらいのところを閾値にすればいいのでは？という検証
 
 - [score_2-3_threshold](./docs/result/score_2-3_threshold)
+
+## 実験の戦略を考えていった
+
+結果をここに入れていく
+- [paper_experiment](./docs/docs/paper_experiment/)
+
