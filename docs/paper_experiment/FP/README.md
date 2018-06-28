@@ -22,3 +22,13 @@
     - 検索エンジンに入っているものか？
     - 全く関係のないものを投げるか？
     - 両方ともで試したら良さそう
+
+
+## 結果
+
+```
+## 全体
+/Volumes/mituba_20180425/2gram ❯❯❯ for i in ./search_result/* ; do wc $i ;done | awk '{a+=($1 - 2)} END {print a}'                                               master ◼
+10333545
+
+```
