@@ -1,0 +1,7 @@
+## 2gram
+
+```
+/Volumes/mituba_20180425/restart/2gram ❯❯❯ cat time_2gram.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'                     master ✱
+551.455
+
+```
