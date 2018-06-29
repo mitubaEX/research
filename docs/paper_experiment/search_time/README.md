@@ -1,4 +1,4 @@
-## 2gram 0.25
+## 0.25
 
 ### 検索時間
 
@@ -73,7 +73,7 @@
 ./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-"$i".csv -b "$i"  120.66s user 12.79s system 167% cpu 1:19.71 total
 ```
 
-## 2gram 0.75
+## 0.75
 
 ```
 /Volumes/mituba_20180425/restart/sim_0.75 ❯❯❯ for i in 2gram 3gram 4gram 5gram 6gram uc ; do cat time_"$i".csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }';done
