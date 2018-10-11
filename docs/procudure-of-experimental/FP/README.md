@@ -9,7 +9,7 @@ FNとほぼ同様
 `<(for j in 15 24 31 37 41 2; do echo $j ;done)`の部分は適宜サーバを作成した時の値を利用する
 
 ```
-paste <(for i in 2gram 3gram 4gram 5gram 6gram uc;do echo $i ;done) <(for j in 15 24 31 37 41 2; do echo $j ;done) | while read birth threshold ; do for i in ../../activemq-protobuf-test-1.1.jar-"$birth".csv; do python3 row_search.py $i $threshold "$birth" > time_"$birth".csv ; done;done
+paste <(for i in 2gram 3gram 4gram 5gram 6gram uc;do echo $i ;done) <(for j in 15 24 31 37 41 2; do echo $j ;done) | while read birth threshold ; do for i in dir/*"$birth".csv; do python3 row_search.py $i $threshold "$birth" ; done > time_"$birth".csv;done
 ```
 
 ## FP check
