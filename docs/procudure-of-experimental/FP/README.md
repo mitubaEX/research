@@ -26,3 +26,20 @@ paste <(for i in 2gram 3gram 4gram 5gram 6gram uc;do echo $i ;done) <(for j in 1
 比較時間はtimeコマンドで
 
 従来手法の時間は，普通に相互比較で (FN参照)
+
+
+## 11/14追記
+
+ToolForResearch/row_search_get_only_last_result.pyを作成した
+
+これをparseするためのスクリプトを記述しておく．
+
+```
+find . -name "*-898*.csv" | while read file
+do
+  grep 'narrow_count' $file | sed 's/narrow_count: //g' | gowk sum -c 0
+  grep 'elapsed_time:' $file | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | gowk sum -c 0
+  grep 'comparison: ' $file | sed 's/comparison: //g' | sed 's/ ns//g' | gowk sum -c 0
+  grep 'correct_count: ' $file | sed 's/correct_count: //g' | sed 's/count: //g' | gowk sum -c '0,1'
+done
+```
