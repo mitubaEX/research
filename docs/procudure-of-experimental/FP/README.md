@@ -43,3 +43,11 @@ do
   grep 'correct_count: ' $file | sed 's/correct_count: //g' | sed 's/count: //g' | gowk sum -c '0,1'
 done
 ```
+
+これじゃダメっぽい
+これを使う
+
+```
+python3 ./parse.py <file>
+```
+
