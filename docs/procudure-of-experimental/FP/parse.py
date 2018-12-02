@@ -63,14 +63,14 @@ with open(file1) as f:
                 continue
             # print(m)
             if 'narrow_count' in m:
-                narrow_count = float(m.replace('narrow_count: ', ''))
+                narrow_count += float(m.replace('narrow_count: ', ''))
             elif 'elapsed_time:' in m:
-                elapsed_time = float(m.replace('elapsed_time:', '').replace('[sec]', ''))
+                elapsed_time += float(m.replace('elapsed_time:', '').replace('[sec]', ''))
             elif 'comparison: ' in m:
-                comparison = float(m.replace('comparison: ', '').replace(' ns', ''))
+                comparison += float(m.replace('comparison: ', '').replace(' ns', ''))
             elif 'correct_count: ' in m:
                 spl = m.split(',')
-                correct_count = float(spl[0].replace('correct_count: ', ''))
-                count = float(spl[1].replace('count: ', ''))
+                correct_count += float(spl[0].replace('correct_count: ', ''))
+                count += float(spl[1].replace('count: ', ''))
         print('{0},{1},{2},{3},{4}'.format(narrow_count, elapsed_time, comparison, correct_count, count))
         c += 1
