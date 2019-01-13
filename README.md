@@ -45,3 +45,13 @@ precisionとかそこら周り
 結果をここに入れていく
 - [paper_experiment](./docs/docs/paper_experiment/)
 
+
+## Deploy
+
+```
+# test
+mkdocs serve
+
+# deploy
+mkdocs gh-deploy
+```

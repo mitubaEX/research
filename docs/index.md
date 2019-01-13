@@ -7,12 +7,3 @@
 - work_log
     - 日々の雑記
 
-## Deploy
-
-```
-# test
-mkdocs serve
-
-# deploy
-mkdocs gh-deploy
-```
