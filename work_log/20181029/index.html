@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20181029 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u304a\u305d\u3089\u304f10 100 200..\u3068\u304b\u3067\u523b\u3093\u3067\u3044\u304d\u305f\u3044\u3068\u601d\u3046", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181106/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181106/" class="btn btn-xs btn-link">
+        20181106
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181025/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181025/" class="btn btn-xs btn-link">
+        20181025
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="10-100-200">おそらく10 100 200..とかで刻んでいきたいと思う</h2>
+<p>今の所，birth_xmlの作成まではできた感じ．</p>
+<pre><code>bin/solr start
+
+for i in 2gram 3gram 4gram 5gram 6gram uc ; do bin/solr create -c &quot;$i&quot; ;done
+
+bin/solr stop
+
+for i in 2gram 3gram 4gram 5gram 6gram uc ; do rm server/solr/&quot;$i&quot;/conf/managed-schema &amp;&amp; wget -O  server/solr/&quot;$i&quot;/conf/managed-schema 'https://raw.githubusercontent.com/mitubaEX/research/master/docs/solr/managed-schema?token=ALgmt9GBidffcgIxBMiHjIvfPlMFpmFMks5b4Gh7wA%3D%3D';done
+
+bin/solr start -m 24g
+
+for i in 2gram 3gram 4gram 5gram 6gram uc ; do bin/post -c &quot;$i&quot; ../birthmark_server/data/birth_xml/birth_&quot;$i&quot;.xml ;done
+
+bin/solr stop
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181106/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181106/" class="btn btn-xs btn-link">
+        20181106
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181025/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181025/" class="btn btn-xs btn-link">
+        20181025
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

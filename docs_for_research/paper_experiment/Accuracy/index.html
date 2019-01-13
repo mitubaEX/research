@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>検索精度 - My Docs</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u691c\u7d22\u7cbe\u5ea6", url: "#_top", children: [
+              {title: "\u5b9f\u9a13\u65b9\u6cd5", url: "#_2" },
+              {title: "- image: ./accuracy.png", url: "#-image-accuracypng" },
+              {title: "\u5404\u30e1\u30c8\u30ea\u30af\u30b9\u306e\u3056\u3063\u304f\u308a\u3068\u3057\u305f\u8aac\u660e", url: "#_3" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/paper_experiment/FN/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/paper_experiment/FN/" class="btn btn-xs btn-link">
+        検出漏れ
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="" class="btn btn-xs btn-link">
+        研究ログ置き場
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="_1">検索精度</h1>
+<p>apache solr に精度を評価する系があった気がするからそれも使ってみよう</p>
+<h2 id="_2">実験方法</h2>
+<h2 id="-image-accuracypng">- image: ./accuracy.png</h2>
+<h2 id="_3">各メトリクスのざっくりとした説明</h2>
+<ul>
+<li>TP <code>検索結果^正解集合</code></li>
+<li>FP <code>検索結果-TP</code></li>
+<li>FN <code>正解集合-TP</code></li>
+<li>TN <code>それ以外</code></li>
+</ul>
+<p>TNの扱いに困ったりする
+検索結果は閾値によって数が変化する．
+正解集合の数は一定</p>
+<p>検索結果のTNは閾値によって変動する
+正解集合のTNは閾値0.75固定なので，0.75以下のものたち</p>
+<p>求められそう</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/paper_experiment/FN/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/paper_experiment/FN/" class="btn btn-xs btn-link">
+        検出漏れ
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="" class="btn btn-xs btn-link">
+        研究ログ置き場
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

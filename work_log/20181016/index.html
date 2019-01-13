@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20181016 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u691c\u51fa\u6f0f\u308c", url: "#_top", children: [
+          ]},
+          {title: "\u691c\u51fa\u6f0f\u308c\u306e\u305f\u3081\u306b\u30bd\u30fc\u30b9\u30b3\u30fc\u30c9\u3092\u5c11\u3057\u8abf\u3079\u3066\u307f\u3088\u3046\u304b", url: "#_2", children: [
+              {title: "3gram", url: "#3gram" },
+              {title: "uc", url: "#uc" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181025/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181025/" class="btn btn-xs btn-link">
+        20181025
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181015/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181015/" class="btn btn-xs btn-link">
+        20181015
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="_1">検出漏れ</h2>
+<p>もう少し</p>
+<p>3-gram, ucをやろうな</p>
+<h2 id="_2">検出漏れのためにソースコードを少し調べてみようか</h2>
+<h3 id="3gram">3gram</h3>
+<pre><code>com.thoughtworks.xstream.io.binary.Token$Attribute,com.thoughtworks.xstream.io.binary.Token$MapIdToValue
+
+/Volumes/HD/false_negative_50_jar/false_negative/false_negatives_each_files_3gram - [master|*] ❯❯❯ find ../../birthmark_server/data/birthmark -name &quot;*3gram*&quot; | while read file ; do  awk -F ',' '{print $1}' false_negatives_0.7.csv | xargs -I@ grep @ $file;done
+com.thoughtworks.xstream.io.binary.Token$Attribute,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/org.apache.servicemix.bundles.xstream-1.2.2-1.0-m2.jar!/com/thoughtworks/xstream/io/binary/Token$Attribute.class,kgram,25 8 183,8 183 25,183 25 22,25 22 181,22 181 25,181 25 25,25 25 181,25 181 177,181 177 25,177 25 8,8 183 177,183 177 25,177 25 25,25 25 25,25 25 180,25 180 21,180 21 182,21 182 25,182 25 25,25 180 182,180 182 177,182 177 25,25 25 21,25 21 182,21 182 181,182 181 25,25 25 182,25 182 181,182 181 177
+
+/Volumes/HD/false_negative_50_jar/false_negative/false_negatives_each_files_3gram - [master|*] ❯❯❯ find ../../birthmark_server/data/birthmark -name &quot;*3gram*&quot; | while read file ; do  awk -F ',' '{print $2}' false_negatives_0.7.csv | xargs -I@ grep @ $file;done
+com.thoughtworks.xstream.io.binary.Token$MapIdToValue,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/org.apache.servicemix.bundles.xstream-1.2.2-1.0-m2.jar!/com/thoughtworks/xstream/io/binary/Token$MapIdToValue.class,kgram,25 5 183,5 183 25,183 25 22,25 22 181,22 181 25,181 25 25,25 25 181,25 181 177,181 177 25,177 25 5,5 183 177,183 177 25,177 25 25,25 25 25,25 25 180,25 180 21,180 21 182,21 182 25,182 25 25,25 180 182,180 182 177,182 177 25,25 25 21,25 21 182,21 182 181,182 181 25,25 25 182,25 182 181,182 181 177
+
+</code></pre>
+
+<p>従来手法の類似度</p>
+<pre><code>com.thoughtworks.xstream.io.binary.Token$Attribute,com.thoughtworks.xstream.io.binary.Token$MapIdToValue,0.7575757575757576
+</code></pre>
+
+<p>提案手法の類似度</p>
+<pre><code>com.thoughtworks.xstream.io.binary.Token$Attribute3gram,com.thoughtworks.xstream.io.binary.Token$MapIdToValue,0.6536770956231551
+</code></pre>
+
+<h3 id="uc">uc</h3>
+<pre><code>com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+com.icesoft.faces.env.AcegiAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+com.icesoft.faces.env.SpringAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+
+
+com.sun.el.parser.ELParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/ELParser.class,uc,com.sun.el.parser.AstAnd,com.sun.el.parser.AstBracketSuffix,com.sun.el.parser.AstChoice,com.sun.el.parser.AstCompositeExpression,com.sun.el.parser.AstDeferredExpression,com.sun.el.parser.AstDiv,com.sun.el.parser.AstDotSuffix,com.sun.el.parser.AstDynamicExpression,com.sun.el.parser.AstEmpty,com.sun.el.parser.AstEqual,com.sun.el.parser.AstFalse,com.sun.el.parser.AstFloatingPoint,com.sun.el.parser.AstFunction,com.sun.el.parser.AstGreaterThan,com.sun.el.parser.AstGreaterThanEqual,com.sun.el.parser.AstIdentifier,com.sun.el.parser.AstInteger,com.sun.el.parser.AstLessThan,com.sun.el.parser.AstLessThanEqual,com.sun.el.parser.AstLiteralExpression,com.sun.el.parser.AstMinus,com.sun.el.parser.AstMod,com.sun.el.parser.AstMult,com.sun.el.parser.AstNegative,com.sun.el.parser.AstNot,com.sun.el.parser.AstNotEqual,com.sun.el.parser.AstNull,com.sun.el.parser.AstOr,com.sun.el.parser.AstPlus,com.sun.el.parser.AstString,com.sun.el.parser.AstTrue,com.sun.el.parser.AstValue,com.sun.el.parser.ELParser,com.sun.el.parser.ELParser$1,com.sun.el.parser.ELParser$JJCalls,com.sun.el.parser.ELParser$LookaheadSuccess,com.sun.el.parser.ELParserConstants,com.sun.el.parser.ELParserTokenManager,com.sun.el.parser.ELParserTreeConstants,com.sun.el.parser.JJTELParserState,com.sun.el.parser.Node,com.sun.el.parser.SimpleCharStream,com.sun.el.parser.Token,java.io.InputStream,java.io.Reader,java.io.StringReader,java.lang.Object,java.lang.String,java.util.Enumeration,java.util.Vector
+com.sun.el.parser.ELParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/ELParserTokenManager.class,uc,com.sun.el.parser.ELParserConstants,com.sun.el.parser.ELParserTokenManager,com.sun.el.parser.SimpleCharStream,com.sun.el.parser.Token,java.io.PrintStream,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+
+com.sun.el.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/SimpleCharStream.class,uc,com.sun.el.parser.SimpleCharStream,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_CharStream
+
+
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_CharStream
+com.sun.el.parser.ELParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/ELParser.class,uc,com.sun.el.parser.AstAnd,com.sun.el.parser.AstBracketSuffix,com.sun.el.parser.AstChoice,com.sun.el.parser.AstCompositeExpression,com.sun.el.parser.AstDeferredExpression,com.sun.el.parser.AstDiv,com.sun.el.parser.AstDotSuffix,com.sun.el.parser.AstDynamicExpression,com.sun.el.parser.AstEmpty,com.sun.el.parser.AstEqual,com.sun.el.parser.AstFalse,com.sun.el.parser.AstFloatingPoint,com.sun.el.parser.AstFunction,com.sun.el.parser.AstGreaterThan,com.sun.el.parser.AstGreaterThanEqual,com.sun.el.parser.AstIdentifier,com.sun.el.parser.AstInteger,com.sun.el.parser.AstLessThan,com.sun.el.parser.AstLessThanEqual,com.sun.el.parser.AstLiteralExpression,com.sun.el.parser.AstMinus,com.sun.el.parser.AstMod,com.sun.el.parser.AstMult,com.sun.el.parser.AstNegative,com.sun.el.parser.AstNot,com.sun.el.parser.AstNotEqual,com.sun.el.parser.AstNull,com.sun.el.parser.AstOr,com.sun.el.parser.AstPlus,com.sun.el.parser.AstString,com.sun.el.parser.AstTrue,com.sun.el.parser.AstValue,com.sun.el.parser.ELParser,com.sun.el.parser.ELParser$1,com.sun.el.parser.ELParser$JJCalls,com.sun.el.parser.ELParser$LookaheadSuccess,com.sun.el.parser.ELParserConstants,com.sun.el.parser.ELParserTokenManager,com.sun.el.parser.ELParserTreeConstants,com.sun.el.parser.JJTELParserState,com.sun.el.parser.Node,com.sun.el.parser.SimpleCharStream,com.sun.el.parser.Token,java.io.InputStream,java.io.Reader,java.io.StringReader,java.lang.Object,java.lang.String,java.util.Enumeration,java.util.Vector
+com.sun.el.parser.ELParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/ELParserTokenManager.class,uc,com.sun.el.parser.ELParserConstants,com.sun.el.parser.ELParserTokenManager,com.sun.el.parser.SimpleCharStream,com.sun.el.parser.Token,java.io.PrintStream,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+com.sun.el.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/SimpleCharStream.class,uc,com.sun.el.parser.SimpleCharStream,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+com.sun.el.parser.ELParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/ELParser.class,uc,com.sun.el.parser.AstAnd,com.sun.el.parser.AstBracketSuffix,com.sun.el.parser.AstChoice,com.sun.el.parser.AstCompositeExpression,com.sun.el.parser.AstDeferredExpression,com.sun.el.parser.AstDiv,com.sun.el.parser.AstDotSuffix,com.sun.el.parser.AstDynamicExpression,com.sun.el.parser.AstEmpty,com.sun.el.parser.AstEqual,com.sun.el.parser.AstFalse,com.sun.el.parser.AstFloatingPoint,com.sun.el.parser.AstFunction,com.sun.el.parser.AstGreaterThan,com.sun.el.parser.AstGreaterThanEqual,com.sun.el.parser.AstIdentifier,com.sun.el.parser.AstInteger,com.sun.el.parser.AstLessThan,com.sun.el.parser.AstLessThanEqual,com.sun.el.parser.AstLiteralExpression,com.sun.el.parser.AstMinus,com.sun.el.parser.AstMod,com.sun.el.parser.AstMult,com.sun.el.parser.AstNegative,com.sun.el.parser.AstNot,com.sun.el.parser.AstNotEqual,com.sun.el.parser.AstNull,com.sun.el.parser.AstOr,com.sun.el.parser.AstPlus,com.sun.el.parser.AstString,com.sun.el.parser.AstTrue,com.sun.el.parser.AstValue,com.sun.el.parser.ELParser,com.sun.el.parser.ELParser$1,com.sun.el.parser.ELParser$JJCalls,com.sun.el.parser.ELParser$LookaheadSuccess,com.sun.el.parser.ELParserConstants,com.sun.el.parser.ELParserTokenManager,com.sun.el.parser.ELParserTreeConstants,com.sun.el.parser.JJTELParserState,com.sun.el.parser.Node,com.sun.el.parser.SimpleCharStream,com.sun.el.parser.Token,java.io.InputStream,java.io.Reader,java.io.StringReader,java.lang.Object,java.lang.String,java.util.Enumeration,java.util.Vector
+com.sun.el.parser.ELParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/ELParserTokenManager.class,uc,com.sun.el.parser.ELParserConstants,com.sun.el.parser.ELParserTokenManager,com.sun.el.parser.SimpleCharStream,com.sun.el.parser.Token,java.io.PrintStream,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+com.sun.el.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/SimpleCharStream.class,uc,com.sun.el.parser.SimpleCharStream,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+
+
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_UCodeESC_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+
+
+org.apache.taglibs.standard.extra.spath.SPathParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/SPathParser.class,uc,java.io.InputStream,java.io.PrintStream,java.io.Reader,java.io.StringReader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,java.util.Enumeration,java.util.List,java.util.Vector,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.extra.spath.AbsolutePath,org.apache.taglibs.standard.extra.spath.AttributePredicate,org.apache.taglibs.standard.extra.spath.Path,org.apache.taglibs.standard.extra.spath.Predicate,org.apache.taglibs.standard.extra.spath.RelativePath,org.apache.taglibs.standard.extra.spath.SPathParser,org.apache.taglibs.standard.extra.spath.SPathParser$JJCalls,org.apache.taglibs.standard.extra.spath.SPathParserConstants,org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,org.apache.taglibs.standard.extra.spath.Step,org.apache.taglibs.standard.extra.spath.Token
+org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/SPathParserTokenManager.class,uc,java.lang.Object,java.lang.String,java.lang.StringBuilder,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.extra.spath.SPathParserConstants,org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,org.apache.taglibs.standard.extra.spath.Token
+
+
+com.icesoft.faces.env.AcegiAuthWrapper,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/env/AcegiAuthWrapper.class,uc,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.security.Principal,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+
+
+com.icesoft.faces.env.SpringAuthWrapper,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/env/SpringAuthWrapper.class,uc,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.security.Principal,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+
+
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_CharStream
+org.apache.taglibs.standard.lang.jstl.parser.ELParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/ELParser.class,uc,java.io.InputStream,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,java.util.ArrayList,java.util.Enumeration,java.util.List,java.util.Vector,org.apache.taglibs.standard.lang.jstl.AndOperator,org.apache.taglibs.standard.lang.jstl.ArraySuffix,org.apache.taglibs.standard.lang.jstl.BinaryOperatorExpression,org.apache.taglibs.standard.lang.jstl.BooleanLiteral,org.apache.taglibs.standard.lang.jstl.ComplexValue,org.apache.taglibs.standard.lang.jstl.DivideOperator,org.apache.taglibs.standard.lang.jstl.EmptyOperator,org.apache.taglibs.standard.lang.jstl.EqualsOperator,org.apache.taglibs.standard.lang.jstl.Expression,org.apache.taglibs.standard.lang.jstl.ExpressionString,org.apache.taglibs.standard.lang.jstl.FloatingPointLiteral,org.apache.taglibs.standard.lang.jstl.FunctionInvocation,org.apache.taglibs.standard.lang.jstl.GreaterThanOperator,org.apache.taglibs.standard.lang.jstl.GreaterThanOrEqualsOperator,org.apache.taglibs.standard.lang.jstl.IntegerLiteral,org.apache.taglibs.standard.lang.jstl.LessThanOperator,org.apache.taglibs.standard.lang.jstl.LessThanOrEqualsOperator,org.apache.taglibs.standard.lang.jstl.Literal,org.apache.taglibs.standard.lang.jstl.MinusOperator,org.apache.taglibs.standard.lang.jstl.ModulusOperator,org.apache.taglibs.standard.lang.jstl.MultiplyOperator,org.apache.taglibs.standard.lang.jstl.NamedValue,org.apache.taglibs.standard.lang.jstl.NotEqualsOperator,org.apache.taglibs.standard.lang.jstl.NotOperator,org.apache.taglibs.standard.lang.jstl.NullLiteral,org.apache.taglibs.standard.lang.jstl.OrOperator,org.apache.taglibs.standard.lang.jstl.PlusOperator,org.apache.taglibs.standard.lang.jstl.PropertySuffix,org.apache.taglibs.standard.lang.jstl.StringLiteral,org.apache.taglibs.standard.lang.jstl.UnaryMinusOperator,org.apache.taglibs.standard.lang.jstl.UnaryOperator,org.apache.taglibs.standard.lang.jstl.UnaryOperatorExpression,org.apache.taglibs.standard.lang.jstl.ValueSuffix,org.apache.taglibs.standard.lang.jstl.parser.ELParser,org.apache.taglibs.standard.lang.jstl.parser.ELParser$JJCalls,org.apache.taglibs.standard.lang.jstl.parser.ELParserConstants,org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.Token
+org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/ELParserTokenManager.class,uc,java.io.PrintStream,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.ELParserConstants,org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.Token
+
+
+org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/SimpleCharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+
+
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_UCodeESC_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+org.apache.taglibs.standard.extra.spath.SPathParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/SPathParser.class,uc,java.io.InputStream,java.io.PrintStream,java.io.Reader,java.io.StringReader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,java.util.Enumeration,java.util.List,java.util.Vector,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.extra.spath.AbsolutePath,org.apache.taglibs.standard.extra.spath.AttributePredicate,org.apache.taglibs.standard.extra.spath.Path,org.apache.taglibs.standard.extra.spath.Predicate,org.apache.taglibs.standard.extra.spath.RelativePath,org.apache.taglibs.standard.extra.spath.SPathParser,org.apache.taglibs.standard.extra.spath.SPathParser$JJCalls,org.apache.taglibs.standard.extra.spath.SPathParserConstants,org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,org.apache.taglibs.standard.extra.spath.Step,org.apache.taglibs.standard.extra.spath.Token
+org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/SPathParserTokenManager.class,uc,java.lang.Object,java.lang.String,java.lang.StringBuilder,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.extra.spath.SPathParserConstants,org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,org.apache.taglibs.standard.extra.spath.Token
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_UCodeESC_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+org.apache.taglibs.standard.extra.spath.SPathParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/SPathParser.class,uc,java.io.InputStream,java.io.PrintStream,java.io.Reader,java.io.StringReader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,java.util.Enumeration,java.util.List,java.util.Vector,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.extra.spath.AbsolutePath,org.apache.taglibs.standard.extra.spath.AttributePredicate,org.apache.taglibs.standard.extra.spath.Path,org.apache.taglibs.standard.extra.spath.Predicate,org.apache.taglibs.standard.extra.spath.RelativePath,org.apache.taglibs.standard.extra.spath.SPathParser,org.apache.taglibs.standard.extra.spath.SPathParser$JJCalls,org.apache.taglibs.standard.extra.spath.SPathParserConstants,org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,org.apache.taglibs.standard.extra.spath.Step,org.apache.taglibs.standard.extra.spath.Token
+org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/SPathParserTokenManager.class,uc,java.lang.Object,java.lang.String,java.lang.StringBuilder,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.extra.spath.SPathParserConstants,org.apache.taglibs.standard.extra.spath.SPathParserTokenManager,org.apache.taglibs.standard.extra.spath.Token
+org.apache.taglibs.standard.lang.jstl.parser.ELParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/ELParser.class,uc,java.io.InputStream,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,java.util.ArrayList,java.util.Enumeration,java.util.List,java.util.Vector,org.apache.taglibs.standard.lang.jstl.AndOperator,org.apache.taglibs.standard.lang.jstl.ArraySuffix,org.apache.taglibs.standard.lang.jstl.BinaryOperatorExpression,org.apache.taglibs.standard.lang.jstl.BooleanLiteral,org.apache.taglibs.standard.lang.jstl.ComplexValue,org.apache.taglibs.standard.lang.jstl.DivideOperator,org.apache.taglibs.standard.lang.jstl.EmptyOperator,org.apache.taglibs.standard.lang.jstl.EqualsOperator,org.apache.taglibs.standard.lang.jstl.Expression,org.apache.taglibs.standard.lang.jstl.ExpressionString,org.apache.taglibs.standard.lang.jstl.FloatingPointLiteral,org.apache.taglibs.standard.lang.jstl.FunctionInvocation,org.apache.taglibs.standard.lang.jstl.GreaterThanOperator,org.apache.taglibs.standard.lang.jstl.GreaterThanOrEqualsOperator,org.apache.taglibs.standard.lang.jstl.IntegerLiteral,org.apache.taglibs.standard.lang.jstl.LessThanOperator,org.apache.taglibs.standard.lang.jstl.LessThanOrEqualsOperator,org.apache.taglibs.standard.lang.jstl.Literal,org.apache.taglibs.standard.lang.jstl.MinusOperator,org.apache.taglibs.standard.lang.jstl.ModulusOperator,org.apache.taglibs.standard.lang.jstl.MultiplyOperator,org.apache.taglibs.standard.lang.jstl.NamedValue,org.apache.taglibs.standard.lang.jstl.NotEqualsOperator,org.apache.taglibs.standard.lang.jstl.NotOperator,org.apache.taglibs.standard.lang.jstl.NullLiteral,org.apache.taglibs.standard.lang.jstl.OrOperator,org.apache.taglibs.standard.lang.jstl.PlusOperator,org.apache.taglibs.standard.lang.jstl.PropertySuffix,org.apache.taglibs.standard.lang.jstl.StringLiteral,org.apache.taglibs.standard.lang.jstl.UnaryMinusOperator,org.apache.taglibs.standard.lang.jstl.UnaryOperator,org.apache.taglibs.standard.lang.jstl.UnaryOperatorExpression,org.apache.taglibs.standard.lang.jstl.ValueSuffix,org.apache.taglibs.standard.lang.jstl.parser.ELParser,org.apache.taglibs.standard.lang.jstl.parser.ELParser$JJCalls,org.apache.taglibs.standard.lang.jstl.parser.ELParserConstants,org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.Token
+org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/ELParserTokenManager.class,uc,java.io.PrintStream,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.ELParserConstants,org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.Token
+org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/SimpleCharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+org.apache.taglibs.standard.lang.jstl.parser.ELParser,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/ELParser.class,uc,java.io.InputStream,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,java.util.ArrayList,java.util.Enumeration,java.util.List,java.util.Vector,org.apache.taglibs.standard.lang.jstl.AndOperator,org.apache.taglibs.standard.lang.jstl.ArraySuffix,org.apache.taglibs.standard.lang.jstl.BinaryOperatorExpression,org.apache.taglibs.standard.lang.jstl.BooleanLiteral,org.apache.taglibs.standard.lang.jstl.ComplexValue,org.apache.taglibs.standard.lang.jstl.DivideOperator,org.apache.taglibs.standard.lang.jstl.EmptyOperator,org.apache.taglibs.standard.lang.jstl.EqualsOperator,org.apache.taglibs.standard.lang.jstl.Expression,org.apache.taglibs.standard.lang.jstl.ExpressionString,org.apache.taglibs.standard.lang.jstl.FloatingPointLiteral,org.apache.taglibs.standard.lang.jstl.FunctionInvocation,org.apache.taglibs.standard.lang.jstl.GreaterThanOperator,org.apache.taglibs.standard.lang.jstl.GreaterThanOrEqualsOperator,org.apache.taglibs.standard.lang.jstl.IntegerLiteral,org.apache.taglibs.standard.lang.jstl.LessThanOperator,org.apache.taglibs.standard.lang.jstl.LessThanOrEqualsOperator,org.apache.taglibs.standard.lang.jstl.Literal,org.apache.taglibs.standard.lang.jstl.MinusOperator,org.apache.taglibs.standard.lang.jstl.ModulusOperator,org.apache.taglibs.standard.lang.jstl.MultiplyOperator,org.apache.taglibs.standard.lang.jstl.NamedValue,org.apache.taglibs.standard.lang.jstl.NotEqualsOperator,org.apache.taglibs.standard.lang.jstl.NotOperator,org.apache.taglibs.standard.lang.jstl.NullLiteral,org.apache.taglibs.standard.lang.jstl.OrOperator,org.apache.taglibs.standard.lang.jstl.PlusOperator,org.apache.taglibs.standard.lang.jstl.PropertySuffix,org.apache.taglibs.standard.lang.jstl.StringLiteral,org.apache.taglibs.standard.lang.jstl.UnaryMinusOperator,org.apache.taglibs.standard.lang.jstl.UnaryOperator,org.apache.taglibs.standard.lang.jstl.UnaryOperatorExpression,org.apache.taglibs.standard.lang.jstl.ValueSuffix,org.apache.taglibs.standard.lang.jstl.parser.ELParser,org.apache.taglibs.standard.lang.jstl.parser.ELParser$JJCalls,org.apache.taglibs.standard.lang.jstl.parser.ELParserConstants,org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.Token
+org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/ELParserTokenManager.class,uc,java.io.PrintStream,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.ELParserConstants,org.apache.taglibs.standard.lang.jstl.parser.ELParserTokenManager,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.Token
+org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/SimpleCharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+com.icesoft.faces.webapp.http.core.ReceivePing$1,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/webapp/http/core/ReceivePing$1.class,uc,java.lang.Object,java.lang.String
+
+
+com.icesoft.faces.webapp.http.core.ReceivePing,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/webapp/http/core/ReceivePing.class,uc,com.icesoft.faces.webapp.http.core.PageTest,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+
+
+com.icesoft.faces.webapp.http.core.ReceivePing$1,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/webapp/http/core/ReceivePing$1.class,uc,java.lang.Object,java.lang.String
+com.icesoft.faces.webapp.http.core.ReceivePing,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/webapp/http/core/ReceivePing.class,uc,com.icesoft.faces.webapp.http.core.PageTest,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+</code></pre>
+
+<p>そんなに頑張らなくてもやることとしては，提案手法の類似度を確認してどれくらいで検出漏れが０になるかを確認する．
+そして，確認できたら最適な閾値がこんなだけだったよということを言って，なので十分閾値も大きく，検出漏れは問題にはならない的な感じで良さそう．</p>
+<p>uc, 提案手法, 類似度</p>
+<pre><code>com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream,0.6849351667792125
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.6611456814852545
+com.icesoft.faces.env.AcegiAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing,0.6970398022393297
+com.icesoft.faces.env.SpringAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing,0.6970398022393297
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.6849351667792125
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.6611456814852545
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.6849351667792125
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.6849351667792125
+</code></pre>
+
+<p>preservation sim(all 0.777778)</p>
+<pre><code>com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream,0.7777777777777778
+
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.7777777777777778
+
+
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.7777777777777778
+
+
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream,0.7777777777777778
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.777777777777
+7778
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.7777777777777778
+com.icesoft.faces.env.AcegiAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream,0.7777777777777778
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.777777777777
+7778
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.7777777777777778
+com.icesoft.faces.env.SpringAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.7777777777777778
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.7777777777777778
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,0.777777777777
+7778
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,0.7777777
+777777778
+</code></pre>
+
+<pre><code>com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_CharStream
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+com.icesoft.faces.env.AcegiAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+com.icesoft.faces.env.SpringAuthWrapper,com.icesoft.faces.webapp.http.core.ReceivePing
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+com.sun.el.parser.SimpleCharStream,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+
+</code></pre>
+
+<p>これが出てきたUCバースマーク</p>
+<pre><code>com.sun.el.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/com/sun/el/parser/SimpleCharStream.class,uc,com.sun.el.parser.SimpleCharStream,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System
+
+org.apache.taglibs.standard.extra.spath.ASCII_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_CharStream
+
+org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/extra/spath/ASCII_UCodeESC_CharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.extra.spath.ASCII_UCodeESC_CharStream
+
+com.icesoft.faces.env.AcegiAuthWrapper,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/env/AcegiAuthWrapper.class,uc,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.security.Principal,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+
+com.icesoft.faces.env.SpringAuthWrapper,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/env/SpringAuthWrapper.class,uc,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.security.Principal,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+
+org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/lang/jstl/parser/SimpleCharStream.class,uc,java.io.InputStream,java.io.InputStreamReader,java.io.Reader,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.System,org.apache.taglibs.standard.lang.jstl.parser.SimpleCharStream
+
+com.icesoft.faces.webapp.http.core.ReceivePing,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/just-ice-1.8.2.jar!/com/icesoft/faces/webapp/http/core/ReceivePing.class,uc,com.icesoft.faces.webapp.http.core.PageTest,java.lang.Class,java.lang.Object,java.lang.String,java.lang.StringBuffer,java.util.Map,org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory
+</code></pre>
+
+<p>400380クラス</p>
+<p>保存性やるぞ</p>
+<p>なんかDNRしたらクラスが増えているんだけど・・・</p>
+<p>jarファイルの中身</p>
+<pre><code>&quot; zip.vim version v28
+&quot; Browsing zipfile /Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/eventswitch-extractor-1.3.2.jar
+&quot; Select a file with cursor and press ENTER
+
+META-INF/
+META-INF/MANIFEST.MF
+org/
+org/ow2/
+org/ow2/jasmine/
+org/ow2/jasmine/monitoring/
+org/ow2/jasmine/monitoring/eventswitch/
+org/ow2/jasmine/monitoring/eventswitch/extractor/
+org/ow2/jasmine/monitoring/eventswitch/extractor/JasmineEventDataExtractor.class
+META-INF/maven/
+META-INF/maven/org.ow2.jasmine.monitoring/
+META-INF/maven/org.ow2.jasmine.monitoring/eventswitch-extractor/
+META-INF/maven/org.ow2.jasmine.monitoring/eventswitch-extractor/pom.xml
+META-INF/maven/org.ow2.jasmine.monitoring/eventswitch-extractor/pom.properties
+</code></pre>
+
+<p>難読化前</p>
+<pre><code>org.ow2.jasmine.monitoring.eventswitch.extractor.JasmineEventDataExtractor,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/eventswitch-extractor-1.3.2.jar!/org/ow2/jasmine/monitoring/eventswitch/extractor/JasmineEventDataExtractor.class,kgram,25 183,183 177,177 187,187 89,89 183,183 58,58 25,25 25,25 182,182 58,182 177,177 25,25 199,199 177,25 58,25 190,190 54,54 3,3 54,54 21,21 21,21 162,162 25,25 21,21 50,50 58,182 25,182 16,16 182,182 4,4 96,96 182,182 185,185 87,87 132,132 167,167 178,178 18,18 182,25 185,185 58,185 153,153 25,185 192,192 58,58 178,182 178,178 25,182 167,182 187,89 18,18 183,182 182,182 3,3 25,182 153,153 178,182 132,167 177
+</code></pre>
+
+<p>難読化後</p>
+<pre><code>dest1.jp.naist.se.blinder.CipherDynamicCaller,jar:file:/Volumes/HD/false_negative_50_jar/preservation/extract_obfu/DNR/./eventswitch-extractor-1.3.2.jar!/dest1/jp/naist/se/blinder/CipherDynamicCaller.class,kgram,25 183,183 25,25 18,18 181,181 25,183 177,177 178,178 187,187 89,89 183,183 18,18 182,182 184,184 178,178 101,101 182,182 182,182 178,178 18,178 182,182 177,178 4,4 96,96 179,179 178,178 25,183 58,58 25,25 184,184 58,58 178,25 25,25 182,182 176,176 58,182 1,1 176,176 178,4 100,100 179,179 1,1 25,184 176,184 177,182 167,167 58,179 25,25 199,199 3,3 189,189 58,58 1,1 58,183 184,182 25,25 4,4 182,58 167,182 191,191 25,25 176,25 198,198 25,176 1,191 1,25 190,190 54,54 25,190 4,4 164,164 3,3 54,54 21,21 25,190 162,162 25,25 21,21 50,50 182,190 21,21 160,160 25,153 25,50 185,185 87,87 132,132 167,167 167,167 25,25 3,3 50,87 25,3 185,185 192,192 58,178 154,154 25,182 190,190 25,190 159,159 187,183 191,54 3,182 153,25 185,185 4,164 187,185 58,185 153,87 167,25 58,58 4,4 54,50 198,50 25,182 154,154 3,54 167,50 199,199 25,153 3,167 132,167 21,21 172,172 25,182 5,5 108,108 188,58 3,21 5,5 104,104 21,104 5,5 96,96 182,182 16,16 184,184 145,145 84,84 132,25 180,180 25,58 187,89 25,183 1,176 3,50 183,183 83,83 132,176 25,182 18,153 18,18 58,18 188,188 181,180 18,18 18,18 84,84 25,84 187,180 183,180 184,184 181,180 5,5 25,25 1,1 181,181 167,177 3,162 178,182 132,167 177,177 18,154 4,4 167,167 3,3 179,179 187,183 179,179 184,184 179,179 3,179 177
+dest1.org.ow2.jasmine.monitoring.eventswitch.extractor.JasmineEventDataExtractor,jar:file:/Volumes/HD/false_negative_50_jar/preservation/extract_obfu/DNR/./eventswitch-extractor-1.3.2.jar!/dest1/org/ow2/jasmine/monitoring/eventswitch/extractor/JasmineEventDataExtractor.class,kgram,25 183,183 177,177 3,3 189,189 18,18 184,184 58,58 25,25 25,25 4,4 189,189 90,90 95,95 3,3 95,95 83,83 18,18 18,184 87,87 177,177 25,25 199,199 177,25 58,184 192,192 182,182 54,54 3,3 54,54 21,21 21,21 162,162 25,25 21,21 5,5 189,95 184,184 4,4 95,83 90,25 3,184 25,184 16,16 4,184 3,182 4,4 96,96 4,87 132,132 167,167 18,184 18,18 4,87 25,182 153,153 25,192 58,58 18,87 18,87 167,189 91,91 91,91 87,87 184,3 25,182 5,153 18,167 177
+</code></pre>
+
+<p>特にバグってていい感じか</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181025/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181025/" class="btn btn-xs btn-link">
+        20181025
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181015/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181015/" class="btn btn-xs btn-link">
+        20181015
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

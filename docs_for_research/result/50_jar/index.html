@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>50個のjarファイルでpochiの比較時間がどうなるかを確かめる - My Docs</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "50\u500b\u306ejar\u30d5\u30a1\u30a4\u30eb\u3067pochi\u306e\u6bd4\u8f03\u6642\u9593\u304c\u3069\u3046\u306a\u308b\u304b\u3092\u78ba\u304b\u3081\u308b", url: "#_top", children: [
+              {title: "\u6bd4\u8f03\u6642\u9593", url: "#_1" },
+              {title: "30\u3053\u306e\u5834\u5408", url: "#30" },
+              {title: "10\u4e07\u500b\u304f\u3089\u3044", url: "#10" },
+              {title: "30\u500b\u306ejar\u30d5\u30a1\u30a4\u30eb\u306e\u5e73\u5747/3", url: "#30jar3" },
+              {title: "50\u500b\u306ejar\u30d5\u30a1\u30a4\u30eb\u306e\u5e73\u5747/3", url: "#50jar3" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/FN_check/2gram/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/FN_check/2gram/" class="btn btn-xs btn-link">
+        検出漏れ内訳
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/500_random_jar/unrelational/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/500_random_jar/unrelational/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="50jarpochi">50個のjarファイルでpochiの比較時間がどうなるかを確かめる</h1>
+<h2 id="_1">比較時間</h2>
+<h3 id="50">50この場合</h3>
+<p>class file数 =&gt; 149634
+1131090481581 ns =&gt; 1131.090481581 s =&gt; 18 m</p>
+<p>実際の時間
+01:29 s</p>
+<h2 id="30">30この場合</h2>
+<p>class file 数 =&gt; 100112
+337057583177 ns =&gt; 337.057583177 s =&gt; 5.61762638628333 m</p>
+<h2 id="10">10万個くらい</h2>
+<p>2390067969474 ns =&gt; 39.8344661579 m</p>
+<p>実際のpochiの実行時間
+01:44:22 s</p>
+<h2 id="30jar3">30個のjarファイルの平均/3</h2>
+<p>N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 2gram
+13.49104510451045</p>
+<p>N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 3gram
+20.567040704070408</p>
+<p>N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 4gram
+25.39137513751375</p>
+<p>N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 5gram
+28.54257425742574</p>
+<p>N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 6gram
+30.701298129812983</p>
+<p>I   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py uc
+1.629086908690869</p>
+<h2 id="50jar3">50個のjarファイルの平均/3</h2>
+<p>I   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 2gram
+14.171505889844
+ N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 3gram
+22.00541228907991
+ N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 4gram
+27.55772047118752
+ N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 5gram
+31.13476599808978
+ N   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py 6gram
+33.526361031518626
+ I   ../birthmark_server/data     master    python3 calc_birthmark_length_ave.py uc
+2.1663482967207894</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/FN_check/2gram/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/FN_check/2gram/" class="btn btn-xs btn-link">
+        検出漏れ内訳
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/500_random_jar/unrelational/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/500_random_jar/unrelational/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

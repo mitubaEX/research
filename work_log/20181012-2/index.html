@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20181012 2 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u691c\u51fa\u6f0f\u308c\u3060\u304c0.7\u3050\u3089\u3044\u3092\u3084\u308d\u3046\u3068\u601d\u3046", url: "#_top", children: [
+              {title: "\u3068\u308a\u307e2gram", url: "#2gram" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181012/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181012/" class="btn btn-xs btn-link">
+        指摘項目訂正
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181011/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181011/" class="btn btn-xs btn-link">
+        20181011
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="07">検出漏れだが0.7ぐらいをやろうと思う</h2>
+<p>2gram 3gram ucをやっていくぞ</p>
+<pre><code>/Volumes/HD/false_negative_50_jar/false_negative - [master|*] ❯❯❯ for i in 0.7 ; do go run intersection.go  ../pre_result_remove/ucpre_0.75_greater.csv ./pro_result_parse/uc.csv &quot;$i&quot; &gt; ./false_negatives_each_files_uc/false_negatives_&quot;$i&quot;.csv;echo ;done
+</code></pre>
+
+<h3 id="2gram">とりま2gram</h3>
+<p>どういうことを求めるか</p>
+<ul>
+<li>漏らしたやつのバースマークの要素をみる？<ul>
+<li>積集合をとってみるか</li>
+</ul>
+</li>
+<li>ソースコードを見てみる？</li>
+</ul>
+<p>検出漏れした組み</p>
+<pre><code>org.apache.taglibs.standard.tlv.JstlFmtTLV,org.apache.taglibs.standard.tlv.JstlSqlTLV
+org.apache.taglibs.standard.tlv.JstlSqlTLV,org.apache.taglibs.standard.tlv.JstlXmlTLV
+net.sf.mmm.util.process.api.ProcessContext,org.eclipse.jdt.core.BufferChangedEvent (ここの左以外同じjar fileから取り出されたもの)
+org.apache.taglibs.standard.tlv.JstlFmtTLV,org.apache.taglibs.standard.tlv.JstlXmlTLV
+</code></pre>
+
+<p>各バースマーク情報を取り出してみましょうか</p>
+<pre><code>// org.apache.taglibs.standard.tlv.JstlFmtTLV
+org.apache.taglibs.standard.tlv.JstlFmtTLV,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/tlv/JstlFmtTLV.class,kgram,25 183,183 25,25 18,18 181,181 25,181 177,177 25,25 5,5 25,25 25,183 176,176 187,187 89,89 25,25 1,1 183
+
+// org.apache.taglibs.standard.tlv.JstlSqlTLV
+org.apache.taglibs.standard.tlv.JstlSqlTLV,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/tlv/JstlSqlTLV.class,kgram,25 183,183 25,25 18,18 181,181 25,181 177,177 25,25 6,6 25,25 25,183 176,176 187,187 89,89 25,25 1,1 183
+
+// net.sf.mmm.util.process.api.ProcessContext
+net.sf.mmm.util.process.api.ProcessContext,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/mmm-util-core-2.0.1.jar!/net/sf/mmm/util/process/api/ProcessContext.class,kgram,25 183,183 25,25 178,178 181,181 25,181 177,177 25,25 180,180 176,176 25,25 25,25 181,180 172,172 25,25 21,21 181
+
+// org.eclipse.jdt.core.BufferChangedEvent
+org.eclipse.jdt.core.BufferChangedEvent,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/eclipse/jdt/core/BufferChangedEvent.class,kgram,25 25,25 183,183 25,25 21,21 181,181 25,25 181,181 177,177 25,25 180,180 192,192 176,176 25,180 172,172 25,180 176
+
+// org.apache.taglibs.standard.tlv.JstlXmlTLV
+org.apache.taglibs.standard.tlv.JstlXmlTLV,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/jonas-web-container-jetty-6.1-5.2.0-M4.jar!/org/apache/taglibs/standard/tlv/JstlXmlTLV.class,kgram,25 183,183 25,25 18,18 181,181 25,181 177,177 25,25 7,7 25,25 25,183 176,176 187,187 89,89 25,25 1,1 183
+</code></pre>
+
+<p>要素数は全て15 (最低length)</p>
+<p>jonas-web-container-jetty-6.1-5.2.0-M4.jarというjar fileから取り出されているやつが多い(4/5)</p>
+<p>pochiの類似度はどんなもん？</p>
+<pre><code>org.apache.taglibs.standard.tlv.JstlFmtTLV,org.apache.taglibs.standard.tlv.JstlSqlTLV,0.7777777777777778
+org.apache.taglibs.standard.tlv.JstlSqlTLV,org.apache.taglibs.standard.tlv.JstlXmlTLV,0.7777777777777778
+org.apache.taglibs.standard.tlv.JstlFmtTLV,org.apache.taglibs.standard.tlv.JstlXmlTLV,0.7777777777777778
+org.eclipse.jdt.core.BufferChangedEvent,net.sf.mmm.util.process.api.ProcessContext,0.7777777777777778
+</code></pre>
+
+<p>検索エンジンの類似度？</p>
+<pre><code>org.apache.taglibs.standard.tlv.JstlFmtTLV,org.apache.taglibs.standard.tlv.JstlSqlTLV,0.6529257340164784
+org.apache.taglibs.standard.tlv.JstlSqlTLV,org.apache.taglibs.standard.tlv.JstlXmlTLV,0.6529257340164784
+net.sf.mmm.util.process.api.ProcessContext,org.eclipse.jdt.core.BufferChangedEvent,0.6572514956665765
+org.apache.taglibs.standard.tlv.JstlFmtTLV,org.apache.taglibs.standard.tlv.JstlXmlTLV,0.6851947036315621
+</code></pre>
+
+<p>jarファイルの中身を見るかぁ</p>
+<pre><code class="java">❯❯❯ diff -y java-files/JstlFmtTLV.java java-files/JstlSqlTLV.java
+
+//                                                              //
+// Source code recreated from a .class file by IntelliJ IDEA    // Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)                           // (powered by Fernflower decompiler)
+//                                                              //
+
+package org.apache.taglibs.standard.tlv;                        package org.apache.taglibs.standard.tlv;
+
+import java.util.Set;                                           import java.util.Set;
+import java.util.Stack;                                         import java.util.Stack;
+import javax.servlet.jsp.tagext.PageData;                       import javax.servlet.jsp.tagext.PageData;
+import javax.servlet.jsp.tagext.ValidationMessage;              import javax.servlet.jsp.tagext.ValidationMessage;
+import org.apache.taglibs.standard.resources.Resources;         import org.apache.taglibs.standard.resources.Resources;
+import org.xml.sax.Attributes;                                  import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;                      import org.xml.sax.helpers.DefaultHandler;
+
+public class JstlFmtTLV extends JstlBaseTLV {                 | public class JstlSqlTLV extends JstlBaseTLV {
+    private final String SETLOCALE = &quot;setLocale&quot;;             |     private final String SETDATASOURCE = &quot;setDataSource&quot;;
+    private final String SETBUNDLE = &quot;setBundle&quot;;             |     private final String QUERY = &quot;query&quot;;
+    private final String SETTIMEZONE = &quot;setTimeZone&quot;;         |     private final String UPDATE = &quot;update&quot;;
+    private final String BUNDLE = &quot;bundle&quot;;                   |     private final String TRANSACTION = &quot;transaction&quot;;
+    private final String MESSAGE = &quot;message&quot;;                 |     private final String PARAM = &quot;param&quot;;
+    private final String MESSAGE_PARAM = &quot;param&quot;;             |     private final String DATEPARAM = &quot;dateParam&quot;;
+    private final String FORMAT_NUMBER = &quot;formatNumber&quot;;      &lt;
+    private final String PARSE_NUMBER = &quot;parseNumber&quot;;        &lt;
+    private final String PARSE_DATE = &quot;parseDate&quot;;            &lt;
+    private final String JSP_TEXT = &quot;jsp:text&quot;;                     private final String JSP_TEXT = &quot;jsp:text&quot;;
+    private final String EVAL = &quot;evaluator&quot;;                  |     private final String SQL = &quot;sql&quot;;
+    private final String MESSAGE_KEY = &quot;key&quot;;                 |     private final String DATASOURCE = &quot;dataSource&quot;;
+    private final String BUNDLE_PREFIX = &quot;prefix&quot;;            &lt;
+    private final String VALUE = &quot;value&quot;;                     &lt;
+
+    public JstlFmtTLV() {                                     |     public JstlSqlTLV() {
+    }                                                               }
+
+    public ValidationMessage[] validate(String prefix, String       public ValidationMessage[] validate(String prefix, String
+        return super.validate(2, prefix, uri, page);          |         return super.validate(3, prefix, uri, page);
+    }                                                               }
+
+    protected DefaultHandler getHandler() {                         protected DefaultHandler getHandler() {
+        return new JstlFmtTLV.Handler();                      |         return new JstlSqlTLV.Handler();
+    }                                                               }
+
+    private class Handler extends DefaultHandler {                  private class Handler extends DefaultHandler {
+        private int depth;                                              private int depth;
+        private Stack messageDepths;                          |         private Stack queryDepths;
+                                                              &gt;         private Stack updateDepths;
+                                                              &gt;         private Stack transactionDepths;
+        private String lastElementName;                                 private String lastElementName;
+        private boolean bodyNecessary;                                  private boolean bodyNecessary;
+        private boolean bodyIllegal;                                    private boolean bodyIllegal;
+
+        private Handler() {                                             private Handler() {
+            this.depth = 0;                                                 this.depth = 0;
+            this.messageDepths = new Stack();                 |             this.queryDepths = new Stack();
+                                                              &gt;             this.updateDepths = new Stack();
+                                                              &gt;             this.transactionDepths = new Stack();
+            this.lastElementName = null;                                    this.lastElementName = null;
+            this.bodyNecessary = false;                                     this.bodyNecessary = false;
+            this.bodyIllegal = false;                                       this.bodyIllegal = false;
+        }                                                               }
+
+        public void startElement(String ns, String ln, String           public void startElement(String ns, String ln, String
+            if (ln == null) {                                               if (ln == null) {
+                ln = JstlFmtTLV.this.getLocalPart(qn);        |                 ln = JstlSqlTLV.this.getLocalPart(qn);
+            }                                                               }
+
+            if (!qn.equals(&quot;jsp:text&quot;)) {                                   if (!qn.equals(&quot;jsp:text&quot;)) {
+                if (this.bodyIllegal) {                                         if (this.bodyIllegal) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                Set expAtts;                                                    Set expAtts;
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;:
+                    for(int i = 0; i &lt; a.getLength(); ++i) {                        for(int i = 0; i &lt; a.getLength(); ++i) {
+                        String attName = a.getLocalName(i);                             String attName = a.getLocalName(i);
+                        if (expAtts.contains(attName)) {                                if (expAtts.contains(attName)) {
+                            String vMsg = JstlFmtTLV.this.val |                             String vMsg = JstlSqlTLV.this.val
+                            if (vMsg != null) {                                             if (vMsg != null) {
+                                JstlFmtTLV.this.fail(vMsg);   |                                 JstlSqlTLV.this.fail(vMsg);
+                            }                                                               }
+                        }                                                               }
+                    }                                                               }
+                }                                                               }
+
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;:
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;:
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;:
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;param&quot;) |                 if ((JstlSqlTLV.this.isSqlTag(ns, ln, &quot;param&quot;
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;message |                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;query&quot;)
+                    this.messageDepths.push(this.depth);      |                     this.queryDepths.push(this.depth);
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;update&quot;
+                                                              &gt;                     this.updateDepths.push(this.depth);
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;transac
+                                                              &gt;                     this.transactionDepths.push(this.depth);
+                }                                                               }
+
+                this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                this.bodyNecessary = false;                                     this.bodyNecessary = false;
+                if (!JstlFmtTLV.this.isFmtTag(ns, ln, &quot;param&quot; |                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;query&quot;)
+                    if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;mes |                     if (!JstlSqlTLV.this.hasAttribute(a, &quot;sql
+                        this.bodyNecessary = true;            &lt;
+                    } else if (JstlFmtTLV.this.isFmtTag(ns, l &lt;
+                        this.bodyNecessary = true;                                      this.bodyNecessary = true;
+                    }                                                               }
+                } else if (JstlFmtTLV.this.hasAttribute(a, &quot;v |
+                                                              &gt;                     if (JstlSqlTLV.this.hasAttribute(a, &quot;data
+                                                              &gt;                         JstlSqlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;datePar
+                    this.bodyIllegal = true;                                        this.bodyIllegal = true;
+                } else {                                      &lt;
+                    this.bodyNecessary = true;                &lt;
+                }                                                               }
+
+                this.lastElementName = qn;                                      this.lastElementName = qn;
+                JstlFmtTLV.this.lastElementId = a.getValue(&quot;h |                 JstlSqlTLV.this.lastElementId = a.getValue(&quot;h
+                ++this.depth;                                                   ++this.depth;
+            }                                                               }
+        }                                                               }
+
+        public void characters(char[] ch, int start, int leng           public void characters(char[] ch, int start, int leng
+            this.bodyNecessary = false;                                     this.bodyNecessary = false;
+            String s = (new String(ch, start, length)).trim()               String s = (new String(ch, start, length)).trim()
+            if (!s.equals(&quot;&quot;)) {                                            if (!s.equals(&quot;&quot;)) {
+                if (this.bodyIllegal) {                                         if (this.bodyIllegal) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+            }                                                               }
+        }                                                               }
+
+        public void endElement(String ns, String ln, String q           public void endElement(String ns, String ln, String q
+            if (!qn.equals(&quot;jsp:text&quot;)) {                                   if (!qn.equals(&quot;jsp:text&quot;)) {
+                if (this.bodyNecessary) {                                       if (this.bodyNecessary) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlSqlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;message |                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;query&quot;)
+                    this.messageDepths.pop();                 |                     this.queryDepths.pop();
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;update&quot;
+                                                              &gt;                     this.updateDepths.pop();
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;transac
+                                                              &gt;                     this.transactionDepths.pop();
+                }                                                               }
+
+                --this.depth;                                                   --this.depth;
+            }                                                               }
+        }                                                               }
+    }                                                               }
+}                                                               }
+
+</code></pre>
+
+<pre><code class="java">❯❯❯ diff -y java-files/JstlSqlTLV.java java-files/JstlXmlTLV.java
+
+//                                                              //
+// Source code recreated from a .class file by IntelliJ IDEA    // Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)                           // (powered by Fernflower decompiler)
+//                                                              //
+
+package org.apache.taglibs.standard.tlv;                        package org.apache.taglibs.standard.tlv;
+
+import java.util.Set;                                           import java.util.Set;
+import java.util.Stack;                                         import java.util.Stack;
+import javax.servlet.jsp.tagext.PageData;                       import javax.servlet.jsp.tagext.PageData;
+import javax.servlet.jsp.tagext.ValidationMessage;              import javax.servlet.jsp.tagext.ValidationMessage;
+import org.apache.taglibs.standard.resources.Resources;         import org.apache.taglibs.standard.resources.Resources;
+import org.xml.sax.Attributes;                                  import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;                      import org.xml.sax.helpers.DefaultHandler;
+
+public class JstlSqlTLV extends JstlBaseTLV {                 | public class JstlXmlTLV extends JstlBaseTLV {
+    private final String SETDATASOURCE = &quot;setDataSource&quot;;     |     private final String CHOOSE = &quot;choose&quot;;
+    private final String QUERY = &quot;query&quot;;                     |     private final String WHEN = &quot;when&quot;;
+    private final String UPDATE = &quot;update&quot;;                   |     private final String OTHERWISE = &quot;otherwise&quot;;
+    private final String TRANSACTION = &quot;transaction&quot;;         |     private final String PARSE = &quot;parse&quot;;
+    private final String PARAM = &quot;param&quot;;                           private final String PARAM = &quot;param&quot;;
+    private final String DATEPARAM = &quot;dateParam&quot;;             |     private final String TRANSFORM = &quot;transform&quot;;
+    private final String JSP_TEXT = &quot;jsp:text&quot;;                     private final String JSP_TEXT = &quot;jsp:text&quot;;
+    private final String SQL = &quot;sql&quot;;                         |     private final String VALUE = &quot;value&quot;;
+    private final String DATASOURCE = &quot;dataSource&quot;;           |     private final String SOURCE = &quot;xml&quot;;
+
+    public JstlSqlTLV() {                                     |     public JstlXmlTLV() {
+    }                                                               }
+
+    public ValidationMessage[] validate(String prefix, String       public ValidationMessage[] validate(String prefix, String
+        return super.validate(3, prefix, uri, page);          |         return super.validate(4, prefix, uri, page);
+    }                                                               }
+
+    protected DefaultHandler getHandler() {                         protected DefaultHandler getHandler() {
+        return new JstlSqlTLV.Handler();                      |         return new JstlXmlTLV.Handler();
+    }                                                               }
+
+    private class Handler extends DefaultHandler {                  private class Handler extends DefaultHandler {
+        private int depth;                                              private int depth;
+        private Stack queryDepths;                            |         private Stack chooseDepths;
+        private Stack updateDepths;                           |         private Stack chooseHasOtherwise;
+        private Stack transactionDepths;                      |         private Stack chooseHasWhen;
+        private String lastElementName;                                 private String lastElementName;
+        private boolean bodyNecessary;                                  private boolean bodyNecessary;
+        private boolean bodyIllegal;                                    private boolean bodyIllegal;
+                                                              &gt;         private Stack transformWithSource;
+
+        private Handler() {                                             private Handler() {
+            this.depth = 0;                                                 this.depth = 0;
+            this.queryDepths = new Stack();                   |             this.chooseDepths = new Stack();
+            this.updateDepths = new Stack();                  |             this.chooseHasOtherwise = new Stack();
+            this.transactionDepths = new Stack();             |             this.chooseHasWhen = new Stack();
+            this.lastElementName = null;                                    this.lastElementName = null;
+            this.bodyNecessary = false;                                     this.bodyNecessary = false;
+            this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                                                              &gt;             this.transformWithSource = new Stack();
+        }                                                               }
+
+        public void startElement(String ns, String ln, String           public void startElement(String ns, String ln, String
+            if (ln == null) {                                               if (ln == null) {
+                ln = JstlSqlTLV.this.getLocalPart(qn);        |                 ln = JstlXmlTLV.this.getLocalPart(qn);
+            }                                                               }
+
+            if (!qn.equals(&quot;jsp:text&quot;)) {                                   if (!qn.equals(&quot;jsp:text&quot;)) {
+                if (this.bodyIllegal) {                                         if (this.bodyIllegal) {
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                Set expAtts;                                                    Set expAtts;
+                if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    for(int i = 0; i &lt; a.getLength(); ++i) {                        for(int i = 0; i &lt; a.getLength(); ++i) {
+                        String attName = a.getLocalName(i);                             String attName = a.getLocalName(i);
+                        if (expAtts.contains(attName)) {                                if (expAtts.contains(attName)) {
+                            String vMsg = JstlSqlTLV.this.val |                             String vMsg = JstlXmlTLV.this.val
+                            if (vMsg != null) {                                             if (vMsg != null) {
+                                JstlSqlTLV.this.fail(vMsg);   |                                 JstlXmlTLV.this.fail(vMsg);
+                            }                                                               }
+                        }                                                               }
+                    }                                                               }
+                }                                                               }
+
+                if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (qn.startsWith(JstlSqlTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if ((JstlSqlTLV.this.isSqlTag(ns, ln, &quot;param&quot; |                 if (this.chooseChild()) {
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;whe
+                }                                             |                         this.chooseHasWhen.pop();
+                                                              &gt;                         this.chooseHasWhen.push(Boolean.TRUE)
+                                                              &gt;                     }
+                                                              &gt;
+                                                              &gt;                     if (!JstlXmlTLV.this.isXmlTag(ns, ln, &quot;wh
+                                                              &gt;                         JstlXmlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+                                                              &gt;
+                                                              &gt;                     if ((Boolean)this.chooseHasOtherwise.peek
+                                                              &gt;                         JstlXmlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;query&quot;) |                     if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;oth
+                    this.queryDepths.push(this.depth);        |                         this.chooseHasOtherwise.pop();
+                                                              &gt;                         this.chooseHasOtherwise.push(Boolean.
+                                                              &gt;                     }
+                }                                                               }
+
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;update&quot; |                 if (!this.transformWithSource.empty() &amp;&amp; this
+                    this.updateDepths.push(this.depth);       |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;transac |                 if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;choose&quot;
+                    this.transactionDepths.push(this.depth);  |                     this.chooseDepths.push(this.depth);
+                                                              &gt;                     this.chooseHasWhen.push(Boolean.FALSE);
+                                                              &gt;                     this.chooseHasOtherwise.push(Boolean.FALS
+                }                                                               }
+
+                this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                this.bodyNecessary = false;                                     this.bodyNecessary = false;
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;query&quot;) |                 if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;parse&quot;)
+                    if (!JstlSqlTLV.this.hasAttribute(a, &quot;sql |                     if (JstlXmlTLV.this.hasAttribute(a, &quot;xml&quot;
+                        this.bodyNecessary = true;            |                         this.bodyIllegal = true;
+                    }                                                               }
+                                                              |                 } else if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;
+                    if (JstlSqlTLV.this.hasAttribute(a, &quot;data |                     if (JstlXmlTLV.this.hasAttribute(a, &quot;valu
+                        JstlSqlTLV.this.fail(Resources.getMes |                         this.bodyIllegal = true;
+                                                              &gt;                     } else {
+                                                              &gt;                         this.bodyNecessary = true;
+                    }                                                               }
+                }                                             |                 } else if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;
+                                                              |                     this.transformWithSource.push(this.depth)
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;datePar &lt;
+                    this.bodyIllegal = true;                  &lt;
+                }                                                               }
+
+                this.lastElementName = qn;                                      this.lastElementName = qn;
+                JstlSqlTLV.this.lastElementId = a.getValue(&quot;h |                 JstlXmlTLV.this.lastElementId = a.getValue(&quot;h
+                ++this.depth;                                                   ++this.depth;
+            }                                                               }
+        }                                                               }
+
+        public void characters(char[] ch, int start, int leng           public void characters(char[] ch, int start, int leng
+            this.bodyNecessary = false;                                     this.bodyNecessary = false;
+            String s = (new String(ch, start, length)).trim()               String s = (new String(ch, start, length)).trim()
+            if (!s.equals(&quot;&quot;)) {                                            if (!s.equals(&quot;&quot;)) {
+                if (this.bodyIllegal) {                                         if (this.bodyIllegal) {
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (this.chooseChild()) {
+                                                              &gt;                     String msg = Resources.getMessage(&quot;TLV_IL
+                                                              &gt;                     JstlXmlTLV.this.fail(msg);
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (!this.transformWithSource.empty() &amp;&amp; this
+                                                              &gt;                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+            }                                                               }
+        }                                                               }
+
+        public void endElement(String ns, String ln, String q           public void endElement(String ns, String ln, String q
+            if (!qn.equals(&quot;jsp:text&quot;)) {                                   if (!qn.equals(&quot;jsp:text&quot;)) {
+                if (this.bodyNecessary) {                                       if (this.bodyNecessary) {
+                    JstlSqlTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;query&quot;) |                 if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;choose&quot;
+                    this.queryDepths.pop();                   |                     Boolean b = (Boolean)this.chooseHasWhen.p
+                }                                             |                     if (!b) {
+                                                              &gt;                         JstlXmlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;update&quot; |                     this.chooseDepths.pop();
+                    this.updateDepths.pop();                  |                     this.chooseHasOtherwise.pop();
+                }                                                               }
+
+                if (JstlSqlTLV.this.isSqlTag(ns, ln, &quot;transac |                 if (!this.transformWithSource.empty() &amp;&amp; this
+                    this.transactionDepths.pop();             |                     this.transformWithSource.pop();
+                }                                                               }
+
+                --this.depth;                                                   --this.depth;
+            }                                                               }
+        }                                                               }
+                                                              &gt;
+                                                              &gt;         private boolean chooseChild() {
+                                                              &gt;             return !this.chooseDepths.empty() &amp;&amp; this.depth -
+                                                              &gt;         }
+                                                              &gt;
+                                                              &gt;         private int topDepth(Stack s) {
+                                                              &gt;             return (Integer)s.peek();
+                                                              &gt;         }
+    }                                                               }
+}                                                               }
+
+</code></pre>
+
+<pre><code class="java">❯❯❯ diff -y java-files/ProcessContext.java java-files/BufferChangedEvent.java
+
+//                                                              //
+// Source code recreated from a .class file by IntelliJ IDEA    // Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)                           // (powered by Fernflower decompiler)
+//                                                              //
+
+package net.sf.mmm.util.process.api;                          | package org.eclipse.jdt.core;
+
+import java.io.InputStream;                                   | import java.util.EventObject;
+import java.io.OutputStream;                                  &lt;
+import net.sf.mmm.util.io.api.DevNullSource;                  &lt;
+import net.sf.mmm.util.io.api.DevNullTarget;                  &lt;
+                                                              &lt;
+public class ProcessContext {                                 &lt;
+    private OutputStream outStream;                           &lt;
+    private OutputStream errStream;                           &lt;
+    private InputStream inStream;                             &lt;
+    private boolean keepStreamsOpen;                          &lt;
+                                                              &lt;
+    public ProcessContext() {                                 &lt;
+        this.inStream = DevNullSource.INSTANCE;               &lt;
+        this.outStream = DevNullTarget.INSTANCE;              &lt;
+        this.errStream = DevNullTarget.INSTANCE;              &lt;
+    }                                                         &lt;
+                                                              &lt;
+    public OutputStream getOutStream() {                      &lt;
+        return this.outStream;                                &lt;
+    }                                                         &lt;
+
+    public void setOutStream(OutputStream outStream) {        | public class BufferChangedEvent extends EventObject {
+        this.outStream = outStream;                           |     private int length;
+    }                                                         |     private int offset;
+                                                              |     private String text;
+    public OutputStream getErrStream() {                      |     private static final long serialVersionUID = 655379473891
+        return this.errStream;                                &lt;
+    }                                                         &lt;
+
+    public void setErrStream(OutputStream errStream) {        |     public BufferChangedEvent(IBuffer buffer, int offset, int
+        this.errStream = errStream;                           |         super(buffer);
+                                                              &gt;         this.offset = offset;
+                                                              &gt;         this.length = length;
+                                                              &gt;         this.text = text;
+    }                                                               }
+
+    public InputStream getInStream() {                        |     public IBuffer getBuffer() {
+        return this.inStream;                                 |         return (IBuffer)this.source;
+    }                                                               }
+
+    public void setInStream(InputStream inStream) {           |     public int getLength() {
+        this.inStream = inStream;                             |         return this.length;
+    }                                                               }
+
+    public boolean isKeepStreamsOpen() {                      |     public int getOffset() {
+        return this.keepStreamsOpen;                          |         return this.offset;
+    }                                                               }
+
+    public void setKeepStreamsOpen(boolean keepStreamsOpen) { |     public String getText() {
+        this.keepStreamsOpen = keepStreamsOpen;               |         return this.text;
+    }                                                               }
+}                                                               }
+
+~
+</code></pre>
+
+<pre><code class="java">❯❯❯ diff -y java-files/JstlFmtTLV.java java-files/JstlXmlTLV.java
+
+
+//                                                              //
+// Source code recreated from a .class file by IntelliJ IDEA    // Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)                           // (powered by Fernflower decompiler)
+//                                                              //
+
+package org.apache.taglibs.standard.tlv;                        package org.apache.taglibs.standard.tlv;
+
+import java.util.Set;                                           import java.util.Set;
+import java.util.Stack;                                         import java.util.Stack;
+import javax.servlet.jsp.tagext.PageData;                       import javax.servlet.jsp.tagext.PageData;
+import javax.servlet.jsp.tagext.ValidationMessage;              import javax.servlet.jsp.tagext.ValidationMessage;
+import org.apache.taglibs.standard.resources.Resources;         import org.apache.taglibs.standard.resources.Resources;
+import org.xml.sax.Attributes;                                  import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;                      import org.xml.sax.helpers.DefaultHandler;
+
+public class JstlFmtTLV extends JstlBaseTLV {                 | public class JstlXmlTLV extends JstlBaseTLV {
+    private final String SETLOCALE = &quot;setLocale&quot;;             |     private final String CHOOSE = &quot;choose&quot;;
+    private final String SETBUNDLE = &quot;setBundle&quot;;             |     private final String WHEN = &quot;when&quot;;
+    private final String SETTIMEZONE = &quot;setTimeZone&quot;;         |     private final String OTHERWISE = &quot;otherwise&quot;;
+    private final String BUNDLE = &quot;bundle&quot;;                   |     private final String PARSE = &quot;parse&quot;;
+    private final String MESSAGE = &quot;message&quot;;                 |     private final String PARAM = &quot;param&quot;;
+    private final String MESSAGE_PARAM = &quot;param&quot;;             |     private final String TRANSFORM = &quot;transform&quot;;
+    private final String FORMAT_NUMBER = &quot;formatNumber&quot;;      &lt;
+    private final String PARSE_NUMBER = &quot;parseNumber&quot;;        &lt;
+    private final String PARSE_DATE = &quot;parseDate&quot;;            &lt;
+    private final String JSP_TEXT = &quot;jsp:text&quot;;                     private final String JSP_TEXT = &quot;jsp:text&quot;;
+    private final String EVAL = &quot;evaluator&quot;;                  &lt;
+    private final String MESSAGE_KEY = &quot;key&quot;;                 &lt;
+    private final String BUNDLE_PREFIX = &quot;prefix&quot;;            &lt;
+    private final String VALUE = &quot;value&quot;;                           private final String VALUE = &quot;value&quot;;
+                                                              &gt;     private final String SOURCE = &quot;xml&quot;;
+
+    public JstlFmtTLV() {                                     |     public JstlXmlTLV() {
+    }                                                               }
+
+    public ValidationMessage[] validate(String prefix, String       public ValidationMessage[] validate(String prefix, String
+        return super.validate(2, prefix, uri, page);          |         return super.validate(4, prefix, uri, page);
+    }                                                               }
+
+    protected DefaultHandler getHandler() {                         protected DefaultHandler getHandler() {
+        return new JstlFmtTLV.Handler();                      |         return new JstlXmlTLV.Handler();
+    }                                                               }
+
+    private class Handler extends DefaultHandler {                  private class Handler extends DefaultHandler {
+        private int depth;                                              private int depth;
+        private Stack messageDepths;                          |         private Stack chooseDepths;
+                                                              &gt;         private Stack chooseHasOtherwise;
+                                                              &gt;         private Stack chooseHasWhen;
+        private String lastElementName;                                 private String lastElementName;
+        private boolean bodyNecessary;                                  private boolean bodyNecessary;
+        private boolean bodyIllegal;                                    private boolean bodyIllegal;
+                                                              &gt;         private Stack transformWithSource;
+
+        private Handler() {                                             private Handler() {
+            this.depth = 0;                                                 this.depth = 0;
+            this.messageDepths = new Stack();                 |             this.chooseDepths = new Stack();
+                                                              &gt;             this.chooseHasOtherwise = new Stack();
+                                                              &gt;             this.chooseHasWhen = new Stack();
+            this.lastElementName = null;                                    this.lastElementName = null;
+            this.bodyNecessary = false;                                     this.bodyNecessary = false;
+            this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                                                              &gt;             this.transformWithSource = new Stack();
+        }                                                               }
+
+        public void startElement(String ns, String ln, String           public void startElement(String ns, String ln, String
+            if (ln == null) {                                               if (ln == null) {
+                ln = JstlFmtTLV.this.getLocalPart(qn);        |                 ln = JstlXmlTLV.this.getLocalPart(qn);
+            }                                                               }
+
+            if (!qn.equals(&quot;jsp:text&quot;)) {                                   if (!qn.equals(&quot;jsp:text&quot;)) {
+                if (this.bodyIllegal) {                                         if (this.bodyIllegal) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                Set expAtts;                                                    Set expAtts;
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    for(int i = 0; i &lt; a.getLength(); ++i) {                        for(int i = 0; i &lt; a.getLength(); ++i) {
+                        String attName = a.getLocalName(i);                             String attName = a.getLocalName(i);
+                        if (expAtts.contains(attName)) {                                if (expAtts.contains(attName)) {
+                            String vMsg = JstlFmtTLV.this.val |                             String vMsg = JstlXmlTLV.this.val
+                            if (vMsg != null) {                                             if (vMsg != null) {
+                                JstlFmtTLV.this.fail(vMsg);   |                                 JstlXmlTLV.this.fail(vMsg);
+                            }                                                               }
+                        }                                                               }
+                    }                                                               }
+                }                                                               }
+
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (qn.startsWith(JstlFmtTLV.this.prefix + &quot;: |                 if (qn.startsWith(JstlXmlTLV.this.prefix + &quot;:
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;param&quot;) |                 if (this.chooseChild()) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;whe
+                                                              &gt;                         this.chooseHasWhen.pop();
+                                                              &gt;                         this.chooseHasWhen.push(Boolean.TRUE)
+                                                              &gt;                     }
+                                                              &gt;
+                                                              &gt;                     if (!JstlXmlTLV.this.isXmlTag(ns, ln, &quot;wh
+                                                              &gt;                         JstlXmlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+                                                              &gt;
+                                                              &gt;                     if ((Boolean)this.chooseHasOtherwise.peek
+                                                              &gt;                         JstlXmlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+                                                              &gt;
+                                                              &gt;                     if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;oth
+                                                              &gt;                         this.chooseHasOtherwise.pop();
+                                                              &gt;                         this.chooseHasOtherwise.push(Boolean.
+                                                              &gt;                     }
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (!this.transformWithSource.empty() &amp;&amp; this
+                                                              &gt;                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;message |                 if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;choose&quot;
+                    this.messageDepths.push(this.depth);      |                     this.chooseDepths.push(this.depth);
+                                                              &gt;                     this.chooseHasWhen.push(Boolean.FALSE);
+                                                              &gt;                     this.chooseHasOtherwise.push(Boolean.FALS
+                }                                                               }
+
+                this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                this.bodyNecessary = false;                                     this.bodyNecessary = false;
+                if (!JstlFmtTLV.this.isFmtTag(ns, ln, &quot;param&quot; |                 if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;parse&quot;)
+                    if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;mes |                     if (JstlXmlTLV.this.hasAttribute(a, &quot;xml&quot;
+                        this.bodyNecessary = true;            |                         this.bodyIllegal = true;
+                    } else if (JstlFmtTLV.this.isFmtTag(ns, l |                     }
+                                                              &gt;                 } else if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;
+                                                              &gt;                     if (JstlXmlTLV.this.hasAttribute(a, &quot;valu
+                                                              &gt;                         this.bodyIllegal = true;
+                                                              &gt;                     } else {
+                        this.bodyNecessary = true;                                      this.bodyNecessary = true;
+                    }                                                               }
+                } else if (JstlFmtTLV.this.hasAttribute(a, &quot;v |                 } else if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;
+                    this.bodyIllegal = true;                  |                     this.transformWithSource.push(this.depth)
+                } else {                                      &lt;
+                    this.bodyNecessary = true;                &lt;
+                }                                                               }
+
+                this.lastElementName = qn;                                      this.lastElementName = qn;
+                JstlFmtTLV.this.lastElementId = a.getValue(&quot;h |                 JstlXmlTLV.this.lastElementId = a.getValue(&quot;h
+                ++this.depth;                                                   ++this.depth;
+            }                                                               }
+        }                                                               }
+
+        public void characters(char[] ch, int start, int leng           public void characters(char[] ch, int start, int leng
+            this.bodyNecessary = false;                                     this.bodyNecessary = false;
+            String s = (new String(ch, start, length)).trim()               String s = (new String(ch, start, length)).trim()
+            if (!s.equals(&quot;&quot;)) {                                            if (!s.equals(&quot;&quot;)) {
+                if (this.bodyIllegal) {                                         if (this.bodyIllegal) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (this.chooseChild()) {
+                                                              &gt;                     String msg = Resources.getMessage(&quot;TLV_IL
+                                                              &gt;                     JstlXmlTLV.this.fail(msg);
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (!this.transformWithSource.empty() &amp;&amp; this
+                                                              &gt;                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+            }                                                               }
+        }                                                               }
+
+        public void endElement(String ns, String ln, String q           public void endElement(String ns, String ln, String q
+            if (!qn.equals(&quot;jsp:text&quot;)) {                                   if (!qn.equals(&quot;jsp:text&quot;)) {
+                if (this.bodyNecessary) {                                       if (this.bodyNecessary) {
+                    JstlFmtTLV.this.fail(Resources.getMessage |                     JstlXmlTLV.this.fail(Resources.getMessage
+                }                                                               }
+
+                this.bodyIllegal = false;                                       this.bodyIllegal = false;
+                if (JstlFmtTLV.this.isFmtTag(ns, ln, &quot;message |                 if (JstlXmlTLV.this.isXmlTag(ns, ln, &quot;choose&quot;
+                    this.messageDepths.pop();                 |                     Boolean b = (Boolean)this.chooseHasWhen.p
+                                                              &gt;                     if (!b) {
+                                                              &gt;                         JstlXmlTLV.this.fail(Resources.getMes
+                                                              &gt;                     }
+                                                              &gt;
+                                                              &gt;                     this.chooseDepths.pop();
+                                                              &gt;                     this.chooseHasOtherwise.pop();
+                                                              &gt;                 }
+                                                              &gt;
+                                                              &gt;                 if (!this.transformWithSource.empty() &amp;&amp; this
+                                                              &gt;                     this.transformWithSource.pop();
+                }                                                               }
+
+                --this.depth;                                                   --this.depth;
+            }                                                               }
+        }                                                               }
+                                                              &gt;
+                                                              &gt;         private boolean chooseChild() {
+                                                              &gt;             return !this.chooseDepths.empty() &amp;&amp; this.depth -
+                                                              &gt;         }
+                                                              &gt;
+                                                              &gt;         private int topDepth(Stack s) {
+                                                              &gt;             return (Integer)s.peek();
+                                                              &gt;         }
+    }                                                               }
+}                                                               }
+
+</code></pre>
+
+<p>全然わからん</p>
+<p>糸口</p>
+<p>提案手法の類似度より従来手法の類似度の方が正確で，類似度が下がるのはなんとなくわかるし，そういう傾向にあるんだろうなという感じで攻めるか</p>
+<p>それなら提案手法と従来手法の類似度の比較を行うべきだけど，それは過去にやった</p>
+<p>検出漏れしたやつらの従来，提案の類似度を見ると傾向がわかる</p>
+<p>やってくぞ！</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181012/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181012/" class="btn btn-xs btn-link">
+        指摘項目訂正
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181011/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181011/" class="btn btn-xs btn-link">
+        20181011
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

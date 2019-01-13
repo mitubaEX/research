@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Index - My Docs</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "500\u500b\u30e9\u30f3\u30c0\u30e0\u306b\u9078\u3093\u3060jar\u30d5\u30a1\u30a4\u30eb\u3067\u30b5\u30fc\u30d0\u30fc\u3092\u69cb\u7bc9", url: "#_top", children: [
+          ]},
+          {title: "\u7d50\u679c", url: "#_1", children: [
+          ]},
+          {title: "\u540c\u3058\u3084\u3064\u3068\u540c\u3058\u3084\u3064\uff08\u7d50\u679c\uff09\u306e\u985e\u4f3c\u5ea6\u983b\u5ea6", url: "#_2", children: [
+          ]},
+          {title: "\u518d\u8a66\u884c", url: "#_3", children: [
+          ]},
+          {title: "6gram", url: "#6gram", children: [
+              {title: "activemq-protobuf-test-1.1.jar-2gram.csv\u3092\u4f7f\u3063\u3066\u307f\u308b", url: "#activemq-protobuf-test-11jar-2gramcsv" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/500_random_jar/search_sim_check/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/500_random_jar/search_sim_check/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/procudure-of-experimental/preservation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/procudure-of-experimental/preservation/" class="btn btn-xs btn-link">
+        保存性評価
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="500jar">500個ランダムに選んだjarファイルでサーバーを構築</h2>
+<p>activemq-protobuf-test-1.1.jar-2gram.csvを使ってみる</p>
+<h2 id="_1">結果</h2>
+<pre><code># 0 -&gt; 一位
+[(0, 30), (1, 10), (2, 6), (3, 11), (4, 6), (5, 3), (6, 5), (7, 4), (8, 2), (9, 1), (10, 1)]
+</code></pre>
+
+<p>40 + 17 + 9 + 9 + 3 + 1 = 79
+検索件数と一致しています</p>
+<p>10番目に出てきたバースマークを見てみる．</p>
+<pre><code>['25 183', '183 25', '25 3', '3 181', '181 25', '181 177', '177 25', '25 180', '180 172', '172 25', '25 182', '182 25', '25 4', '4 181', '25 21', '21 181', '25 176', '176 25']
+['25 183', '183 25', '25 3', '3 181', '181 25', '181 177', '177 25', '25 180', '180 172', '172 25', '25 182', '182 25', '25 4', '4 181', '25 21', '21 181', '25 176', '176 25']
+</code></pre>
+
+<p>一致した・・・・</p>
+<p>10番目までのバースマークを見てみる</p>
+<pre><code># 検索
+25 183,183 25,25 3,3 181,181 25,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,25 21,21 181,25 176,176 25
+
+# 結果
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 25,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 25,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,25 21,21 181,25 176,176 25
+</code></pre>
+
+<p>どれもpochiの類似度は1.0</p>
+<p>9番目までのバースマークを見てみるよ</p>
+<pre><code># 検索
+25 183,183 25,25 3,3 181,181 25,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,25 21,21 181,25 176,176 25
+
+# 結果
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,181 25,25 21,21 181,25 176,176 25
+25 183,183 25,25 3,3 181,181 25,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,25 21,21 181,25 176,176 25 &lt;- これ
+
+# 以下
+25 183,183 25,25 3,3 181,181 25,181 177,177 25,25 180,180 172,172 25,25 182,182 25,25 4,4 181,25 21,21 181,25 176,176 25
+</code></pre>
+
+<p>同じ検索バースマークだった
+でもfilenameが違う．</p>
+<p>調べたら同じ類似度のやつはfilenameでソートされるらしい</p>
+<h2 id="_2">同じやつと同じやつ（結果）の類似度頻度</h2>
+<pre><code>[('1', 61), ('0.982226128644055', 1), ('0.9701926149195159', 1), ('0.9564905995020847', 1), ('0.9540563130575881', 3), ('0.9500656982613372', 1), ('0.9455120727893098', 1), ('0.9258289302857698', 1), ('0.9008058649733615', 1), ('0.8996075372037898', 1), ('0.8836401718784667', 5), ('0.8740421024610862', 1), ('0.8500234995472105', 1)]
+</code></pre>
+
+<p>同じfilenameなのに類似度が1じゃないのよく分からんので調べる</p>
+<p>類似度が低いけど，同一のバースマークらしい</p>
+<p>pochiで類似度測ると，全部1.0だった</p>
+<p>検索エンジンの類似度計算に若干変な所あるかぁ</p>
+<p>後日</p>
+<h1 id="_3">再試行</h1>
+<p>janrain4j-1.1.0.jar-2gram.csvを使ってみる</p>
+<pre><code># ランキング
+{0: 38, 1: 6, 2: 2, 3: 1, 4: 1, 5: 1}
+
+# 類似度頻度
+{'1': 49}
+</code></pre>
+
+<p>全件69件なので少ないか？
+普通に長さフィルターでremoveされただけだった -&gt; 長さ15以下のものが20件あったということ</p>
+<p>6gramでもやろうかなぁ</p>
+<h1 id="6gram">6gram</h1>
+<p>janrain4j-1.1.0.jar-6gram.csvを使う</p>
+<pre><code>{0: 29, 1: 3, 3: 1, 4: 1, 5: 1}
+{'1': 35}
+</code></pre>
+
+<p>なんか一件が出てないので調べてみる</p>
+<p><code>com.googlecode.janrain4j.json.JSONObject</code></p>
+<p>検索エンジンには入っているが検索結果に出てこない！？</p>
+<p>なんだこれ</p>
+<p>とりあえず無視</p>
+<h2 id="activemq-protobuf-test-11jar-2gramcsv">activemq-protobuf-test-1.1.jar-2gram.csvを使ってみる</h2>
+<pre><code>{0: 46, 1: 5, 2: 4, 3: 2, 4: 2, 5: 1, 6: 1, 7: 1}
+{'1': 62}
+</code></pre>
+
+<p>62件中全件類似度1.0なので上々であると考える</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/500_random_jar/search_sim_check/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/500_random_jar/search_sim_check/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/procudure-of-experimental/preservation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/procudure-of-experimental/preservation/" class="btn btn-xs btn-link">
+        保存性評価
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

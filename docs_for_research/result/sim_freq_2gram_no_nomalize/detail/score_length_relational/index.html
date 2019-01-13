@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>検索結果の長さとスコアの遷移が見たい - My Docs</title>
+    <link href="../../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u691c\u7d22\u7d50\u679c\u306e\u9577\u3055\u3068\u30b9\u30b3\u30a2\u306e\u9077\u79fb\u304c\u898b\u305f\u3044", url: "#_top", children: [
+              {title: "\u524d\u306b\u6c17\u306b\u306a\u3063\u3066\u9577\u3055101\u3067\u6b63\u89e3\u30d2\u30c3\u30c8\u6570\u304c\u5909\u308f\u3063\u305f\u3084\u3064\u306b\u3064\u3044\u3066\u8abf\u3079\u308b", url: "#101" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/sim_freq_6gram_no_nomalize/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/sim_freq_6gram_no_nomalize/" class="btn btn-xs btn-link">
+        6gramでやってみた
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-link">
+        バースマークの長さと検索結果に出てきた正解の数の関係を調べる
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="_1">検索結果の長さとスコアの遷移が見たい</h1>
+<p>一つの検索結果を見て、検索バースマークの長さと検索結果の遷移を折れ線グラフで書く</p>
+<p>仕様クラス：com.google.protobuf.test.UnittestImport\$ImportEnum2gram
+image: ./score_length_relation_100.png (赤：スコア, 青：長さ)</p>
+<p>検索したバースマークの長さは54である</p>
+<h2 id="101">前に気になって長さ101で正解ヒット数が変わったやつについて調べる</h2>
+<p>最高スコア：164.36046
+使用クラス：org.apache.activemq.protobuf.DeferredUnmarshal\$Bar2gram
+image: ./score_length_relational_100_2.png</p>
+<p>最高スコア：184.71094
+使用クラス：protobuf_unittest.UnittestProto$TestDupFieldNumber
+image: ./score_length_relational_100_38.png</p>
+<p>最高スコア：188.04883
+使用クラス：protobuf_unittest.UnittestProto$TestRequired
+image: ./score_length_relational_100_37.png</p>
+<p>特徴としては、あるスコアより下になると結構長さが大きくなっている
+これは類似度計算が、検索バースマークと検索結果バースマークの積集合をとることが関係していると思われる</p>
+<p>6gramでやったらいいのかな</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/sim_freq_6gram_no_nomalize/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/sim_freq_6gram_no_nomalize/" class="btn btn-xs btn-link">
+        6gramでやってみた
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-link">
+        バースマークの長さと検索結果に出てきた正解の数の関係を調べる
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

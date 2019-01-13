@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Index - My Docs</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "0.25", url: "#_top", children: [
+              {title: "\u691c\u7d22\u6642\u9593", url: "#_1" },
+              {title: "\u6bd4\u8f03\u6642\u9593", url: "#_2" },
+          ]},
+          {title: "0.5", url: "#05", children: [
+          ]},
+          {title: "0.75", url: "#075", children: [
+              {title: "\u6bd4\u8f03\u6642\u9593", url: "#_3" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-link">
+        FN 実験手順
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/paper_experiment/preservation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/paper_experiment/preservation/" class="btn btn-xs btn-link">
+        保存性チェック的なやつ
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="025">0.25</h2>
+<h3 id="_1">検索時間</h3>
+<pre><code>/Volumes/mituba_20180425/restart/2gram ❯❯❯ cat time_2gram.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'                     master ✱
+551.455 sec
+
+## 3gram
+295.639
+
+## 4gram
+102.067
+
+## 5gram
+72.807
+
+## 6gram
+64.3604
+
+## uc
+/Volumes/mituba_20180425/restart/sim_0.25 ❯❯❯ cat time_uc.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'                   master ✱ ◼
+179.524
+</code></pre>
+
+<h3 id="_2">比較時間</h3>
+<pre><code>/Volumes/mituba_20180425/restart/sim_0.25 ❮❮❮ for i in 2gram 3gram 4gram 5gram 6gram ; do time ./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot; -r 231476 -l 15;done
+../../activemq-protobuf-test-1.1.jar-2gram.csv
+./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  509.12s user 65.59s system 143% cpu 6:40.54 total
+../../activemq-protobuf-test-1.1.jar-3gram.csv
+./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  352.15s user 44.80s system 133% cpu 4:56.87 total
+../../activemq-protobuf-test-1.1.jar-4gram.csv
+./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  289.56s user 34.64s system 134% cpu 4:00.42 total
+../../activemq-protobuf-test-1.1.jar-5gram.csv
+./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  200.24s user 22.61s system 151% cpu 2:27.37 total
+../../activemq-protobuf-test-1.1.jar-6gram.csv
+./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  156.07s user 16.10s system 166% cpu 1:43.28 total
+
+/Volumes/mituba_20180425/restart/sim_0.25 ❯❯❯ for i in uc ; do time ./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot; -r 231476 -l 15;done
+../../activemq-protobuf-test-1.1.jar-uc.csv
+./sim_0.25 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  222.68s user 22.16s system 188% cpu 2:10.05 total
+</code></pre>
+
+<h2 id="05">0.5</h2>
+<pre><code>
+## 検索時間
+/Volumes/mituba_20180425/restart/sim_0.5 ❯❯❯ for i in 2gram 3gram 4gram 5gram 6gram uc ; do cat time_&quot;$i&quot;.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }';done
+372.692
+448.015
+496.216
+494.379
+721.027
+139.361
+
+## 比較時間
+/Volumes/mituba_20180425/restart/sim_0.5 ❯❯❯ for i in 2gram 3gram 4gram 5gram 6gram uc ; do time ./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot; -r 231476 -l 15;done
+
+../../activemq-protobuf-test-1.1.jar-2gram.csv
+./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot;  206.02s user 20.78s system 178% cpu 2:07.26 total
+../../activemq-protobuf-test-1.1.jar-3gram.csv
+./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot;  168.07s user 18.10s system 171% cpu 1:48.83 total
+../../activemq-protobuf-test-1.1.jar-4gram.csv
+./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot;  149.38s user 16.46s system 167% cpu 1:39.15 total
+../../activemq-protobuf-test-1.1.jar-5gram.csv
+./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot;  120.47s user 13.18s system 163% cpu 1:21.57 total
+../../activemq-protobuf-test-1.1.jar-6gram.csv
+./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot;  118.47s user 13.08s system 161% cpu 1:21.51 total
+../../activemq-protobuf-test-1.1.jar-uc.csv
+./sim_0.5 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot;  120.66s user 12.79s system 167% cpu 1:19.71 total
+</code></pre>
+
+<h2 id="075">0.75</h2>
+<pre><code>/Volumes/mituba_20180425/restart/sim_0.75 ❯❯❯ for i in 2gram 3gram 4gram 5gram 6gram uc ; do cat time_&quot;$i&quot;.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }';done
+78.6733
+100.671
+82.8259
+73.2421
+73.0622
+
+/Volumes/mituba_20180425/restart/sim_0.75 ❯❯❯ cat time_uc.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'                   master ✱ ◼
+334.713
+</code></pre>
+
+<h3 id="_3">比較時間</h3>
+<pre><code>/Volumes/mituba_20180425/restart/sim_0.75 ❯❯❯ for i in 2gram 3gram 4gram 5gram 6gram uc ; do time ./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i&quot; -r 231476 -l 15;done
+../../activemq-protobuf-test-1.1.jar-2gram.csv
+./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  161.36s user 17.69s system 162% cpu 1:50.22 total
+../../activemq-protobuf-test-1.1.jar-3gram.csv
+./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  145.83s user 15.90s system 165% cpu 1:37.78 total
+../../activemq-protobuf-test-1.1.jar-4gram.csv
+./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  143.03s user 15.61s system 165% cpu 1:36.03 total
+../../activemq-protobuf-test-1.1.jar-5gram.csv
+./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  133.10s user 14.69s system 166% cpu 1:28.97 total
+../../activemq-protobuf-test-1.1.jar-6gram.csv
+./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  132.02s user 14.54s system 165% cpu 1:28.69 total
+../../activemq-protobuf-test-1.1.jar-uc.csv
+./sim_0.75 -m compare -f ../../activemq-protobuf-test-1.1.jar-&quot;$i&quot;.csv -b &quot;$i  140.65s user 14.91s system 172% cpu 1:29.95 total
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-link">
+        FN 実験手順
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/paper_experiment/preservation/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/paper_experiment/preservation/" class="btn btn-xs btn-link">
+        保存性チェック的なやつ
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

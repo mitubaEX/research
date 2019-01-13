@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>この前やってたようなことをやっていく - My Docs</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u3053\u306e\u524d\u3084\u3063\u3066\u305f\u3088\u3046\u306a\u3053\u3068\u3092\u3084\u3063\u3066\u3044\u304f", url: "#_top", children: [
+              {title: "pochi0.75\u4ee5\u4e0a\u306e\u3082\u306e\u306e\u9577\u3055\u306e\u983b\u5ea6", url: "#pochi075" },
+              {title: "pochi0.75\u4ee5\u4e0a\u306e\u3082\u306e\u306f\u30d5\u30a1\u30a4\u30eb\u540d\u304c\u4e00\u7dd2\u306a\u306e\u304b\uff1f", url: "#pochi075_1" },
+              {title: "pochi0.75\u4ee5\u4e0a\u306e\u3082\u306e\u306e\u985e\u4f3c\u5ea6\u306e\u983b\u5ea6", url: "#pochi075_2" },
+              {title: "\u691c\u7d22\u30a8\u30f3\u30b8\u30f3\u306e\u9577\u3055\u3068\u985e\u4f3c\u5ea6\u306e\u95a2\u4fc2", url: "#_6" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-link">
+        バースマークの長さと検索結果に出てきた正解の数の関係を調べる
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="_1">この前やってたようなことをやっていく</h1>
+<h2 id="pochi075">pochi0.75以上のものの長さの頻度</h2>
+<p>当然のごとく長さは一緒らしい</p>
+<h2 id="pochi075_1">pochi0.75以上のものはファイル名が一緒なのか？</h2>
+<p>same: 1419, other: 0</p>
+<h3 id="_2">これちがうかも</h3>
+<p>同じやつは当然のように79件しかなく、まぁそうなるなぁって感じ（検索jarファイルが79件である）</p>
+<p>~これを見ると一緒のものしかないらしい~</p>
+<p>これ、全体で1419件なので一件あたりの件数を見てみる</p>
+<h3 id="_3">一件あたりの平均検索ヒット件数（正解集合が入っている件数）</h3>
+<pre><code>平均件数：17.96202532
+</code></pre>
+
+<h3 id="_4">長さとヒット件数の関係</h3>
+<p>ヒット件数が多いものの長さがどうなっているのか？</p>
+<pre><code>長さの平均：62.94936709
+</code></pre>
+
+<p>image: ./result_length_relation.png</p>
+<p>結果を見るとバースマークの長さが長いやつは、結構厳しめにしていると思ったけどそんなことはなくて下がっていっても件数が下がるやつもある
+とりあえず下がっているやつがどういったやつなのかが気になる</p>
+<h3 id="_5">同じファイルの検索エンジンでの類似度</h3>
+<p>com.google.protobuf.test.UnittestImport$ImportMessageに着目する
+まず同一クラスの検索エンジンの類似度は144.04166だった
+ランキングの順位的には5位（低い）</p>
+<p>ランキング一位のクラスはprotobuf_unittest.UnittestMset$TestMessageSetExtension1で、類似度は163.05688である</p>
+<ul>
+<li>参考</li>
+</ul>
+<pre><code>25 183,183 177,177 25,183 58,58 25,25 176,176 25,183 25,25 182,182 177,177 187,187 89,89 183,182 176,182 153,153 25,25 25,182 182,182 87,87 25,25 180,180 2,2 159,159 25,180 172,172 3,3 54,54 25,153 21,21 4,4 25,182 184,184 96,96 54,25 21,21 181,181 21,21 172,172 25,182 54,54 21,21 16,16 126,126 7,7 160,160 25,176 21,21 171,171 25,176 167,167 25,87 167,25 4,182 192,192 176,176 187,192 182,25 187,183 18,18 182,182 18,25 18,25 166,166 4,4 172,25 198,198 25,18 165,165 3,3 172,25 192,182 172,182 25,182 130,130 153,153 3,182 159,159 3,172 4,172 18,18 54,16 25,130 130,130 54
+
+25 183,183 177,177 25,183 58,58 25,25 176,176 25,183 25,25 182,182 177,177 187,187 89,89 183,182 176,182 153,153 25,25 25,182 182,182 87,87 25,25 180,180 2,2 159,159 25,180 172,172 3,3 54,54 25,153 21,21 16,16 25,182 184,184 96,96 54,25 21,21 181,181 21,21 172,172 25,182 54,54 21,16 126,126 7,7 160,160 25,176 21,21 171,171 25,176 167,167 25,87 167,25 16,182 192,192 176,176 187,192 182,25 187,183 18,18 182,182 18,25 18,25 166,166 4,4 172,25 198,198 25,18 165,165 3,3 172,25 192,182 172,182 25,182 130,130 153,153 3,182 159,159 3,172 4,172 18,18 54,130 130,130 54
+</code></pre>
+
+<p>明らかに同一ではないけど、類似度計算方法的に単語の頻度が高いとスコアが良くなる傾向にある
+edit distanceやら文字列の長さを測るやつだと一文字ごとに考えていくので、要素という観点ではあまり意味がないかなぁ</p>
+<p>今のやつは要素ごとにスコアを出していくので、まぁ良いかもしれない</p>
+<h2 id="pochi075_2">pochi0.75以上のものの類似度の頻度</h2>
+<p>ヒストグラムにしよう
+高さが頻度、横が類似度
+image: ./script/search_birhtmark_length_no_nomal.png</p>
+<p>思ったこととしては、検索エンジンに入っているドキュメントの数によって、検索エンジンの類似度が変わっていく（そういう仕様）</p>
+<p>同じ検索バースマークを投げた時、500件だと最高類似度が166、131476件だと最高類似度が215である</p>
+<p>そして明らかに166（前の最高の類似度）の頻度が減っており、それより低い類似度のやつらが増えている
+関係のないドキュメントがいろいろ入ってきて、それに引っ張られて類似度が下がったと推測する</p>
+<p>今の類似度計算の方法的に、カンマ区切りで一つの要素を取り出して、その後その要素が含まれるドキュメントの数を調べている。
+その要素の場所は考慮に入れられていない。これはいいのか？</p>
+<p>検索エンジンの中のデータによって、類似度が変わってくるのでその都度最適な閾値を見つける必要がある。
+低い類似度だと0.07593925などがあった.
+つまり0以下は少ししか似てないようなものなので無視できるかもしれない</p>
+<h2 id="_6">検索エンジンの長さと類似度の関係</h2>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="btn btn-xs btn-link">
+        バースマークの長さと検索結果に出てきた正解の数の関係を調べる
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

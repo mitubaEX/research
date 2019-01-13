@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20181010 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u4fdd\u5b58\u6027\u3067\u3069\u3093\u306a\u5974\u304c\u5931\u6557\u3057\u305f\u306e\u304b\u3092\u8abf\u3079\u308b\u3088", url: "#_top", children: [
+              {title: "MLI length", url: "#mli-length" },
+          ]},
+          {title: "DNR\u306e\u4fdd\u5b58\u6027\u3092\u6e80\u305f\u305b\u3066\u3044\u306a\u3044\u3084\u3064\u3092\u8abf\u3079\u3066\u307f\u308b", url: "#dnr", children: [
+          ]},
+          {title: "\u8003\u5bdf", url: "#_2", children: [
+          ]},
+          {title: "\u30b0\u30e9\u30d5\u4f5c\u308b\u304b", url: "#_3", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181011/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181011/" class="btn btn-xs btn-link">
+        20181011
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181006/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181006/" class="btn btn-xs btn-link">
+        20181006
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="_1">保存性でどんな奴が失敗したのかを調べるよ</h2>
+<h3 id="mli-length">MLI length</h3>
+<pre><code>diff class_name_list_MLI.csv class_name_list_MLI_0.9.csv &gt; class_name_list_MLI_class_name_list_MLI_0.9_diff.csv
+
+find ./extract_obfu/MLI -name &quot;*2gram*&quot; | while read file ; do cat class_name_list_MLI_class_name_list_MLI_0.9_diff.csv | xargs -I@ grep @ $file;done &gt; MLI-2gram-fault-class-files.csv
+
+find ../birthmark_server/data/birthmark -name &quot;*2gram*&quot; | while read file ; do cat class_name_list_MLI_class_name_list_MLI_0.9_diff.csv | xargs -I@ grep @ $file;done &gt; MLI-2gram-fault-class-files.csv
+
+python3 lenght_check_for_two_files.py MLI-2gram-fault-class-files-original.csv MLI-2gram-fault-class-files.csv
+</code></pre>
+
+<p>保存性を満たしていないものの長さの差</p>
+<pre><code>filename, obfu-length, original-length, sub, product
+org.apache.avalon.logging.logkit.factory.syslog.SyslogTarget, 61, 82, 21, 49
+org.apache.avalon.logging.logkit.factory.syslog.SyslogTargetFactory, 57, 76, 19, 49
+org.apache.cocoon.util.ConfigurationUtil, 75, 105, 30, 65
+org.apache.cocoon.util.ResizableContainer, 63, 85, 22, 55
+org.apache.cocoon.util.StringUtils, 47, 67, 20, 38
+org.apache.jackrabbit.extractor.HTMLParser, 58, 82, 24, 45
+org.eclipse.jdt.core.CheckDebugAttributes, 78, 104, 26, 71
+org.pdfbox.cos.COSName, 110, 139, 29, 96
+org.pdfbox.encoding.DictionaryEncoding, 49, 73, 24, 35
+org.pdfbox.filter.RunLengthDecodeFilter, 70, 96, 26, 53
+org.pdfbox.pdfparser.PDFObjectStreamParser, 88, 118, 30, 82
+org.pdfbox.pdfviewer.PDFTreeModel, 87, 120, 33, 77
+org.pdfbox.pdmodel.graphics.xobject.PDPixelMap, 42, 64, 22, 40
+org.pdfbox.pdmodel.interactive.form.PDChoiceField, 64, 86, 22, 47
+org.pdfbox.pdmodel.PDDocumentInformation, 83, 105, 22, 73
+org.pdfbox.ttf.CMAPTable, 37, 62, 25, 25
+org.pdfbox.ttf.GlyphTable, 39, 62, 23, 26
+org.pdfbox.ttf.HorizontalMetricsTable, 35, 67, 32, 29
+org.pdfbox.ttf.IndexToLocationTable, 47, 70, 23, 36
+org.pdfbox.ttf.NamingTable, 62, 88, 26, 51
+org.pdfbox.ttf.TTFParser, 50, 72, 22, 48
+org.pdfbox.util.operator.SetStrokingColorSpace, 65, 92, 27, 51
+org.apache.taglibs.string.MidTag, 29, 49, 20, 19
+org.apache.taglibs.string.TruncateNicelyTag, 19, 39, 20, 14
+org.apache.taglibs.string.SoundexTag, 7, 7, 0, 7
+org.apache.taglibs.string.util.Soundex, 84, 113, 29, 69
+org.apache.taglibs.string.util.XmlW, 98, 139, 41, 81
+org.apache.xerces.util.ParserConfigurationSettings, 64, 89, 25, 57
+</code></pre>
+
+<p>検索することがちゃんとできていて，長さの差が0でないもの</p>
+<pre><code>left obf, right origin
+org.apache.cocoon.components.store.impl.StoreJanitorImpl,218,195,23,181
+org.apache.cocoon.util.ByteRange,97,79,18,68
+org.apache.cocoon.util.ImageUtils,164,131,33,121
+org.apache.cocoon.util.IOUtils,184,154,30,145
+org.apache.cocoon.util.NetUtils,266,222,44,199
+org.apache.cocoon.util.PostInputStream,126,103,23,97
+org.apache.cocoon.util.WildcardMatcherHelper$Matcher,130,108,22,96
+org.apache.cocoon.util.WildcardMatcherHelper,126,95,31,81
+org.codehaus.mojo.jboss.packaging.HelpMojo,169,133,36,121
+org.eclipse.jdt.core.JDTCompilerAdapter,202,174,28,168
+org.zeroturnaround.javarebel.maven.GenerateRebelMojo,203,175,28,166
+org.pdfbox.afmparser.AFMParser,182,156,26,155
+org.pdfbox.cmapparser.CMapParser,175,143,32,129
+org.pdfbox.cos.COSArray,130,100,30,92
+org.pdfbox.cos.COSDictionary,155,121,34,120
+org.pdfbox.cos.COSStream,189,165,24,155
+org.pdfbox.cos.COSString,167,138,29,132
+org.pdfbox.ttf.CMAPEncodingEntry,153,117,36,110
+org.pdfbox.encryption.DocumentEncryption,131,112,19,108
+org.pdfbox.encryption.PDFEncryption,246,206,40,197
+org.pdfbox.encryption.ARCFour,134,95,39,90
+org.pdfbox.ExtractText,151,128,23,123
+org.pdfbox.filter.ASCIIHexFilter,98,73,25,58
+org.pdfbox.filter.LZWFilter,112,89,23,82
+org.pdfbox.io.ASCII85InputStream,175,149,26,121
+org.pdfbox.Overlay,231,191,40,186
+org.pdfbox.pdfparser.BaseParser,337,276,61,256
+org.pdfbox.pdfparser.PDFParser,218,187,31,183
+org.pdfbox.pdfparser.PDFStreamParser,183,158,25,146
+org.pdfbox.PDFToImage,163,134,29,122
+org.pdfbox.pdfviewer.PageDrawer,179,152,27,152
+org.pdfbox.pdfwriter.COSWriter,208,188,20,177
+org.pdfbox.pdmodel.font.PDCIDFont,175,145,30,134
+org.pdfbox.pdmodel.font.PDFont,267,234,33,207
+org.pdfbox.pdmodel.font.PDTrueTypeFont,210,178,32,168
+org.pdfbox.pdmodel.font.PDType3Font,123,96,27,85
+org.pdfbox.pdmodel.interactive.documentnavigation.outline.PDOutlineNode,115,86,29,78
+org.pdfbox.pdmodel.interactive.form.PDAppearance,264,234,30,219
+org.pdfbox.pdmodel.interactive.form.PDField,177,139,38,138
+org.pdfbox.pdmodel.PDDocument,171,141,30,131
+org.pdfbox.pdmodel.PDPage,148,119,29,111
+org.pdfbox.ttf.MemoryTTFDataStream,124,102,22,98
+org.pdfbox.ttf.PostScriptTable,151,115,36,109
+org.pdfbox.ttf.TTFDataStream,114,95,19,84
+org.pdfbox.util.DateConverter,123,91,32,83
+org.pdfbox.util.PDFHighlighter,147,122,25,112
+org.pdfbox.util.PDFStreamEngine,239,215,24,205
+org.pdfbox.util.PDFText2HTML,155,126,29,114
+org.pdfbox.util.PDFTextStripper,289,258,31,244
+org.apache.taglibs.string.RandomStringTag,118,87,31,81
+org.apache.taglibs.string.util.Metaphone,158,122,36,106
+org.apache.taglibs.string.util.StringW,162,122,40,102
+org.apache.xerces.util.AugmentationsImpl$SmallContainer,130,97,33,94
+org.apache.xerces.util.NamespaceSupport,161,136,25,124
+org.apache.xerces.util.URI,370,304,66,275
+org.apache.xerces.util.XMLAttributesImpl,243,200,43,195
+
+</code></pre>
+
+<p>難読化の影響を受けているバースマークでも，長さが長いと耐えられることがわかる</p>
+<pre><code>/Volumes/HD/false_negative_50_jar/preservation ❯❯❯ vi search_result/MLI/org.apache.cocoon.components.store.impl.StoreJanitorImpl2gram
+
+org.apache.cocoon.components.store.impl.StoreJanitorImpl,jar:file:/Volumes/HD/false_negative_50_jar/preservation/extract_obfu/MLI/./cocoon-store-impl-1.0.0.jar-MLI.jar!/org/apache/cocoon/components/store/impl/StoreJanitorImpl.class,kgram,25 183,183 25,25 25,25 182,182 184,184 181,181 25,25 18,18 181,25 17,17 181,25 3,3 181,25 2,2 181,25 4,4 181,25 10,10 181,181 177,177 25,25 21,21 181,21 17,17 104,104 181,25 24,24 18,18 111,111 181,25 181,25 180,180 176,176 25,25 184,180 2,2 160,160 25,184 182,182 181,183 4,4 162,162 187,89 18,18 183,183 191,191 25,4 161,161 25,183 16,16 164,164 187,180 15,15 151,151 158,158 25,180 18,18 152,152 156,156 187,18 182,182 154,154 25,154 187,89 187,89 183,183 18,182 25,180 182,182 18,182 182,182 183,25 187,183 181,182 185,185 153,153 25,182 187,183 182,185 25,18 107,107 182,183 177,181 187,89 25,183 58,58 25,18 185,4 182,182 177,180 153,180 184,184 167,167 58,181 167,167 177,180 101,101 55,55 25,25 22,22 18,18 105,105 25,180 183,183 55,180 22,22 148,148 156,156 25,97 18,18 109,109 181,182 22,22 182,89 58,58 194,194 25,182 158,4 96,96 183,25 195,195 167,195 25,25 191,105 18,180 25,180 133,133 148,148 158,133 181,167 25,183 133,148 155,155 25,185 4,4 172,172 3,3 172,172 25,182 101,101 173,173 25,22 183,183 173,173 22,22 22,22 109,109 173,173 58,58 22,22 9,9 148,158 18,18 167,167 18,18 173,182 87,87 25,185 177,182 176,182 153,182 58,25 185,185 192,192 183,183 167,182 162,162 25,183 2,3 183,182 192,18 25,185 167,177 10,10 55,133 16,16 121,121 22,22 94,94 131,131 10,117 16,121 127,127 131,131 55,22 16,16 123,123 136,136 182,185 182,185 3,3 133,133 22,16 125,125 127,55 22,22 136,136 22,136 162,185 22,22 92,92 92,92 16,16 133,133 97,97 131,55 167,185 133,136 156,136 135,135 25,180 107,107 142,142 133,136 172,180 172,182 21,21 182
+org.apache.cocoon.components.store.impl.StoreJanitorImpl,1.0,kgram,25 183,183 25,25 25,25 182,182 184,184 181,181 25,25 18,18 181,25 17,17 181,25 3,3 181,25 2,2 181,25 4,4 181,25 10,10 181,181 177,177 25,25 21,21 181,21 17,17 104,104 181,25 24,24 18,18 111,111 181,25 181,25 180,180 176,176 25,25 184,180 2,2 160,160 25,184 182,182 181,183 4,4 162,162 187,89 18,18 183,183 191,191 25,4 161,161 25,183 16,16 164,164 187,180 15,15 151,151 158,158 25,180 18,18 152,152 156,156 187,18 182,182 154,154 25,154 187,89 187,89 183,183 18,182 25,180 182,182 18,182 182,182 183,25 187,183 181,182 185,185 153,153 25,182 187,183 182,185 25,18 107,107 182,183 177,181 187,89 25,183 58,58 25,18 185,4 182,182 177,180 153,180 184,184 167,167 58,181 167,167 177,180 101,101 55,55 25,25 22,22 18,18 105,105 25,180 183,183 55,180 22,22 148,148 156,156 25,97 18,18 109,109 181,182 22,22 182,89 58,58 194,194 25,182 158,4 96,96 183,25 195,195 167,195 25,25 191,105 18,180 25,180 133,133 148,148 158,133 181,167 25,183 133,148 155,155 25,185 4,4 172,172 3,3 172,172 25,182 101,101 173,173 25,22 183,183 173,173 22,22 22,22 109,109 173,173 58,58 22,22 9,9 148,158 18,18 167,167 18,18 173,182 87,87 25,185 177,182 176,182 153,182 58,25 185,185 192,192 183,183 167,182 162,162 25,183 2,3 183,182 192,18 25,185 167,183 54,54 25,182 21,21 182,185 182,185 3,3 54,54 21,21 21,21 162,185 132,132 167,185 54,21 156,172 21,21 135,135 25,180 107,107 142,142 54,21 172,180 172
+</code></pre>
+
+<p>長さが異なっていてもちゃんと1.0で出てくるものもある</p>
+<h2 id="dnr">DNRの保存性を満たせていないやつを調べてみる</h2>
+<pre><code>// obfu
+/Volumes/HD/false_negative_50_jar/preservation ❯❯❯ vi search_result/DNR/dest1.org.apache.avalon.logging.logkit.factory.syslog.SyslogTarget2gram
+dest1.org.apache.avalon.logging.logkit.factory.syslog.SyslogTarget,jar:file:/Volumes/HD/false_negative_50_jar/preservation/extract_obfu/DNR/./avalon-logging-logkit-syslog-1.0.dev-0.jar!/dest1/org/apache/avalon/logging/logkit/factory/syslog/SyslogTarget.class,kgram,25 25,25 21,21 25,25 183,183 25,25 16,16 184,184 18,18 18,18 184,184 25,21 184,184 177,177 25,21 183,25 3,3 189,189 18,184 3,184 192,192 182,182 54,54 16,16 54,54 21,21 171,171 16,54 167,167 16,167 7,7 54,167 6,6 54,167 3,3 54,54 1,1 25,184 165,165 25,18 4,4 189,189 90,90 95,95 3,3 95,95 83,83 18,25 18,182 21,21 128,128 4,95 184,184 4,184 87,87 167,167 25,87 177,182 153,153 3,3 172,172 25,153 16,16 172,153 17,17 172,172 16,182 184,182 172
+
+// origin
+/Volumes/HD/false_negative_50_jar/preservation ❯❯❯ find ../birthmark_server/data/birthmark -name &quot;*2gram*&quot; | while read file ; do  xargs -I@ grep -H 'org.apache.avalon.logging.logkit.factory.syslog.SyslogTarget' @;done
+
+../birthmark_server/data/birthmark/avalon-logging-logkit-syslog-1.0.dev-0.jar-2gram.csv:org.apache.avalon.logging.logkit.factory.syslog.SyslogTarget,jar:file:/Volumes/HD/false_negative_50_jar/birthmark_server/data/jar/avalon-logging-logkit-syslog-1.0.dev-0.jar!/org/apache/avalon/logging/logkit/factory/syslog/SyslogTarget.class,kgram,25 25,25 21,21 25,25 183,183 25,25 16,16 181,181 25,21 181,181 177,177 25,21 183,25 182,182 182,182 54,54 16,16 54,54 21,21 171,171 16,54 167,167 16,167 7,7 54,167 6,6 54,167 3,3 54,54 1,1 25,182 165,165 25,25 187,187 89,89 183,183 18,18 182,182 25,25 180,180 21,21 128,128 182,182 18,25 185,185 182,182 167,167 25,182 177,25 18,182 153,153 3,3 172,172 25,153 16,16 172,153 17,17 172,172 16,25 184,184 181,180 172
+</code></pre>
+
+<p>保存性を満たしていないものの長さの差（不正解のやつ)</p>
+<pre><code>/Volumes/HD/false_negative_50_jar/preservation ❯❯❯ python3 lenght_check_for_two_files.py DNR-2gram-fault-class-files-origin.csv DNR-2gram-fault-class-files.csv
+
+left original, right obfu
+org.apache.avalon.logging.logkit.factory.syslog.SyslogTargetFactory, 57, 64, 7, 19
+no.tornado.brap.common.ModificationList, 17, 29, 12, 6
+org.apache.cocoon.components.store.impl.CocoonStoreJanitor, 33, 55, 22, 12
+org.apache.cocoon.components.store.impl.EHDefaultStore, 133, 126, 7, 53
+org.apache.cocoon.components.store.impl.FilesystemStore, 47, 48, 1, 13
+org.apache.cocoon.util.BufferedOutputStream, 63, 85, 22, 30
+org.apache.cocoon.util.ConfigurationUtil, 75, 83, 8, 39
+org.apache.cocoon.util.Deprecation$LoggerWrapper, 59, 72, 13, 32
+org.apache.cocoon.util.Deprecation$LogLevel, 17, 35, 18, 10
+org.apache.cocoon.util.EnumerationFactory, 67, 75, 8, 34
+org.apache.cocoon.util.ImageProperties, 25, 36, 11, 8
+org.apache.cocoon.util.ReflectionUtils$DefaultIndexer, 24, 41, 17, 7
+org.apache.cocoon.util.ReflectionUtils$DefaultMatcher, 7, 22, 15, 6
+org.apache.cocoon.util.ReflectionUtils, 49, 62, 13, 18
+org.apache.cocoon.util.TraxErrorHandler, 58, 58, 0, 20
+org.commonjava.emb.app.AbstractEMBApplication, 85, 76, 9, 32
+org.ow2.jasmine.monitoring.eventswitch.extractor.JasmineEventDataExtractor, 59, 68, 9, 24
+com.google.api.data.docs.v3.atom.GoogleDocumentsListAtom, 16, 25, 9, 7
+org.apache.jackrabbit.extractor.CompositeTextExtractor, 63, 70, 7, 25
+org.apache.jackrabbit.extractor.EmptyTextExtractor, 23, 38, 15, 10
+org.apache.jackrabbit.extractor.ExtractorHandler, 60, 69, 9, 25
+org.apache.jackrabbit.extractor.HTMLParser, 58, 66, 8, 35
+org.apache.jackrabbit.extractor.HTMLTextExtractor, 56, 62, 6, 19
+org.apache.jackrabbit.extractor.MsExcelTextExtractor, 55, 63, 8, 20
+org.apache.jackrabbit.extractor.MsOutlookTextExtractor, 54, 60, 6, 18
+org.apache.jackrabbit.extractor.MsPowerPointTextExtractor, 57, 66, 9, 23
+org.apache.jackrabbit.extractor.MsWordTextExtractor, 53, 60, 7, 18
+org.apache.jackrabbit.extractor.OpenOfficeTextExtractor$OpenOfficeContentHandler, 31, 43, 12, 13
+org.apache.jackrabbit.extractor.OpenOfficeTextExtractor, 80, 86, 6, 38
+org.apache.jackrabbit.extractor.PdfTextExtractor, 59, 64, 5, 22
+org.apache.jackrabbit.extractor.PlainTextExtractor, 50, 62, 12, 21
+org.apache.jackrabbit.extractor.RTFTextExtractor, 53, 66, 13, 20
+org.codehaus.mojo.jboss.packaging.AbstractPackagingMojo, 107, 89, 18, 36
+org.codehaus.mojo.jboss.packaging.ESBMojo, 27, 39, 12, 10
+org.codehaus.mojo.jboss.packaging.HarMojo, 47, 55, 8, 21
+org.codehaus.mojo.jboss.packaging.ParMojo, 53, 63, 10, 15
+org.eclipse.jdt.core.CheckDebugAttributes, 78, 80, 2, 37
+org.eclipse.jdt.internal.antadapter.AntAdapterMessages, 47, 55, 8, 15
+org.zeroturnaround.javarebel.maven.GenerateLiveRebelMojo, 60, 61, 1, 22
+org.zeroturnaround.javarebel.maven.RebelClasspathResource, 16, 18, 2, 10
+org.zeroturnaround.javarebel.maven.RebelXmlBuilder, 53, 58, 5, 17
+org.onebusaway.plugins.hsqldb.RunMojo$1, 12, 22, 10, 5
+org.onebusaway.plugins.hsqldb.RunMojo, 93, 88, 5, 46
+org.apache.myfaces.extensions.cdi.bv.api.ClassLevelConstraintValidator, 45, 52, 7, 18
+org.codehaus.mojo.osxappbundle.CreateApplicationBundleMojo, 137, 116, 21, 58
+org.codehaus.mojo.osxappbundle.encoding.DefaultEncodingDetector, 39, 57, 18, 20
+org.pdfbox.afmtypes.CharMetric, 25, 35, 10, 10
+org.pdfbox.afmtypes.Composite, 17, 26, 9, 6
+org.pdfbox.afmtypes.CompositePart, 13, 17, 4, 7
+org.pdfbox.ant.PDFToTextTask, 63, 69, 6, 29
+org.pdfbox.cos.COSDocument, 105, 93, 12, 44
+org.pdfbox.cos.COSName, 110, 104, 6, 52
+org.pdfbox.cos.COSNull, 29, 46, 17, 16
+org.pdfbox.cos.COSNumber, 35, 46, 11, 10
+org.pdfbox.cos.COSObject, 57, 56, 1, 18
+org.pdfbox.persistence.util.COSObjectKey, 41, 61, 20, 22
+org.pdfbox.Decrypt, 50, 59, 9, 24
+org.pdfbox.encoding.AFMEncoding, 25, 41, 16, 10
+org.pdfbox.encoding.DictionaryEncoding, 49, 64, 15, 30
+org.pdfbox.encoding.Encoding, 129, 112, 17, 58
+org.pdfbox.encoding.EncodingManager, 35, 41, 6, 8
+org.pdfbox.encoding.MacRomanEncoding, 12, 29, 17, 7
+org.pdfbox.encoding.PdfDocEncoding, 12, 29, 17, 7
+org.pdfbox.encoding.StandardEncoding, 12, 29, 17, 7
+org.pdfbox.encoding.WinAnsiEncoding, 12, 29, 17, 7
+org.pdfbox.ttf.CMAPEncodingEntry, 117, 134, 17, 75
+org.pdfbox.Encrypt, 78, 82, 4, 40
+org.pdfbox.encryption.DocumentEncryption, 112, 130, 18, 57
+org.pdfbox.encryption.PDFEncryption, 206, 214, 8, 130
+org.pdfbox.pdmodel.encryption.PDEncryptionDictionary, 48, 59, 11, 23
+org.pdfbox.pdmodel.encryption.PDEncryptionManager, 67, 69, 2, 27
+org.pdfbox.pdmodel.encryption.PDStandardEncryption, 82, 92, 10, 55
+org.pdfbox.examples.fdf.PrintFields, 67, 69, 2, 28
+org.pdfbox.examples.fdf.SetField, 44, 57, 13, 17
+org.pdfbox.examples.pdmodel.AddMetadataFromDocInfo, 61, 65, 4, 24
+org.pdfbox.examples.pdmodel.CreateBlankPDF, 41, 53, 12, 19
+org.pdfbox.examples.pdmodel.CreateBookmarks, 64, 68, 4, 29
+org.pdfbox.examples.pdmodel.HelloWorld, 43, 55, 12, 18
+org.pdfbox.examples.pdmodel.ImageToPDF, 53, 64, 11, 20
+org.pdfbox.examples.pdmodel.PrintBookmarks, 56, 67, 11, 25
+org.pdfbox.examples.pdmodel.PrintDocumentMetaData, 56, 65, 9, 24
+org.pdfbox.examples.pdmodel.ShowColorBoxes, 44, 62, 18, 21
+org.pdfbox.examples.persistence.AppendAndFillDoc, 92, 99, 7, 42
+org.pdfbox.examples.persistence.CopyDoc, 47, 57, 10, 21
+org.pdfbox.examples.persistence.WriteDecodedDoc, 59, 61, 2, 27
+org.pdfbox.examples.signature.ShowSignature, 71, 70, 1, 33
+org.pdfbox.examples.util.PrintTextLocations, 66, 77, 11, 32
+org.pdfbox.exceptions.WrappedException, 16, 27, 11, 6
+org.pdfbox.filter.ASCII85Filter, 35, 55, 20, 24
+org.pdfbox.filter.CCITTFaxDecodeFilter, 27, 35, 8, 7
+org.pdfbox.filter.DCTFilter, 27, 35, 8, 7
+org.pdfbox.filter.FilterManager, 39, 43, 4, 10
+org.pdfbox.filter.LZWNode, 45, 61, 16, 22
+org.pdfbox.ImportFDF, 41, 53, 12, 18
+org.pdfbox.ImportXFDF, 42, 54, 12, 19
+org.pdfbox.pdfparser.PDFObjectStreamParser, 88, 74, 14, 30
+org.pdfbox.PDFReader$1, 10, 22, 12, 5
+org.pdfbox.PDFReader$2, 10, 22, 12, 5
+org.pdfbox.PDFReader$3, 10, 22, 12, 5
+org.pdfbox.PDFReader, 98, 95, 3, 42
+org.pdfbox.PDFSplit, 94, 99, 5, 48
+org.pdfbox.pdfviewer.MapEntry, 28, 36, 8, 11
+org.pdfbox.pdfviewer.PageWrapper, 38, 49, 11, 11
+org.pdfbox.pdfviewer.PDFPagePanel, 41, 59, 18, 19
+org.pdfbox.pdfviewer.ReaderBottomPanel, 34, 46, 12, 9
+org.pdfbox.pdfwriter.ContentStreamWriter, 71, 75, 4, 32
+org.pdfbox.pdfwriter.COSStandardOutputStream, 45, 62, 17, 18
+org.pdfbox.pdmodel.common.COSArrayList, 114, 105, 9, 49
+org.pdfbox.pdmodel.common.COSDictionaryMap, 81, 77, 4, 34
+org.pdfbox.pdmodel.common.COSStreamArray, 63, 61, 2, 25
+org.pdfbox.pdmodel.common.filespecification.PDComplexFileSpecification, 19, 31, 12, 6
+org.pdfbox.pdmodel.common.filespecification.PDFileSpecification, 16, 22, 6, 10
+org.pdfbox.pdmodel.common.filespecification.PDSimpleFileSpecification, 17, 24, 7, 5
+org.pdfbox.pdmodel.common.PDMatrix, 35, 50, 15, 12
+org.pdfbox.pdmodel.common.PDNamedTextStream, 22, 33, 11, 11
+org.pdfbox.pdmodel.common.PDNameTreeNode, 109, 102, 7, 51
+org.pdfbox.pdmodel.common.PDObjectStream, 34, 50, 16, 16
+org.pdfbox.pdmodel.common.PDRange, 40, 52, 12, 12
+org.pdfbox.pdmodel.common.PDTextStream, 49, 63, 14, 26
+org.pdfbox.pdmodel.edit.PDPageContentStream, 96, 103, 7, 30
+org.pdfbox.pdmodel.fdf.FDFAnnotation, 32, 44, 12, 10
+org.pdfbox.pdmodel.fdf.FDFCatalog, 35, 45, 10, 13
+org.pdfbox.pdmodel.fdf.FDFDictionary, 85, 77, 8, 37
+org.pdfbox.pdmodel.fdf.FDFDocument, 67, 57, 10, 18
+org.pdfbox.pdmodel.fdf.FDFField, 93, 81, 12, 42
+org.pdfbox.pdmodel.fdf.FDFIconFit, 41, 55, 14, 18
+org.pdfbox.pdmodel.fdf.FDFJavaScript, 49, 58, 9, 22
+org.pdfbox.pdmodel.fdf.FDFNamedPageReference, 23, 34, 11, 7
+org.pdfbox.pdmodel.fdf.FDFOptionElement, 30, 41, 11, 5
+org.pdfbox.pdmodel.fdf.FDFPage, 44, 60, 16, 21
+org.pdfbox.pdmodel.fdf.FDFPageInfo, 13, 15, 2, 5
+org.pdfbox.pdmodel.fdf.FDFTemplate, 49, 66, 17, 25
+org.pdfbox.pdmodel.font.PDCIDFontType0Font, 29, 42, 13, 9
+org.pdfbox.pdmodel.font.PDCIDFontType2Font, 29, 42, 13, 9
+org.pdfbox.pdmodel.font.PDFontFactory, 32, 38, 6, 13
+org.pdfbox.pdmodel.font.PDType0Font, 30, 47, 17, 15
+org.pdfbox.pdmodel.font.Type3StreamParser, 41, 58, 17, 19
+org.pdfbox.pdmodel.graphics.color.PDCalRGB, 59, 64, 5, 20
+org.pdfbox.pdmodel.graphics.color.PDColorSpaceInstance, 19, 28, 9, 5
+org.pdfbox.pdmodel.graphics.color.PDDeviceCMYK, 31, 38, 7, 17
+org.pdfbox.pdmodel.graphics.color.PDDeviceGray, 30, 52, 22, 19
+org.pdfbox.pdmodel.graphics.color.PDDeviceNAttributes, 44, 50, 6, 16
+org.pdfbox.pdmodel.graphics.color.PDDeviceRGB, 37, 61, 24, 19
+org.pdfbox.pdmodel.graphics.color.PDGamma, 37, 49, 12, 9
+org.pdfbox.pdmodel.graphics.color.PDLab, 70, 72, 2, 25
+org.pdfbox.pdmodel.graphics.color.PDPattern, 24, 32, 8, 8
+org.pdfbox.pdmodel.graphics.color.PDSeparation, 48, 59, 11, 19
+org.pdfbox.pdmodel.graphics.color.PDTristimulus, 54, 63, 9, 19
+org.pdfbox.pdmodel.graphics.PDExtendedGraphicsState, 64, 64, 0, 22
+org.pdfbox.pdmodel.graphics.PDFontSetting, 47, 59, 12, 18
+org.pdfbox.pdmodel.graphics.PDLineDashPattern, 38, 47, 9, 11
+org.pdfbox.pdmodel.graphics.xobject.PDInlinedImage, 69, 87, 18, 36
+org.pdfbox.pdmodel.graphics.xobject.PDJpeg, 51, 62, 11, 25
+org.pdfbox.pdmodel.graphics.xobject.PDPixelMap, 42, 65, 23, 22
+org.pdfbox.pdmodel.graphics.xobject.PDXObject, 62, 58, 4, 24
+org.pdfbox.pdmodel.graphics.xobject.PDXObjectForm, 28, 46, 18, 14
+org.pdfbox.pdmodel.graphics.xobject.PDXObjectImage, 56, 70, 14, 26
+org.pdfbox.pdmodel.interactive.action.PDActionFactory, 21, 30, 9, 13
+org.pdfbox.pdmodel.interactive.action.PDAdditionalActions, 21, 32, 11, 6
+org.pdfbox.pdmodel.interactive.action.PDAnnotationAdditionalActions, 28, 40, 12, 13
+org.pdfbox.pdmodel.interactive.action.PDDocumentCatalogAdditionalActions, 28, 40, 12, 13
+org.pdfbox.pdmodel.interactive.action.PDFormFieldAdditionalActions, 28, 40, 12, 13
+org.pdfbox.pdmodel.interactive.action.PDPageAdditionalActions, 28, 40, 12, 13
+org.pdfbox.pdmodel.interactive.action.type.PDAction, 53, 66, 13, 27
+org.pdfbox.pdmodel.interactive.action.type.PDActionGoTo, 14, 32, 18, 8
+org.pdfbox.pdmodel.interactive.action.type.PDActionJavaScript, 14, 33, 19, 7
+org.pdfbox.pdmodel.interactive.action.type.PDActionLaunch, 34, 48, 14, 17
+org.pdfbox.pdmodel.interactive.action.type.PDActionRemoteGoTo, 28, 40, 12, 12
+org.pdfbox.pdmodel.interactive.action.type.PDActionURI, 26, 40, 14, 12
+org.pdfbox.pdmodel.interactive.action.type.PDWindowsLaunchParams, 20, 32, 12, 7
+org.pdfbox.pdmodel.interactive.annotation.PDAppearanceDictionary, 53, 55, 2, 21
+org.pdfbox.pdmodel.interactive.annotation.PDAppearanceStream, 33, 44, 11, 15
+org.pdfbox.pdmodel.PDDestinationNameTreeNode, 34, 39, 5, 15
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDDestination, 45, 52, 7, 25
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDNamedDestination, 36, 45, 9, 17
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageDestination, 44, 56, 12, 24
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageFitDestination, 24, 41, 17, 13
+org.pdfbox.pdmodel.interactive.form.PDAcroForm, 86, 81, 5, 45
+org.pdfbox.pdmodel.interactive.form.PDCheckbox, 74, 80, 6, 41
+org.pdfbox.pdmodel.interactive.form.PDChoiceButton, 36, 54, 18, 20
+org.pdfbox.pdmodel.interactive.form.PDChoiceField, 64, 72, 8, 38
+org.pdfbox.pdmodel.interactive.form.PDPushButton, 17, 32, 15, 7
+org.pdfbox.pdmodel.interactive.form.PDRadioCollection, 56, 68, 12, 31
+org.pdfbox.pdmodel.interactive.pagenavigation.PDThread, 33, 44, 11, 14
+org.pdfbox.pdmodel.interactive.pagenavigation.PDThreadBead, 36, 45, 9, 13
+org.pdfbox.pdmodel.interactive.viewerpreferences.PDViewerPreferences, 22, 36, 14, 11
+org.pdfbox.pdmodel.PDDocumentCatalog, 71, 69, 2, 27
+org.pdfbox.pdmodel.PDDocumentInformation, 83, 83, 0, 45
+org.pdfbox.pdmodel.PDDocumentNameDictionary, 37, 48, 11, 15
+org.pdfbox.pdmodel.PDResources, 59, 56, 3, 22
+org.pdfbox.pdmodel.text.PDTextState, 30, 32, 2, 15
+org.pdfbox.ttf.CMAPTable, 37, 55, 18, 19
+org.pdfbox.ttf.GlyphData, 25, 35, 10, 8
+org.pdfbox.ttf.GlyphTable, 39, 64, 25, 21
+org.pdfbox.ttf.HeaderTable, 24, 30, 6, 11
+org.pdfbox.ttf.HorizontalHeaderTable, 17, 24, 7, 8
+org.pdfbox.ttf.HorizontalMetricsTable, 35, 53, 18, 21
+org.pdfbox.ttf.IndexToLocationTable, 47, 69, 22, 30
+org.pdfbox.ttf.MaximumProfileTable, 17, 24, 7, 8
+org.pdfbox.ttf.NameRecord, 26, 34, 8, 7
+org.pdfbox.ttf.OS2WindowsMetricsTable, 31, 44, 13, 15
+org.pdfbox.ttf.RAFDataStream, 34, 57, 23, 15
+org.pdfbox.pdmodel.font.PDTrueTypeFont, 178, 153, 25, 88
+org.pdfbox.ttf.TrueTypeFont, 32, 38, 6, 9
+org.pdfbox.ttf.TTFParser, 50, 66, 16, 24
+org.pdfbox.util.ImageParameters, 70, 82, 12, 40
+org.pdfbox.util.operator.BeginText, 39, 42, 3, 8
+org.pdfbox.util.operator.Concatenate, 62, 68, 6, 24
+org.pdfbox.util.operator.EndText, 37, 44, 7, 8
+org.pdfbox.util.operator.GRestore, 39, 43, 4, 9
+org.pdfbox.util.operator.GSave, 37, 42, 5, 9
+org.pdfbox.util.operator.Invoke, 62, 64, 2, 24
+org.pdfbox.util.operator.MoveAndShow, 45, 54, 9, 13
+org.pdfbox.util.operator.SetMoveAndShow, 53, 59, 6, 18
+org.pdfbox.util.operator.MoveText, 53, 61, 8, 18
+org.pdfbox.util.operator.MoveTextSetLeading, 54, 57, 3, 17
+org.pdfbox.util.operator.NextLine, 51, 56, 5, 13
+org.pdfbox.util.operator.SetCharSpacing, 50, 55, 5, 16
+org.pdfbox.util.operator.SetGraphicsStateParameters, 44, 46, 2, 12
+org.pdfbox.util.operator.SetHorizontalTextScaling, 33, 42, 9, 10
+org.pdfbox.util.operator.SetLineWidth, 33, 46, 13, 10
+org.pdfbox.util.operator.SetStrokingColorSpace, 65, 77, 12, 34
+org.pdfbox.util.operator.SetTextFont, 57, 57, 0, 18
+org.pdfbox.util.operator.SetTextLeading, 42, 45, 3, 11
+org.pdfbox.util.operator.SetTextRenderingMode, 33, 42, 9, 10
+org.pdfbox.util.operator.SetTextRise, 33, 42, 9, 10
+org.pdfbox.util.operator.SetWordSpacing, 41, 46, 5, 10
+org.pdfbox.util.operator.ShowText, 42, 44, 2, 11
+org.pdfbox.util.operator.ShowTextGlyph, 83, 90, 7, 45
+org.pdfbox.util.PDFHighlighter, 122, 111, 11, 56
+org.pdfbox.util.PDFOperator, 51, 55, 4, 17
+org.pdfbox.util.ResourceLoader, 50, 54, 4, 17
+org.pdfbox.util.Splitter, 62, 64, 2, 27
+org.pdfbox.util.XMLUtil, 35, 44, 9, 21
+org.codehaus.plexus.compiler.eclipse.EclipseJavaCompiler$CompilationUnit, 58, 76, 18, 29
+org.codehaus.plexus.compiler.eclipse.EclipseJavaCompiler$EclipseCompilerICompilerRequestor, 74, 78, 4, 35
+org.codehaus.plexus.compiler.eclipse.EclipseJavaCompiler$EclipseCompilerINameEnvironment, 82, 94, 12, 39
+org.codehaus.plexus.compiler.eclipse.EclipseJavaCompiler, 100, 110, 10, 46
+org.codehaus.plexus.compiler.eclipse.SourceCodeLocator, 44, 52, 8, 18
+org.codehaus.plexus.mailsender.AbstractMailSender, 53, 77, 24, 20
+org.codehaus.plexus.mailsender.MailMessage$Address, 29, 37, 8, 9
+org.codehaus.plexus.mailsender.MailMessage, 36, 43, 7, 12
+com.vii.streamline.webserver.WebServer, 43, 58, 15, 12
+org.apache.taglibs.string.CountMatchesTag, 20, 35, 15, 6
+org.apache.taglibs.string.CountTag, 20, 35, 15, 6
+org.apache.taglibs.string.DefaultTag, 24, 31, 7, 8
+org.apache.taglibs.string.JoinTag, 18, 31, 13, 9
+org.apache.taglibs.string.NestedStringTag, 18, 30, 12, 7
+org.apache.taglibs.string.OverlayTag, 19, 34, 15, 8
+org.apache.taglibs.string.ReplaceTag, 28, 45, 17, 14
+org.apache.taglibs.string.SplitTag, 18, 29, 11, 7
+org.apache.taglibs.string.StringTagSupport, 42, 55, 13, 18
+org.apache.taglibs.string.SubstringTag, 20, 35, 15, 9
+org.apache.taglibs.string.TruncateNicelyTag, 19, 35, 16, 10
+org.apache.taglibs.string.WordWrapTag, 22, 40, 18, 10
+org.wamblee.test.persistence.toplink.ToplinkJpaCustomizer, 20, 31, 11, 8
+org.apache.xerces.util.AugmentationsImpl$LargeContainer, 37, 47, 10, 14
+org.apache.xerces.util.AugmentationsImpl$SmallContainer$SmallContainerKeyEnumeration, 52, 69, 17, 22
+org.apache.xerces.util.AugmentationsImpl$AugmentationsItemsContainer, 5, 7, 2, 3
+org.apache.xerces.util.AugmentationsImpl, 25, 39, 14, 10
+org.apache.xerces.util.AugmentationsImpl$SmallContainer, 97, 100, 3, 52
+org.apache.xerces.util.DefaultErrorHandler, 41, 55, 14, 20
+org.apache.xerces.util.EncodingMap, 21, 33, 12, 6
+org.apache.xerces.util.NamespaceSupport$Prefixes, 55, 64, 9, 26
+org.apache.xerces.util.ParserConfigurationSettings, 64, 76, 12, 33
+org.apache.xerces.util.XMLResourceIdentifierImpl, 38, 60, 22, 20
+org.apache.xerces.xni.parser.XMLParseException, 33, 46, 13, 14
+org.apache.xerces.util.XMLStringBuffer, 64, 84, 20, 33
+org.apache.xerces.xni.XMLString, 54, 74, 20, 29
+org.codehaus.xfire.jaxb.JaxbIntrospector, 40, 49, 9, 12
+org.codehaus.xfire.jaxb.JaxbType, 43, 57, 14, 17
+org.codehaus.xfire.jaxb.JaxbTypeCreator, 53, 62, 9, 21
+org.codehaus.xfire.jaxb.JaxbTypeRegistry, 13, 23, 10, 5
+</code></pre>
+
+<p>正解したやつの長さの差, 差が0のものは省いている</p>
+<pre><code>// left origin, right obfu
+/Volumes/HD/false_negative_50_jar/preservation ❯❯❯ python3 lenght_check_for_two_files.py DNR-2gram-correct-files-origin.csv DNR-2gram-correct-files.csv | sed 's/ //g' | awk -F ',' '{if ($4 &gt; 0) print $0}'
+org.apache.avalon.logging.logkit.factory.syslog.SyslogTarget,61,68,7,37
+org.apache.avalon.logging.logkit.factory.syslog.SyslogTargetFactory,57,64,7,19
+no.tornado.brap.common.UsernamePasswordPrincipal,52,58,6,33
+org.apache.cocoon.components.store.impl.MRUMemoryStore,91,89,2,40
+org.apache.cocoon.components.store.impl.StoreJanitorImpl,195,180,15,104
+org.apache.cocoon.util.ByteRange,79,91,12,41
+org.apache.cocoon.util.Deprecation$LogLevel,17,35,18,10
+org.apache.cocoon.util.Deprecation$LoggerWrapper,59,72,13,32
+org.apache.cocoon.util.Deprecation,46,62,16,20
+org.apache.cocoon.util.HashUtil,63,89,26,46
+org.apache.cocoon.util.ImageUtils,131,146,15,100
+org.apache.cocoon.util.IOUtils,154,155,1,95
+org.apache.cocoon.util.MIMEUtils,116,115,1,66
+org.apache.cocoon.util.NetUtils,222,201,21,132
+org.apache.cocoon.util.PostInputStream,103,105,2,50
+org.apache.cocoon.util.ResizableContainer,63,88,25,33
+org.apache.cocoon.util.StringUtils,47,62,15,34
+org.apache.cocoon.util.WildcardMatcherHelper$Matcher,108,110,2,59
+org.apache.cocoon.util.WildcardMatcherHelper,95,96,1,53
+org.apache.jackrabbit.extractor.PngTextExtractor,145,148,3,82
+org.apache.jackrabbit.extractor.XMLTextExtractor$1,6,8,2,4
+org.apache.jackrabbit.extractor.XMLTextExtractor,66,69,3,26
+org.codehaus.mojo.jboss.packaging.HelpMojo,133,125,8,73
+org.eclipse.jdt.core.JDTCompilerAdapter,174,140,34,84
+org.zeroturnaround.javarebel.maven.GenerateRebelMojo,175,145,30,84
+org.pdfbox.pdmodel.interactive.action.type.PDActionURI,26,40,14,12
+org.pdfbox.afmparser.AFMParser,156,150,6,80
+org.pdfbox.afmtypes.FontMetric,80,87,7,46
+org.pdfbox.cmapparser.CMapParser,143,133,10,76
+org.pdfbox.cmaptypes.CMap,87,86,1,45
+org.pdfbox.cos.COSArray,100,99,1,51
+org.pdfbox.pdmodel.common.COSArrayList,114,105,9,49
+org.pdfbox.cos.COSBoolean,54,68,14,25
+org.pdfbox.cos.COSDictionary,121,108,13,63
+org.pdfbox.pdmodel.common.COSDictionaryMap,81,77,4,34
+org.pdfbox.cos.COSFloat,65,77,12,30
+org.pdfbox.cos.COSInteger,63,73,10,31
+org.pdfbox.cos.COSStream,165,153,12,79
+org.pdfbox.pdmodel.common.COSStreamArray,63,61,2,25
+org.pdfbox.cos.COSString,138,133,5,74
+org.pdfbox.encryption.ARCFour,95,109,14,53
+org.pdfbox.encryption.DocumentEncryption,112,130,18,57
+org.pdfbox.encryption.PDFEncryption,206,214,8,130
+org.pdfbox.examples.persistence.AppendDoc,99,100,1,50
+org.pdfbox.examples.persistence.FieldsDoc,72,77,5,34
+org.pdfbox.ExportFDF,59,66,7,29
+org.pdfbox.ExportXFDF,59,66,7,29
+org.pdfbox.ExtractImages,109,104,5,59
+org.pdfbox.ExtractText,128,127,1,60
+org.pdfbox.filter.ASCIIHexFilter,73,90,17,46
+org.pdfbox.filter.FlateFilter,35,55,20,24
+org.pdfbox.filter.LZWDictionary,104,114,10,55
+org.pdfbox.filter.LZWFilter,89,104,15,55
+org.pdfbox.filter.RunLengthDecodeFilter,70,85,15,48
+org.pdfbox.io.ASCII85InputStream,149,162,13,98
+org.pdfbox.io.ASCII85OutputStream,156,170,14,96
+org.pdfbox.io.ByteArrayPushBackInputStream,142,147,5,83
+org.pdfbox.io.NBitInputStream,68,74,6,45
+org.pdfbox.io.NBitOutputStream,52,63,11,31
+org.pdfbox.io.PushBackInputStream,27,41,14,19
+org.pdfbox.io.RandomAccessFileInputStream,69,97,28,48
+org.pdfbox.io.RandomAccessFileOutputStream,54,79,25,30
+org.pdfbox.Overlay$LayoutPage,10,12,2,5
+org.pdfbox.Overlay,191,160,31,89
+org.pdfbox.PDFDebugger$1,10,22,12,5
+org.pdfbox.PDFDebugger$2,10,22,12,5
+org.pdfbox.PDFDebugger$3,10,22,12,5
+org.pdfbox.PDFDebugger$4,10,22,12,5
+org.pdfbox.PDFDebugger,111,112,1,56
+org.pdfbox.pdfparser.BaseParser,276,253,23,164
+org.pdfbox.pdfparser.PDFParser,187,171,16,102
+org.pdfbox.pdfparser.PDFStreamParser,158,146,12,77
+org.pdfbox.PDFToImage,134,129,5,73
+org.pdfbox.pdfviewer.PageDrawer,152,159,7,85
+org.pdfbox.pdfviewer.PDFTreeCellRenderer,41,50,9,21
+org.pdfbox.pdfviewer.PDFTreeModel,87,95,8,55
+org.pdfbox.pdfwriter.COSWriter,188,174,14,94
+org.pdfbox.pdfwriter.COSWriterXRefEntry,35,54,19,21
+org.pdfbox.pdmodel.common.PDRectangle,71,77,6,27
+org.pdfbox.pdmodel.common.PDStream,112,118,6,64
+org.pdfbox.pdmodel.encryption.PDStandardEncryption,82,92,10,55
+org.pdfbox.pdmodel.font.PDCIDFont,145,146,1,92
+org.pdfbox.pdmodel.font.PDCIDFontType0Font,29,42,13,9
+org.pdfbox.pdmodel.font.PDCIDFontType2Font,29,42,13,9
+org.pdfbox.pdmodel.font.PDFont,234,191,43,120
+org.pdfbox.pdmodel.font.PDFontDescriptor,49,67,18,39
+org.pdfbox.pdmodel.font.PDFontDescriptorAFM,47,53,6,28
+org.pdfbox.pdmodel.font.PDFontDescriptorDictionary,50,59,9,26
+org.pdfbox.pdmodel.font.PDFontFactory,32,38,6,13
+org.pdfbox.pdmodel.graphics.PDFontSetting,47,59,12,18
+org.pdfbox.pdmodel.font.PDSimpleFont,110,116,6,71
+org.pdfbox.pdmodel.font.PDTrueTypeFont,178,153,25,88
+org.pdfbox.pdmodel.font.PDType1Font,73,80,7,30
+org.pdfbox.pdmodel.font.PDType3Font,96,100,4,48
+org.pdfbox.pdmodel.graphics.color.PDCalGray,63,70,7,26
+org.pdfbox.pdmodel.graphics.color.PDColorSpaceFactory,64,69,5,37
+org.pdfbox.pdmodel.graphics.color.PDDeviceN,67,72,5,27
+org.pdfbox.pdmodel.graphics.color.PDDeviceNAttributes,44,50,6,16
+org.pdfbox.pdmodel.graphics.color.PDICCBased,123,124,1,69
+org.pdfbox.pdmodel.graphics.color.PDIndexed,105,114,9,53
+org.pdfbox.pdmodel.graphics.PDGraphicsState,42,50,8,19
+org.pdfbox.pdmodel.graphics.xobject.PDXObjectImage,56,70,14,26
+org.pdfbox.pdmodel.interactive.action.PDAnnotationAdditionalActions,28,40,12,13
+org.pdfbox.pdmodel.interactive.annotation.PDAnnotation,90,96,6,59
+org.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget,11,26,15,6
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageFitHeightDestination,34,51,17,20
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageFitRectangleDestination,40,57,17,22
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageFitWidthDestination,34,51,17,20
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageXYZDestination,36,53,17,20
+org.pdfbox.pdmodel.interactive.documentnavigation.outline.PDOutlineItem,97,101,4,60
+org.pdfbox.pdmodel.interactive.documentnavigation.outline.PDOutlineNode,86,95,9,53
+org.pdfbox.pdmodel.interactive.annotation.PDAppearanceDictionary,53,55,2,21
+org.pdfbox.pdmodel.interactive.annotation.PDAppearanceStream,33,44,11,15
+org.pdfbox.pdmodel.interactive.form.PDAppearance,234,227,7,153
+org.pdfbox.pdmodel.interactive.form.PDField,139,124,15,83
+org.pdfbox.pdmodel.interactive.form.PDFieldFactory,69,75,6,42
+org.pdfbox.pdmodel.interactive.form.PDVariableText,50,61,11,24
+org.pdfbox.pdmodel.PDDocument,141,137,4,74
+org.pdfbox.pdmodel.PDDocumentCatalog,71,69,2,27
+org.pdfbox.pdmodel.PDDocumentNameDictionary,37,48,11,15
+org.pdfbox.pdmodel.interactive.action.PDDocumentCatalogAdditionalActions,28,40,12,13
+org.pdfbox.pdmodel.interactive.documentnavigation.outline.PDDocumentOutline,10,22,12,6
+org.pdfbox.pdmodel.PDPage,119,123,4,65
+org.pdfbox.pdmodel.PDPageNode,110,105,5,60
+org.pdfbox.pdmodel.edit.PDPageContentStream,96,103,7,30
+org.pdfbox.pdmodel.interactive.action.PDPageAdditionalActions,28,40,12,13
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageDestination,44,56,12,24
+org.pdfbox.pdmodel.interactive.documentnavigation.destination.PDPageFitDestination,24,41,17,13
+org.pdfbox.persistence.util.COSHEXTable,28,46,18,21
+org.pdfbox.persistence.util.COSObjectKey,41,61,20,22
+org.pdfbox.searchengine.lucene.IndexFiles,116,103,13,51
+org.pdfbox.TextToPDF,147,140,7,83
+org.pdfbox.ttf.CMAPEncodingEntry,117,134,17,75
+org.pdfbox.ttf.MemoryTTFDataStream,102,120,18,65
+org.pdfbox.ttf.NamingTable,62,79,17,41
+org.pdfbox.ttf.PostScriptTable,115,120,5,63
+org.pdfbox.ttf.TTFDataStream,95,120,25,74
+org.pdfbox.util.BoundingBox,21,34,13,8
+org.pdfbox.util.DateConverter,91,100,9,55
+org.pdfbox.util.DefaultFileFilter,90,92,2,41
+org.pdfbox.pdmodel.common.PDMatrix,35,50,15,12
+org.pdfbox.util.Matrix,135,146,11,71
+org.pdfbox.util.operator.SetMatrix,62,68,6,24
+org.pdfbox.util.operator.ShowTextGlyph,83,90,7,45
+org.pdfbox.util.PDFStreamEngine$StreamResources,10,16,6,6
+org.pdfbox.util.PDFStreamEngine,215,214,1,125
+org.pdfbox.util.PDFText2HTML,126,109,17,61
+org.pdfbox.util.PDFTextStripper,258,242,16,158
+org.apache.taglibs.string.MidTag,29,44,15,18
+org.apache.taglibs.string.RandomStringTag,87,94,7,43
+org.apache.taglibs.string.MetaphoneTag,6,16,10,4
+org.apache.taglibs.string.util.Metaphone,122,135,13,86
+org.apache.taglibs.string.SoundexTag,7,17,10,3
+org.apache.taglibs.string.util.Soundex,84,95,11,48
+org.apache.taglibs.string.util.StringW,122,125,3,86
+org.apache.taglibs.string.util.XmlW,98,104,6,63
+org.apache.taglibs.string.OverlayTag,19,34,15,8
+org.apache.xerces.util.AugmentationsImpl$SmallContainer$SmallContainerKeyEnumeration,52,69,17,22
+org.apache.xerces.util.AugmentationsImpl$SmallContainer,97,100,3,52
+org.apache.xerces.util.NamespaceSupport$Prefixes,55,64,9,26
+org.apache.xerces.util.NamespaceSupport,136,144,8,76
+org.apache.xerces.util.URI,304,292,12,203
+org.apache.xerces.util.XMLAttributesImpl,200,192,8,112
+org.apache.xerces.util.XMLAttributesImpl$Attribute,8,10,2,2
+org.apache.xerces.util.XMLStringBuffer,64,84,20,33
+org.apache.xerces.xni.QName,60,76,16,35
+</code></pre>
+
+<h2 id="_2">考察</h2>
+<p>今回はDNRとMLIのクラス，一つを取り出しましたがまぁ結構違うよね的な感想しかない</p>
+<h2 id="_3">グラフ作るか</h2>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181011/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181011/" class="btn btn-xs btn-link">
+        20181011
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20181006/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20181006/" class="btn btn-xs btn-link">
+        20181006
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>バースマークの長さと検索結果に出てきた正解の数の関係を調べる - My Docs</title>
+    <link href="../../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u30d0\u30fc\u30b9\u30de\u30fc\u30af\u306e\u9577\u3055\u3068\u691c\u7d22\u7d50\u679c\u306b\u51fa\u3066\u304d\u305f\u6b63\u89e3\u306e\u6570\u306e\u95a2\u4fc2\u3092\u8abf\u3079\u308b", url: "#_top", children: [
+              {title: "\u7d50\u679c\u306e\u3084\u3064\u3089\u304c\u7d50\u679c\u306e\u4e0a\u4f4d\u4f55\u4ef6\u306b\u4f4d\u7f6e\u3057\u3066\u3044\u308b\u306e\u304b\u3092\u8abf\u67fb", url: "#_2" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/score_length_relational/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/score_length_relational/" class="btn btn-xs btn-link">
+        検索結果の長さとスコアの遷移が見たい
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/" class="btn btn-xs btn-link">
+        この前やってたようなことをやっていく
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="_1">バースマークの長さと検索結果に出てきた正解の数の関係を調べる</h1>
+<pre><code># 2件
+長さは101
+org.apache.activemq.protobuf.DeferredUnmarshal\$Bar2gram
+25 183,183 177,177 25,183 58,58 25,25 176,176 25,183 25,25 182,182 25,182 177,177 187,187 89,89 183,182 176,182 153,153 25,25 25,182 182,182 87,87 25,87 167,167 25,25 180,180 198,198 25,180 180,180 172,172 25,180 2,2 159,159 25,172 3,3 54,54 25,153 21,21 4,4 25,182 184,184 96,96 54,21 5,5 25,21 6,6 25,25 21,21 181,181 21,21 172,182 54,54 21,21 16,16 126,126 7,7 160,160 25,176 21,21 171,171 25,176 167,25 187,182 192,192 182,180 199,199 25,21 182,182 181,181 1,1 58,89 21,21 188,188 183,183 181,181 25,58 187,89 25,180 183,25 4,25 5,25 6,25 198,180 182,182 167,176 187,192 176,183 18,18 182,182 18,25 18,25 166,166 4,4 172,18 165,165 3,3 172,25 192,182 172,172 18,18 25,182 130,130 172
+
+# 38件
+長さは101
+protobuf_unittest.UnittestProto\$TestDupFieldNumber2gram
+25 183,183 177,177 25,183 58,58 25,25 182,182 153,153 25,182 182,182 87,87 167,167 58,25 25,182 18,18 182,87 25,25 176,176 25,183 25,182 25,182 177,177 187,187 89,89 183,182 176,167 25,25 180,180 2,2 159,159 25,180 172,172 3,3 54,54 25,153 21,21 4,4 25,182 184,184 96,96 54,21 5,5 25,21 6,6 25,25 21,21 181,181 21,21 172,172 25,182 54,54 21,21 16,16 126,126 7,7 160,160 25,176 21,21 171,171 25,176 167,25 5,184 87,5 187,183 184,184 192,192 182,25 6,6 187,25 4,184 177,182 192,192 176,176 187,25 187,183 18,25 18,25 166,166 4,4 172,25 198,198 25,18 165,165 3,3 172,25 192,182 172,182 130,130 153,153 3,182 159,159 3,182 154,154 3,172 4,172 18,18 54,16 25,130 130,130 54,21 18,18 25
+</code></pre>
+
+<p>長さは一緒らしい、なるほど</p>
+<h2 id="_2">結果のやつらが結果の上位何件に位置しているのかを調査</h2>
+<p>見たら全部上位勢だった</p>
+<p>すなわち正解となっているのは，上位を全どりしている</p>
+<p>36件正解が見つかったら，上から36件が正解集合だ</p>
+<p>これを見るとどんな感じでpochiの類似度が下がっていっているのかきになる</p>
+<p>image: ./pochi_sim_transition.png</p>
+<h3 id="_3">考察</h3>
+<p>見る感じ順調に下がっているが，線形ではなく若干ブレている．
+うーん</p>
+<p>ズームして見た</p>
+<p>use: protobuf_unittest.UnittestProto$TestRequired
+image: ./pochi_sim_transition_zoom.png</p>
+<p>75件ぐらいからほぼ横ばいでゆっくり下がって行く感じ</p>
+<p>大体のpochiは0.2付近だと言える</p>
+<p>こいつの正解は37件である</p>
+<p>これはこれでいい結果</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/score_length_relational/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/score_length_relational/" class="btn btn-xs btn-link">
+        検索結果の長さとスコアの遷移が見たい
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/" class="btn btn-xs btn-link">
+        この前やってたようなことをやっていく
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

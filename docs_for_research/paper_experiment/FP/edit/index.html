@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>edit distanceの評価 - My Docs</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "edit distance\u306e\u8a55\u4fa1", url: "#_top", children: [
+              {title: "edit\u306e\u691c\u7d22\u6642\u9593", url: "#edit" },
+              {title: "edit\u306e\u6bd4\u8f03\u6642\u9593", url: "#edit_1" },
+              {title: "\u901f\u5ea6\u6bd4", url: "#_1" },
+              {title: "\u8aa4\u691c\u51fa", url: "#_2" },
+              {title: "\u7d5e\u308a\u8fbc\u307f", url: "#_3" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/paper_experiment/narrow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/paper_experiment/narrow/" class="btn btn-xs btn-link">
+        絞り込みというやつ
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/paper_experiment/FP/FP-each/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/paper_experiment/FP/FP-each/" class="btn btn-xs btn-link">
+        BM25
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="edit-distance">edit distanceの評価</h1>
+<h2 id="edit">editの検索時間</h2>
+<pre><code>/Volumes/mituba_20180425/restart/edit_restart ❯❯❯ sed 's/elapsed_time://g' 2gram_time.csv | sed 's/\[sec\]//g' | gowk sum
+7118.484686374664 sec
+</code></pre>
+
+<h2 id="edit_1">editの比較時間</h2>
+<pre><code>./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  734.54s user 135.46s system 125% cpu 11:35.21 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  723.79s user 135.62s system 117% cpu 12:10.57 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  689.97s user 122.70s system 121% cpu 11:07.76 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  615.15s user 100.25s system 128% cpu 9:17.42 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  518.22s user 72.22s system 143% cpu 6:52.01 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  240.84s user 20.59s system 193% cpu 2:14.78 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  153.81s user 15.26s system 165% cpu 1:42.02 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  143.23s user 14.91s system 161% cpu 1:37.97 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  140.82s user 14.44s system 161% cpu 1:36.42 total
+./Tool -m compare -b &quot;$i&quot; -f row_search_script.sh -i ../search_result_&quot;$thre&quot;  140.08s user 14.30s system 160% cpu 1:35.95 total
+</code></pre>
+
+<pre><code>11:35.21 sec
+12:10.57
+11:07.76
+9:17.42
+6:52.01
+2:14.78
+1:42.02
+1:37.97
+1:36.42
+1:35.95
+
+## 秒に直した
+695.21
+730.57
+667.76
+557.42
+412.01
+134.78
+102.02
+97.97
+96.42
+95.95
+
+## 逆にした
+95.95
+96.42
+97.97
+102.02
+134.78
+412.01
+557.42
+667.76
+730.57
+695.21
+</code></pre>
+
+<h2 id="_1">速度比</h2>
+<pre><code>0.9 489.37%
+0.8 489.40%
+0.7 489.51%
+0.6 489.78%
+0.5 492.01%
+0.4 510.81%
+0.3 520.68%
+0.2 528.16%
+0.1 532.42%
+0   530.02%
+</code></pre>
+
+<p>速度が半端なく遅いのでもうだめ</p>
+<h2 id="_2">誤検出</h2>
+<pre><code>/Volumes/mituba_20180425/restart/edit_restart/Tool - [master] ❯❯❯ for thre in 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9;do for i in compare_result_&quot;$thre&quot;/* ;do sed '$d' $i | gowk filter -c 2 -f '&gt; 0.75' ;done | wc -l;done
+    1456
+    1456
+    1456
+    1456
+    1456
+    1432
+    1365
+    1141
+     528
+     298
+</code></pre>
+
+<h2 id="_3">絞り込み</h2>
+<pre><code>10743921
+10618036
+9616725
+7495102
+4885069
+489236
+19283
+2176
+555
+298
+</code></pre>
+
+<p>全体
+93 * 136137 = 12660741</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/paper_experiment/narrow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/paper_experiment/narrow/" class="btn btn-xs btn-link">
+        絞り込みというやつ
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/paper_experiment/FP/FP-each/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/paper_experiment/FP/FP-each/" class="btn btn-xs btn-link">
+        BM25
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

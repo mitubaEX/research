@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20180611 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u691c\u7d22\u4ef6\u6570\u3069\u308c\u304f\u3089\u3044\u3042\u308b\u306e\uff1f", url: "#_top", children: [
+          ]},
+          {title: "6gram", url: "#6gram", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180612/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180612/" class="btn btn-xs btn-link">
+        20180612
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180518/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180518/" class="btn btn-xs btn-link">
+        20180518
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p>検索にどれくらいの時間がかかっているのかを計測しましょう</p>
+<pre><code># BM25
+cat time.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'
+330.33 sec =&gt; 5分30秒
+
+# edit
+cat time.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'
+43964 sec =&gt; 12時間12分44秒
+
+# cloud
+78280.6 =&gt; 21時間44分40.6秒
+</code></pre>
+
+<h2 id="_1">検索件数どれくらいあるの？</h2>
+<pre><code># BM25
+for i in ./search_result/* ; do wc $i ;done | awk '{a+=$1} END {print a}'
+4150300
+ave: 919.8359929078014
+
+# edit
+for i in ./search_result/* ; do wc $i ;done | awk '{a+=$1} END {print a}'
+13792389
+ave: 3056.8238031914893
+</code></pre>
+
+<p>検索クラスは4512個</p>
+<p>検索ヒット数が三倍違う</p>
+<p>でもBM25の方が断然検索時間が早い</p>
+<p>レスポンス速度上昇なぁ</p>
+<p>これは2gramなので6gramでやってみようかな</p>
+<h1 id="6gram">6gram</h1>
+<p>検索時間</p>
+<pre><code># BM25
+cat time_6gram.csv | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | awk '{a+=$1} END {print a }'
+152.823 =&gt; 02分32.823秒
+
+# edit
+</code></pre>
+
+<p>検索件数</p>
+<pre><code># BM25
+for i in ./search_result/* ; do wc $i ;done | awk '{a+=$1} END {print a}'
+18027
+
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180612/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180612/" class="btn btn-xs btn-link">
+        20180612
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180518/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180518/" class="btn btn-xs btn-link">
+        20180518
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

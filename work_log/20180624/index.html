@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20180624 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "edit", url: "#_top", children: [
+              {title: "\u691c\u51fa\u6f0f\u308c", url: "#_1" },
+          ]},
+          {title: "jw", url: "#jw", children: [
+              {title: "\u691c\u51fa\u6f0f\u308c", url: "#_3" },
+          ]},
+          {title: "kgram", url: "#kgram", children: [
+              {title: "\u5e73\u5747\u6642\u9593", url: "#_4" },
+              {title: "\u691c\u51fa\u6f0f\u308c", url: "#_5" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180628/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180628/" class="btn btn-xs btn-link">
+        20180628
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180617/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180617/" class="btn btn-xs btn-link">
+        20180617
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="edit">edit</h2>
+<h3 id="_1">検出漏れ</h3>
+<p>😍    each_algo   ../HD/false_negative_50_jar/false_negative_edit  python3 tp_improve.py pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_greater.csv
+174714
+2792
+137677
+1957
+0
+16</p>
+<p>😐    each_algo   ../HD/false_negative_50_jar/false_negative_edit  python3 tp_improve.py pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv
+[3]  - 45487 done       python3 pro_result_parse.py $i
+215309
+2792
+175822
+1957
+34
+1571</p>
+<p>😍    each_algo   ../HD/false_negative_50_jar/false_negative_edit  python3 tp_improve.py pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv
+7692
+2792
+6110
+1957
+34
+1187</p>
+<h4 id="_2">検索件数</h4>
+<p>😍    each_algo   ../HD/false_negative_50_jar/false_negative_edit  for i in ./search_result/* ; do wc $i ;done | awk '{a+=$1} END {print a}'
+33541761</p>
+<h2 id="jw">jw</h2>
+<h4 id="_3">検出漏れ</h4>
+<pre><code>
+ 😍    each_algo   ../HD/false_negative_50_jar/false_negative_jw  python3 tp_improve.py pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv
+1498061
+2792
+1264091
+1957
+1053
+
+# 絶対違う
+ 😐    each_algo   ../HD/false_negative_50_jar/false_negative_jw  python3 tp_improve.py pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv
+1757758
+2792
+1153146
+1957
+92
+
+</code></pre>
+
+<h2 id="kgram">kgram</h2>
+<h3 id="_4">平均時間</h3>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>6918.71 /459
+15.073442265795206</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="_5">検出漏れ</h3>
+<h4 id="075">0.75</h4>
+<p>/Volumes/HD/false_negative_50_jar/false_negative_kgram ❯❯❯ python3 tp_improve.py pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv
+1413
+2792
+886
+1957
+3
+302</p>
+<h4 id="05">0.5</h4>
+<p>/Volumes/HD/false_negative_50_jar/false_negative_kgram ❮❮❮ python3 tp_improve.py pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv
+32559
+2792
+26531
+1957
+3
+441</p>
+<h4 id="025">0.25</h4>
+<p>/Volumes/HD/false_negative_50_jar/false_negative_kgram ❯❯❯ python3 tp_improve.py pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_greater.csv
+1076862
+2792
+810595
+1957
+2
+500</p>
+<h4 id="_6">検索件数</h4>
+<p>/Volumes/HD/false_negative_50_jar/false_negative_kgram ❯❯❯ for i in ./search_result/* ; do wc $i ;done | awk '{a+=$1} END {print a}'                      each_algo ⬇ ✱ ◼
+1599276</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180628/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180628/" class="btn btn-xs btn-link">
+        20180628
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180617/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180617/" class="btn btn-xs btn-link">
+        20180617
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

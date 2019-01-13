@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="None">
+    
+    
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>My Docs</title>
+    <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap-3.3.7.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    
+      <script src="./js/elasticlunr.min.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '.';
+      var is_top_frame = (window === window.parent);
+        
+        var pageToc = [
+          {title: "\u7814\u7a76\u30ed\u30b0\u7f6e\u304d\u5834", url: "#_top", children: [
+              {title: "\u5404\u7a2e\u30c7\u30a3\u30ec\u30af\u30c8\u30ea", url: "#_2" },
+          ]},
+        ];
+
+    </script>
+    <script src="./js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+<nav class="navbar wm-page-top-frame">
+  <div class="container-fluid wm-top-container">
+    
+    <div class="wm-top-tool pull-right wm-vcenter">
+      <form class="dropdown wm-vcentered" id="wm-search-form" action="./search.html">
+        
+        <button id="wm-search-show" class="btn btn-sm btn-default" type="submit"
+          ><i class="fa fa-search" aria-hidden="true"></i></button>
+
+        <div class="input-group input-group-sm wm-top-search">
+          <input type="text" name="q" class="form-control" id="mkdocs-search-query" placeholder="Search" autocomplete="off">
+          <span class="input-group-btn" role="search">
+            
+            <button class="btn btn-default dropdown-toggle collapse" data-toggle="dropdown" type="button"><span class="caret"></span></button>
+            <ul id="mkdocs-search-results" class="dropdown-menu dropdown-menu-right"></ul>
+            <button id="wm-search-go" class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="wm-top-tool wm-vcenter pull-right wm-small-left">
+      <button id="wm-toc-button" type="button" class="btn btn-sm btn-default wm-vcentered"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+    </div>
+
+    
+    
+
+    
+    <a href="" class="wm-top-brand wm-top-link wm-vcenter">
+      
+      <div class="wm-top-title">
+        My Docs<br>
+        
+      </div>
+    </a>
+  </div>
+</nav>
+
+  <div id="main-content" class="wm-page-top-frame">
+    
+<nav class="wm-toc-pane">
+  
+  <ul class="wm-toctree">
+        <li class="wm-toc-li wm-toc-lev1 "><span class="wm-toc-text">研究ログ置き場</span>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Docs for research</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Paper experiment</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Accuracy</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/Accuracy/" class="wm-article-link wm-toc-text">検索精度</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">FN</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/FN/" class="wm-article-link wm-toc-text">検出漏れ</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Result</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/FN/result/" class="wm-article-link wm-toc-text">結果</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">FP</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/FP/" class="wm-article-link wm-toc-text">誤検出チェック</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/FP/FP-each/" class="wm-article-link wm-toc-text">BM25</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Edit</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/FP/edit/" class="wm-article-link wm-toc-text">edit distanceの評価</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Narrow</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/narrow/" class="wm-article-link wm-toc-text">絞り込みというやつ</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">2gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/narrow/2gram/" class="wm-article-link wm-toc-text">絞り込み率</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">3gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/narrow/3gram/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">4gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/narrow/4gram/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">5gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/narrow/5gram/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">6gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/narrow/6gram/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Uc</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/paper_experiment/narrow/uc/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Preservation</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/preservation/" class="wm-article-link wm-toc-text">保存性チェック的なやつ</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Search time</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/paper_experiment/search_time/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Procudure of experimental</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">FN</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/procudure-of-experimental/FN/" class="wm-article-link wm-toc-text">FN 実験手順</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">FP</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/procudure-of-experimental/FP/" class="wm-article-link wm-toc-text">FP 実験手順</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Narrow</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/procudure-of-experimental/narrow/" class="wm-article-link wm-toc-text">narrow 手順</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Preservation</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/procudure-of-experimental/preservation/" class="wm-article-link wm-toc-text">保存性評価</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Result</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">500 random jar</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/500_random_jar/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Search sim check</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/500_random_jar/search_sim_check/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Search sim freq</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/500_random_jar/search_sim_freq/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Unrelational</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/500_random_jar/unrelational/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">50 jar</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/50_jar/" class="wm-article-link wm-toc-text">50個のjarファイルでpochiの比較時間がどうなるかを確かめる</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">FN check</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">2gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/FN_check/2gram/" class="wm-article-link wm-toc-text">検出漏れ内訳</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Score 2 3 threshold</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/score_2-3_threshold/" class="wm-article-link wm-toc-text">閾値を設ける</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Each birthmark</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/score_2-3_threshold/each_birthmark/" class="wm-article-link wm-toc-text">本格的にやって行く</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Sim freq 2gram no nomalize</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Detail</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/" class="wm-article-link wm-toc-text">この前やってたようなことをやっていく</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Result length relational</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/result_length_relational/" class="wm-article-link wm-toc-text">バースマークの長さと検索結果に出てきた正解の数の関係を調べる</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Score length relational</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="docs_for_research/result/sim_freq_2gram_no_nomalize/detail/score_length_relational/" class="wm-article-link wm-toc-text">検索結果の長さとスコアの遷移が見たい</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Sim freq 6gram no nomalize</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/sim_freq_6gram_no_nomalize/" class="wm-article-link wm-toc-text">6gramでやってみた</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Similar frequence 2gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/similar_frequence_2gram/" class="wm-article-link wm-toc-text">類似度頻度調査</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">All research</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/similar_frequence_2gram/all_research/" class="wm-article-link wm-toc-text">全体調査</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev5 wm-toc-opener"><span class="wm-toc-text">Freq</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev6 "><a href="docs_for_research/result/similar_frequence_2gram/all_research/freq/" class="wm-article-link wm-toc-text">全体の類似度頻度表</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">All research jaccard</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/similar_frequence_2gram/all_research_jaccard/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Similar frequence 6gram</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/similar_frequence_6gram/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">All research</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/similar_frequence_6gram/all_research/" class="wm-article-link wm-toc-text">全部を調べてみる</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">All research jaccard</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/result/similar_frequence_6gram/all_research_jaccard/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Uc check</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/result/uc_check/" class="wm-article-link wm-toc-text">UCでとりあえず検索して見て傾向を調査する</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Rules</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Removed birthamrk</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/rules/removed_birthamrk/" class="wm-article-link wm-toc-text">とりあえず平均の1/3の長さのものでやる</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Solr</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">CursorMark</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 "><a href="docs_for_research/solr/CursorMark/" class="wm-article-link wm-toc-text">Index</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev3 wm-toc-opener"><span class="wm-toc-text">Distributed</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev4 wm-toc-opener"><span class="wm-toc-text">Local</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev5 "><a href="docs_for_research/solr/distributed/local/" class="wm-article-link wm-toc-text">distributed</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Work log</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180518/" class="wm-article-link wm-toc-text">20180518</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180611/" class="wm-article-link wm-toc-text">20180611</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180612/" class="wm-article-link wm-toc-text">20180612</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180617/" class="wm-article-link wm-toc-text">20180617</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180624/" class="wm-article-link wm-toc-text">20180624</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180628/" class="wm-article-link wm-toc-text">20180628</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180701/" class="wm-article-link wm-toc-text">検出漏れやり直し</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180706/" class="wm-article-link wm-toc-text">20180706</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180712/" class="wm-article-link wm-toc-text">20180712</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180718/" class="wm-article-link wm-toc-text">20180718</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180722/" class="wm-article-link wm-toc-text">検出漏れを書きます</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180724/" class="wm-article-link wm-toc-text">20180724</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180725/" class="wm-article-link wm-toc-text">20180725</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20180726/" class="wm-article-link wm-toc-text">20180726</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181006/" class="wm-article-link wm-toc-text">20181006</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181010/" class="wm-article-link wm-toc-text">20181010</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181011/" class="wm-article-link wm-toc-text">20181011</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181012-2/" class="wm-article-link wm-toc-text">20181012 2</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181012/" class="wm-article-link wm-toc-text">指摘項目訂正</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181013/" class="wm-article-link wm-toc-text">検出漏れ続きやってくぞ</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181014/" class="wm-article-link wm-toc-text">再度保存性</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181015/" class="wm-article-link wm-toc-text">20181015</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181016/" class="wm-article-link wm-toc-text">20181016</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181025/" class="wm-article-link wm-toc-text">20181025</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181029/" class="wm-article-link wm-toc-text">20181029</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181106/" class="wm-article-link wm-toc-text">20181106</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181120/" class="wm-article-link wm-toc-text">絞り込みやっていくぞ</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="work_log/20181202/" class="wm-article-link wm-toc-text">10パターンFP check</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">2019</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="work_log/2019/20190109/" class="wm-article-link wm-toc-text">100 1000 ....、数パターンの検索時間を調査</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="work_log/2019/20190110/" class="wm-article-link wm-toc-text">従来手法の比較時間</a>
+</li>
+  </ul>
+</li>
+
+  </ul>
+</li>
+
+  </ul>
+</nav>
+
+    <div class="wm-content-pane">
+      <iframe class="wm-article" name="article"></iframe>
+    </div>
+  </div>
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/paper_experiment/Accuracy/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/paper_experiment/Accuracy/" class="btn btn-xs btn-link">
+        検索精度
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="_1">研究ログ置き場</h1>
+<h2 id="_2">各種ディレクトリ</h2>
+<ul>
+<li>docs_for_research<ul>
+<li>過去のために残した資料的なもの</li>
+</ul>
+</li>
+<li>work_log<ul>
+<li>日々の雑記</li>
+</ul>
+</li>
+</ul>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/paper_experiment/Accuracy/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/paper_experiment/Accuracy/" class="btn btn-xs btn-link">
+        検索精度
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-01-13 19:30:27
+-->

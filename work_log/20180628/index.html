@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20180628 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u691c\u51fa\u6f0f\u308c \u3084\u308a\u76f4\u3057", url: "#_top", children: [
+              {title: "BM25", url: "#bm25" },
+              {title: "edit", url: "#edit" },
+          ]},
+          {title: "\u8aa4\u691c\u51fa", url: "#_2", children: [
+              {title: "0.25", url: "#025" },
+              {title: "0.5", url: "#05" },
+              {title: "0.75", url: "#075_1" },
+          ]},
+          {title: "jw\u8aa4\u691c\u51fa\u591a\u3059\u304e\u554f\u984c", url: "#jw", children: [
+              {title: "\u691c\u51fa\u6f0f\u308c", url: "#_3" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180701/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180701/" class="btn btn-xs btn-link">
+        検出漏れやり直し
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180624/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180624/" class="btn btn-xs btn-link">
+        20180624
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="_1">検出漏れ やり直し</h2>
+<h3 id="bm25">BM25</h3>
+<h4 id="075">0.75</h4>
+<pre><code># 0.75
+/Volumes/HD/false_negative_50_jar/false_negative ❯❯❯ python3 tp_improve.py pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv      master ✱ ◼
+12716
+7234
+10955
+5536
+3561
+5216
+
+/Volumes/HD/false_negative_50_jar/false_negative ❯❯❯ go run intersection.go pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv
+==&gt; done reading from file
+==&gt; done reading from file
+12716
+7234
+6734
+
+# 0.5
+/Volumes/HD/false_negative_50_jar/false_negative ❮❮❮ python3 tp_improve.py pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv       master ✱ ◼
+73761
+7234
+67959
+5536
+3561
+5245
+
+/Volumes/HD/false_negative_50_jar/false_negative ❮❮❮ go run intersection.go pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv
+==&gt; done reading from file
+==&gt; done reading from file
+73761
+7234
+6758
+
+# 0.25
+/Volumes/HD/false_negative_50_jar/false_negative ❯❯❯ python3 tp_improve.py pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_greater.csv      master ✱ ◼
+1650830
+7234
+1375230
+5536
+3561
+5269
+
+/Volumes/HD/false_negative_50_jar/false_negative ❯❯❯ go run intersection.go pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_greater.csv
+==&gt; done reading from file
+==&gt; done reading from file
+1650830
+7234
+6759
+</code></pre>
+
+<h3 id="edit">edit</h3>
+<pre><code># 0.75
+/Volumes/HD/false_negative_50_jar/false_negative_edit ❮❮❮ python3 tp_improve.py pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv
+
+7692
+7234
+6110
+5536
+3561
+4714
+
+# やり直し
+7234
+51023
+5536
+6110
+3561
+4714
+
+/Volumes/HD/false_negative_50_jar/false_negative_edit ❯❯❯ go run intersection.go pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_greater.csv
+==&gt; done reading from file
+==&gt; done reading from file
+7692
+7234
+6126
+
+# 0.5
+/Volumes/HD/false_negative_50_jar/false_negative_edit ❮❮❮ python3 tp_improve.py pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv
+216657
+7234
+177170
+5536
+3561
+5162
+
+/Volumes/HD/false_negative_50_jar/false_negative_edit ❮❮❮ go run intersection.go pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greater.csv
+==&gt; done reading from file
+==&gt; done reading from file
+216657
+7234
+6676
+
+# 0.25
+/Volumes/HD/false_negative_50_jar/false_negative_edit ❯❯❯ python3 tp_improve.py pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_greater.csv
+1393269
+7234
+991656
+5536
+367
+474
+
+/Volumes/HD/false_negative_50_jar/false_negative_edit ❯❯❯ go run intersection.go pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_greater.csv
+==&gt; done reading from file
+==&gt; done reading from file
+7014139
+7234
+6759
+</code></pre>
+
+<h2 id="_2">誤検出</h2>
+<h3 id="025">0.25</h3>
+<pre><code># 正解
+2262
+1132
+515
+372
+290
+
+/Volumes/mituba_20180425/restart/sim_0.25 ❯❯❯ for i in ./compare_result/*uc* ; do awk -F ',' '{if ($3 &gt;= 0.75) a+=1} END {print a}' &quot;$i&quot; ; done | awk '{a+=$1} END {print a}'
+196282
+
+## 検索結果
+/Volumes/mituba_20180425/restart/sim_0.25 ❮❮❮ for l in 2gram 3gram 4gram 5gram 6gram uc ; do for i in ./search_result/*&quot;$l&quot;* ; do awk -F ',' '{a+=1} END {print a}' &quot;$i&quot; ; done | awk '{a+=$1} END {print a}';done
+817414
+266231
+64656
+28063
+14657
+
+/Volumes/mituba_20180425/restart/sim_0.25 ❯❯❯ for i in ./search_result/*uc* ; do wc $i ;done | awk '{a+=$1} END {print a}'                                     master ✱ ◼
+583366
+</code></pre>
+
+<h3 id="05">0.5</h3>
+<pre><code># 正解
+/Volumes/mituba_20180425/restart/sim_0.5 ❯❯❯ for birth in 2gram 3gram 4gram 5gram 6gram uc ; do for i in ./compare_result/*&quot;$birth&quot;* ; do awk -F ',' '{if ($3 &gt;= 0.75) a+=1} END {print a}' &quot;$i&quot; ; done | awk '{a+=$1} END {print a}';done
+1480
+883
+461
+351
+282
+91188
+
+# 検索結k
+/Volumes/mituba_20180425/restart/sim_0.5 ❯❯❯ for l in 2gram 3gram 4gram 5gram 6gram uc ;do for i in ./search_result/*&quot;$l&quot;* ; do wc $i ;done | awk '{a+=($1 - 2)} END {print a}' ;done
+68028
+13211
+2738
+1991
+1717
+112504
+</code></pre>
+
+<h3 id="075_1">0.75</h3>
+<pre><code>## 正解
+/Volumes/mituba_20180425/restart/sim_0.75 ❯❯❯ for i in 2gram 3gram 4gram 5gram 6gram uc;do for i in ./compare_result/*&quot;$i&quot;* ; do awk -F ',' '{if ($3 &gt;= 0.75) a+=1} END {print a}' &quot;$i&quot; ; done | awk '{a+=$1} END {print a}';done
+1438
+817
+421
+328
+265
+91155
+
+## 検索結果
+/Volumes/mituba_20180425/restart/sim_0.75 ❯❯❯ for l in 2gram 3gram 4gram 5gram 6gram uc ;do for i in ./search_result/*&quot;$l&quot;* ; do wc $i ;done | awk '{a+=($1 - 2)} END {print a}' ;done
+3995
+1260
+839
+760
+523
+99615
+</code></pre>
+
+<h2 id="jw">jw誤検出多すぎ問題</h2>
+<p>検索結果に0.75以上のものですぎ</p>
+<pre><code>## 閾値0.75での検索件数
+1498061
+
+## ちなみにBM25
+10955
+</code></pre>
+
+<h3 id="_3">検出漏れ</h3>
+<h4 id="025_1">0.25</h4>
+<pre><code>/Volumes/HD/false_negative_50_jar/false_negative_jw ❯❯❯ go run intersection.go pro_result_parse/2gram-0.25.csv ../pre_result_remove/2grampre_0.75_great
+er.csv
+==&gt; done reading from file
+==&gt; done reading from file
+9506980
+7234
+6759
+</code></pre>
+
+<h4 id="05_1">0.5</h4>
+<pre><code>
+/Volumes/HD/false_negative_50_jar/false_negative_jw ❮❮❮ go run intersection.go pro_result_parse/2gram-0.5.csv ../pre_result_remove/2grampre_0.75_greate
+r.csv
+==&gt; done reading from file
+==&gt; done reading from file
+9506769
+7234
+6759
+</code></pre>
+
+<h4 id="075_2">0.75</h4>
+<pre><code>/Volumes/HD/false_negative_50_jar/false_negative_jw ❯❯❯ go run intersection.go pro_result_parse/2gram-0.75.csv ../pre_result_remove/2grampre_0.75_great
+er.csv
+==&gt; done reading from file
+==&gt; done reading from file
+1691678
+7234
+6758
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180701/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180701/" class="btn btn-xs btn-link">
+        検出漏れやり直し
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180624/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180624/" class="btn btn-xs btn-link">
+        20180624
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

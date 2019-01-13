@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>FP 実験手順 - My Docs</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "FP \u5b9f\u9a13\u624b\u9806", url: "#_top", children: [
+              {title: "\u30b5\u30fc\u30d0\u69cb\u7bc9", url: "#_1" },
+              {title: "\u691c\u7d22", url: "#_2" },
+              {title: "FP check", url: "#fp-check" },
+              {title: "\u691c\u7d22\u6642\u9593\u306b\u3064\u3044\u3066", url: "#_3" },
+              {title: "11/14\u8ffd\u8a18", url: "#1114" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-link">
+        narrow 手順
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-link">
+        FN 実験手順
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="fp">FP 実験手順</h1>
+<h2 id="_1">サーバ構築</h2>
+<p>FNとほぼ同様</p>
+<h2 id="_2">検索</h2>
+<p><code>&lt;(for j in 15 24 31 37 41 2; do echo $j ;done)</code>の部分は適宜サーバを作成した時の値を利用する</p>
+<pre><code>paste &lt;(for i in 2gram 3gram 4gram 5gram 6gram uc;do echo $i ;done) &lt;(for j in 15 24 31 37 41 2; do echo $j ;done) | while read birth threshold ; do for i in dir/*&quot;$birth&quot;.csv; do python3 row_search.py $i $threshold &quot;$birth&quot; ; done &gt; time_&quot;$birth&quot;.csv;done
+</code></pre>
+
+<h2 id="fp-check">FP check</h2>
+<p>※ToolForResearchで比較するときにtimeコマンドで比較時間を出力するのを忘れずに</p>
+<ul>
+<li>効率悪いが，search_result直下の結果を各閾値ごとのディレクトリに分ける (search_result_0.9とか)</li>
+<li>後はToolForResearchのinput optionにそのディレクトリを指定する</li>
+<li>比較結果ディレクトリでどれだけ0.75があったのかを確認して，その割合がFP</li>
+</ul>
+<h2 id="_3">検索時間について</h2>
+<p>検索時間は，time_"$birth".csv内の時間の合計を求めたら良い
+比較時間はtimeコマンドで</p>
+<p>従来手法の時間は，普通に相互比較で (FN参照)</p>
+<h2 id="1114">11/14追記</h2>
+<p>ToolForResearch/row_search_get_only_last_result.pyを作成した</p>
+<p>これをparseするためのスクリプトを記述しておく．</p>
+<pre><code>find . -name &quot;*-898*.csv&quot; | while read file
+do
+  grep 'narrow_count' $file | sed 's/narrow_count: //g' | gowk sum -c 0
+  grep 'elapsed_time:' $file | sed 's/elapsed_time://g' | sed 's/\[sec\]//g' | gowk sum -c 0
+  grep 'comparison: ' $file | sed 's/comparison: //g' | sed 's/ ns//g' | gowk sum -c 0
+  grep 'correct_count: ' $file | sed 's/correct_count: //g' | sed 's/count: //g' | gowk sum -c '0,1'
+done
+</code></pre>
+
+<p>これじゃダメっぽい
+これを使う</p>
+<pre><code>python3 ./parse.py &lt;file&gt;
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-link">
+        narrow 手順
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/procudure-of-experimental/FN/" class="btn btn-xs btn-link">
+        FN 実験手順
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>20180726 - My Docs</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "jar\u30d5\u30a1\u30a4\u30eb\u6570", url: "#_top", children: [
+          ]},
+          {title: "\u76f8\u4e92\u6bd4\u8f03\u6642\u9593", url: "#_1", children: [
+              {title: "\u63d0\u6848\u624b\u6cd5\u6bd4\u8f03\u6642\u9593\uff0c\u518d\u8a55\u4fa1", url: "#_2" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181006/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181006/" class="btn btn-xs btn-link">
+        20181006
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180725/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180725/" class="btn btn-xs btn-link">
+        20180725
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="jar">jarファイル数</h2>
+<p>17926</p>
+<h2 id="_1">相互比較時間</h2>
+<pre><code>
+/Volumes/mituba_20180425/restart/each_sim ❮❮❮ for i in 2gram 3gram 4gram uc; do  time ./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o compare_result_all_parse -l 15 ;done
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o   910.31s user 183.49s system 74% cpu 24:34.22 total
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o   4213.89s user 1457.12s system 87% cpu 1:47:24.43 total
+
+/Volumes/mituba_20180425/restart/each_sim ❮❮❮ for i in 4gram 5gram 6gram ; do  time ./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o compare_result_all_parse -l 15 ;done
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o   5845.96s user 5652.48s system 110% cpu 2:53:35.12 total
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o   9728.33s user 12292.64s system 112% cpu 5:26:55.74 total
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o   10264.84s user 12389.51s system 107% cpu 5:49:39.01 total
+
+
+# uc
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_all_parse -o   968.47s user 275.40s system 66% cpu 31:03.04 total
+</code></pre>
+
+<h3 id="_2">提案手法比較時間，再評価</h3>
+<pre><code>/Volumes/mituba_20180425/restart/each_sim ❯❯❯ for i in 3gram 4gram 5gram 6gram; do for thre in 0.0;do time ./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_&quot;$thre&quot;_0725 -o compare_result_&quot;$thre&quot; -l 15;done;done
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_&quot;$thre&quot;_0725   3143.37s user 1254.11s system 124% cpu 58:46.60 total
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_&quot;$thre&quot;_0725   3925.81s user 2176.19s system 117% cpu 1:26:20.74 total
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_&quot;$thre&quot;_0725   5027.43s user 4085.45s system 113% cpu 2:13:43.11 total
+tp_improve.py
+./each_sim -m compare -b &quot;$i&quot; -f tp_improve.py -i search_result_&quot;$thre&quot;_0725   3298.82s user 1992.51s system 104% cpu 1:24:01.94 total
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20181006/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20181006/" class="btn btn-xs btn-link">
+        20181006
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="work_log/20180725/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="work_log/20180725/" class="btn btn-xs btn-link">
+        20180725
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

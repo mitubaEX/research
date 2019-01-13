@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Index - My Docs</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "jaccard\u4fc2\u6570\u3067\u3084\u308a\u76f4\u3057\u3066\u307f\u308b\u3088", url: "#_top", children: [
+              {title: "\u691c\u51fa\u6f0f\u308c", url: "#_1" },
+          ]},
+          {title: "\u6b63\u89e3\u304c253\u500b\u3057\u304b\u306a\u3044\u306e\u3067\u305d\u308c\u3092\u898b\u3066\u307f\u308b", url: "#253", children: [
+          ]},
+          {title: "\u30df\u30b9\u3063\u305f\u306e\u3067\u3084\u308a\u76f4\u3057", url: "#_2", children: [
+              {title: "\u9577\u3055\u306e\u5185\u8a33", url: "#_3" },
+          ]},
+          {title: "6gram\u3092\u3084\u3063\u305f\u5f8c\u306e\u8003\u5bdf", url: "#6gram", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/similar_frequence_6gram/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/similar_frequence_6gram/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/similar_frequence_2gram/all_research/freq/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/similar_frequence_2gram/all_research/freq/" class="btn btn-xs btn-link">
+        全体の類似度頻度表
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="jaccard">jaccard係数でやり直してみるよ</h2>
+<pre><code>greater_than_count: 6026008, pochi::0.75: 124, pochi::0.5: 3283, pochi::0.25: 27412, pochi::0.25_under: 50940, search_sim::0.75: 78352, search_sim::0.5: 607906, search_sim::0.25: 3053401, other: 1784891, other_poshi::0.75: 120
+</code></pre>
+
+<h3 id="_1">検出漏れ</h3>
+<pre><code>all: 7810899
+
+# 0.25
+[0, 4726751, 0, 0, 0]
+
+# 0.5
+[0, 7202678, 0, 0, 0]
+
+# 0.75
+[9, 7732418, 0, 0, 0]
+
+# 0.8
+[52, 7748909, 0, 0, 0]
+
+# 0.85
+[57, 7783062, 0, 0, 0]
+
+# 0.9
+[62, 7805086, 0, 0, 0]
+
+# 0.95
+[95, 7809329, 0, 0, 0]
+
+# 1.0
+[253, 7810646, 0, 0, 0]
+</code></pre>
+
+<h2 id="253">正解が253個しかないのでそれを見てみる</h2>
+<h2 id="_2">ミスったのでやり直し</h2>
+<pre><code>greater_than_count: 5951912, pochi::0.75: 24, pochi::0.5: 2919, pochi::0.25: 27473, pochi::0.25_under: 76609, search_sim::0.75: 104082, search_sim::0.5: 628714, search_sim::0.25: 3037601, other: 1714121, other_poshi::0.75: 0
+</code></pre>
+
+<p>特に変化は見られない</p>
+<p>そもそも0.75になったペアの長さが15以下である
+だめじゃん・・・</p>
+<p>正解0</p>
+<h3 id="_3">長さの内訳</h3>
+<pre><code>{5: 2, 8: 93, 11: 10, 10: 120, 14: 28}
+</code></pre>
+
+<p>6gramでやったら変わるかなぁ？</p>
+<h2 id="6gram">6gramをやった後の考察</h2>
+<p>6gramはクラス名が同じだったのに対して，2gramはクラス名が違っていた
+でも長さで弾くので，まぁ何も見なかったことにしたらいい</p>
+<p>ここでいいたいのは短い文字だったら余り効果が発揮できない</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/similar_frequence_6gram/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/similar_frequence_6gram/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/result/similar_frequence_2gram/all_research/freq/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/result/similar_frequence_2gram/all_research/freq/" class="btn btn-xs btn-link">
+        全体の類似度頻度表
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

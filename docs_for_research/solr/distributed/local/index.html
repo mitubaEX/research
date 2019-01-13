@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>distributed - My Docs</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "distributed", url: "#_top", children: [
+              {title: "example", url: "#example" },
+              {title: "\u5bfe\u51e6", url: "#_1" },
+              {title: "\u308f\u304b\u3063\u305f\u3053\u3068", url: "#_2" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180518/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180518/" class="btn btn-xs btn-link">
+        20180518
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/solr/CursorMark/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/solr/CursorMark/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="distributed">distributed</h1>
+<p>分散インデックスについてのメモ</p>
+<h2 id="example">example</h2>
+<p>今回は5このノードで分散して検索を行ってみる．</p>
+<pre><code>mkdir example/nodes
+
+# 5件のノードを作成
+for i in $(seq 1 5); do mkdir &quot;example/nodes/node$i&quot; &amp;&amp; cp server/solr/solr.xml &quot;example/nodes/node$i/.&quot; ; done
+for i in $(seq 1 5); do mkdir &quot;example/nodes/node$i&quot; ; done
+
+
+bin/solr start -s example/nodes/node1 -p 8983
+bin/solr start -s example/nodes/node2 -p 8984
+bin/solr start -s example/nodes/node3 -p 8985
+bin/solr start -s example/nodes/node4 -p 8986
+bin/solr start -s example/nodes/node5 -p 8987
+
+
+bin/solr restart -s example/nodes/node1 -p 8983 -m 24g
+bin/solr restart -s example/nodes/node2 -p 8984 -m 24g
+bin/solr restart -s example/nodes/node3 -p 8985 -m 24g
+bin/solr restart -s example/nodes/node4 -p 8986 -m 24g
+bin/solr restart -s example/nodes/node5 -p 8987 -m 24g
+
+
+bin/solr create_core -c core1 -p 8983
+bin/solr create_core -c core1 -p 8984
+bin/solr create_core -c core1 -p 8985
+bin/solr create_core -c core1 -p 8986
+bin/solr create_core -c core1 -p 8987
+
+
+find /Volumes/mituba_server/birthmark_server_encoded/data/birth_xml -name &quot;birth_uc*.xml&quot; | head -n 40 | xargs -I% bin/post -c core1 % -port 8983
+find /Volumes/mituba_server/birthmark_server_encoded/data/birth_xml -name &quot;birth_uc*.xml&quot; | head -n 80 | tail -n 40 | xargs -I% bin/post -c core1 % -port 8984
+find /Volumes/mituba_server/birthmark_server_encoded/data/birth_xml -name &quot;birth_uc*.xml&quot; | head -n 120 | tail -n 40 | xargs -I% bin/post -c core1 % -port 8985
+find /Volumes/mituba_server/birthmark_server_encoded/data/birth_xml -name &quot;birth_uc*.xml&quot; | head -n 160 | tail -n 40 | xargs -I% bin/post -c core1 % -port 8986
+find /Volumes/mituba_server/birthmark_server_encoded/data/birth_xml -name &quot;birth_uc*.xml&quot; | tail -n 40 | xargs -I% bin/post -c core1 % -port 8987
+
+
+curl &quot;http://localhost:8983/solr/core1/select?q=*:*&amp;indent=true&amp;shards=localhost:8983/solr/core1,localhost:8984/solr/core1,localhost:8985/solr/core1,localhost:8986/solr/core1,localhost:8987/solr/core1&amp;fl=id,name&quot;
+
+# クエリ
+curl &quot;http://localhost:8983/solr/core1/select?q=*:*&amp;indent=true&amp;shards=localhost:8983/solr/core1,localhost:8984/solr/core1,localhost:8985/solr/core1,localhost:8986/solr/core1,localhost:8987/solr/core1&amp;rows=398201&amp;fl=filename&amp;wt=json&quot; &gt; tmp.json
+
+# solrconfig いじり
+find . -type f -name &quot;solrconfig.xml&quot; | xargs -J% sed -i -e 's/&lt;str name=&quot;content-type&quot;&gt;text\/plain; charset=UTF-8&lt;\/str&gt;/&lt;str name=&quot;content-type&quot;&gt;application\/json; charset=UTF-8&lt;\/str&gt;/g' %
+
+type=&quot;string&quot; multiValued=&quot;false&quot; indexed=&quot;true&quot; required=&quot;true&quot; stored=&quot;true&quot;
+</code></pre>
+
+<p>クエリを投げたらエラーが出る．
+どうやらmime typeが違うらしい</p>
+<pre><code class="json">    &quot;msg&quot;:&quot;Error from server at http://localhost:8987/solr/core1: Expected mime type application/octet-stream but got application/xml. &lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;response&gt;\n&lt;lst name=\&quot;error\&quot;&gt;&lt;lst name=\&quot;metadata\&quot;&gt;&lt;str name=\&quot;error-class\&quot;&gt;org.apache.solr.common.SolrException&lt;/str&gt;&lt;str name=\&quot;root-error-class\&quot;&gt;org.apache.solr.common.SolrException&lt;/str&gt;&lt;/lst&gt;&lt;str name=\&quot;msg\&quot;&gt;application/x-www-form-urlencoded content length (3121735 bytes) exceeds upload limit of 2048 KB&lt;/str&gt;&lt;int name=\&quot;code\&quot;&gt;400&lt;/int&gt;&lt;/lst&gt;\n&lt;/response&gt;\n&quot;,
+</code></pre>
+
+<h2 id="_1">対処</h2>
+<p>managed-schemaをいじっていく</p>
+<pre><code># 失敗
+find &quot;$i&quot; -name &quot;managed-schema&quot; | xargs -J% sed -i -e 's/multiValued=&quot;true&quot;/multiValued=&quot;false&quot;/g' %
+
+find . -name &quot;managed-schema&quot; | xargs -J% sed -i -e 's/type=\&quot;strings\&quot;/type=\&quot;string\&quot; multiValued=\&quot;false\&quot; indexed=\&quot;true\&quot; required=\&quot;true\&quot; stored=\&quot;true\&quot;/g' %
+
+
+find . -name &quot;managed-schema&quot; | xargs -J% sed -i -e 's/&lt;dynamicField name=&quot;*_ss&quot; type=&quot;string&quot; multiValued=&quot;false&quot; required=&quot;true&quot; stored=&quot;true&quot; indexed=&quot;true&quot;\/&gt;/&lt;dynamicField name=&quot;*_ss&quot; type=&quot;strings&quot; indexed=&quot;true&quot; stored=&quot;true&quot;\/&gt;/g' %
+  &lt;dynamicField name=&quot;*_ss&quot; type=&quot;strings&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;
+
+
+# データが変だったのでちょっと変えた
+find . -name &quot;birth_uc*&quot; | xargs -J% sed -i -e 's/&amp;amp;quot;//g' %
+</code></pre>
+
+<p>stop</p>
+<pre><code>bin/solr stop -s example/nodes/node1 -p 8983
+bin/solr stop -s example/nodes/node2 -p 8984
+bin/solr stop -s example/nodes/node3 -p 8985
+bin/solr stop -s example/nodes/node4 -p 8986
+bin/solr stop -s example/nodes/node5 -p 8987
+</code></pre>
+
+<h2 id="_2">わかったこと</h2>
+<p>件数が多すぎるとタイムアウトしているのかわからないがエラーを吐く
+逆に件数が少ないとエラーは吐かない
+タイムアウト設定いじってみる
+CursorMarkを使おう</p>
+<pre><code># クエリ
+curl &quot;http://localhost:8983/solr/core1/select?q=*:*&amp;indent=true&amp;shards=localhost:8983/solr/core1,localhost:8984/solr/core1,localhost:8985/solr/core1,localhost:8986/solr/core1,localhost:8987/solr/core1&amp;rows=100000&amp;fl=filename,data,score&amp;wt=json&amp;sort=id%20desc&amp;cursorMark=*&quot; &gt; tmp.json
+</code></pre>
+
+<p>送信データ量の限界に達していたらしい
+変更する
+CursorMark使うと遅すぎる</p>
+<pre><code># 変更
+find . -type f -name &quot;solrconfig.xml&quot; | xargs -J% sed -i -e 's/multipartUploadLimitInKB=&quot;2048000&quot;/multipartUploadLimitInKB=&quot;204800000&quot;/g' %
+
+find . -type f -name &quot;solrconfig.xml&quot; | xargs -J% sed -i -e 's/formdataUploadLimitInKB=&quot;2048&quot;/formdataUploadLimitInKB=&quot;20480000&quot;/g' %
+</code></pre>
+
+<p>変更したけど特に改善されなかった・・・</p>
+<p>100万件検索した結果 -&gt; 4:16
+遅い</p>
+<p>10万件 -&gt; 1:21</p>
+<p>無理</p>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="work_log/20180518/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="work_log/20180518/" class="btn btn-xs btn-link">
+        20180518
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/solr/CursorMark/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/solr/CursorMark/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

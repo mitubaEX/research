@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>保存性評価 - My Docs</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "\u4fdd\u5b58\u6027\u8a55\u4fa1", url: "#_top", children: [
+              {title: "\u96e3\u8aad\u5316", url: "#_2" },
+              {title: "\u691c\u7d22", url: "#_3" },
+              {title: "\u7d50\u679c\u3092\u6574\u7406", url: "#_4" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/500_random_jar/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/500_random_jar/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-link">
+        narrow 手順
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="_1">保存性評価</h1>
+<h2 id="_2">難読化</h2>
+<h3 id="donquixote">donquixote</h3>
+<pre><code class="sh">mkdir jar
+
+# jarディレクトリに任意のjarファイルを置く
+
+git clone https://github.com/tamadalab/donquixote.git
+
+cd donquixote &amp;&amp; mvn package
+
+cd ..
+
+mkdir DNR
+
+# run
+for i in ./jar/*.jar ;do java -jar ./donquixote/target/donquixote-3.0.1.jar --processor apiblinder --destination des1 --summary report1.txt &quot;$i&quot; &amp;&amp; jar cvf DNR/`basename &quot;$i&quot;` des1/* &amp;&amp; rm dest1;done
+</code></pre>
+
+<h3 id="sandmark">sandmark</h3>
+<pre><code class="sh"># Please install sandomark
+# http://cgi.cs.arizona.edu/~sandmark/download.html
+
+mkdir DNR DR IOP MLI IR
+
+# run
+for i in ./jar/*.jar ; do java -cp sandmark.jar sandmark.smash.SandmarkCLI -O -A &quot;Insert Opaque Predicates&quot; -i $i -o ./IOP/`basename &quot;$i&quot;`-IOP.jar ;done
+
+for i in ./jar/*.jar ; do java -cp sandmark.jar sandmark.smash.SandmarkCLI -O -A &quot;Irreducibility&quot; -i $i -o ./IR/`basename &quot;$i&quot;`-IR.jar ;done
+
+for i in ./jar/*.jar ; do java -cp sandmark.jar sandmark.smash.SandmarkCLI -O -A &quot;Duplicate Registers&quot; -i $i -o ./DR/`basename &quot;$i&quot;`-DR.jar ;done
+
+for i in ./jar/*.jar ; do java -cp sandmark.jar sandmark.smash.SandmarkCLI -O -A &quot;Merge Local Integers&quot; -i $i -o ./MLI/`basename &quot;$i&quot;`-MLI.jar ;done
+</code></pre>
+
+<h3 id="extract">extract</h3>
+<pre><code class="sh">git clone https://github.com/tamada/stigmata.git
+
+cd stigmata &amp;&amp; mvn package
+
+cd ..
+
+for obf in DNR DR IOP MLI IR ; do find ./&quot;$obf&quot; -name &quot;*.jar&quot; | while read file ; do for i in 2gram 3gram 4gram 5gram 6gram uc ; do java -jar ./stigmata/target/stigmata-5.0-SNAPSHOT.jar extract -b $i &quot;$file&quot; &gt; ./&quot;$obf&quot;/`basename &quot;$file&quot;`-&quot;$i&quot;.csv;done;done;done
+</code></pre>
+
+<h2 id="_3">検索</h2>
+<pre><code class="sh">mkdir search_result
+
+for i in DNR DR IOP MLI IR ; do mkdir search_result/&quot;$i&quot;;done
+
+# thresholdは適宜変更
+for obfu in DNR DR IOP IR MLI ;do paste &lt;(for i in 2gram 3gram 4gram 5gram 6gram uc;do echo $i ;done) &lt;(for j in 15 24 31 37 41 2; do echo $j ;done) | while read birth threshold ; do for i in ./extract_obfu/&quot;$obfu&quot;/*&quot;$birth&quot;*.csv ; do python3 row_search.py $i $threshold &quot;$birth&quot; &quot;$obfu&quot;; done;done;done
+</code></pre>
+
+<h2 id="_4">結果を整理</h2>
+<pre><code class="sh">mkdir pro_result
+
+for i in DNR DR IOP MLI IR ; do mkdir pro_result/&quot;$i&quot;;done
+
+for obfu in DNR DR IOP MLI IR ; do for birth in 2gram 3gram 4gram 5gram 6gram uc;do for i in search_result/&quot;$obfu&quot;/*&quot;$birth&quot;*  ; do awk -v filename=`basename &quot;$i&quot;` -F '[/,]' '{printf(&quot;%s,%s,%s\n&quot;,filename,$1,$2)}' &quot;$i&quot;;done &gt; pro_result/&quot;$obfu&quot;/&quot;$birth&quot;.csv;done;done
+
+# 保存割合を求めるスクリプト忘れた
+for obfu in DNR DR IOP MLI IR ; do for birth in 2gram 3gram 4gram 5gram 6gram uc;do &lt;何かしらのscript&gt; pro_result/&quot;$obfu&quot;/&quot;$birth&quot;.csv ;done;done
+</code></pre>
+
+  <br>
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="docs_for_research/result/500_random_jar/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="docs_for_research/result/500_random_jar/" class="btn btn-xs btn-link">
+        Index
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="docs_for_research/procudure-of-experimental/narrow/" class="btn btn-xs btn-link">
+        narrow 手順
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
